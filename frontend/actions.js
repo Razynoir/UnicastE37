@@ -1,5 +1,6 @@
-export const ADD_MONEY = "ADD_MONEY"
+export const ADD_ITEM = "ADD_ITEM"
 
-export const addMoney = {
-  type: ADD_MONEY
-};
+export const addItem = name => ({
+  type: ADD_ITEM,
+  name: name
+});

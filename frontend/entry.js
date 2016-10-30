@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 
 import store from './store';
 import AppContainer from './components/app_container';
-import actions from './actions';
+import {Add_ITEM} from './actions';
 
 // put store and actions on the window
 window.store = store;

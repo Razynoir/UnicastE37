@@ -1,18 +1,14 @@
 import { connect } from 'react-redux';
-import { addMoney } from '../actions';
-import moneyCounter from './money_counter';
+import { addItem } from '../actions';
+import ItemList from './item_list';
 
-const mapStateToProps = function(state){
-  return {
-    money: state.money
-  };
-}
+const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => ({
-  addMoney: () => dispatch(addMoney)
+  addItem: () => dispatch(addItem("thing"))
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(moneyCounter)
+)(ItemList)
