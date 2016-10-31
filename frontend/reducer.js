@@ -11,6 +11,7 @@ const _initState = {
       id: "0001A00",
       name: "Dollar",
       description: "People disagrees on whether it's the key to happiness.",
+      note: "Can be used to purchase things or gain favors.",
       image_url: "http://i.imgur.com/oaxWsNW.png",
       amount: 100
     },
@@ -18,6 +19,7 @@ const _initState = {
       id: "0002B94",
       name: "Stock Chart",
       description: "Source of information.",
+      note: "Can be used for trading or favors.",
       image_url: "http://i.imgur.com/Pwqz5wg.png",
       amount: 100
     }
@@ -45,7 +47,8 @@ const reducer = (prevState=_initState, action) => {
         if(newState.items[item.id]){
           newState.items[item.id].amount += item.amountChange;
         }else{
-          newState.items[item.id] = item.amountChange;
+          newState.items[item.id] = Wiki[item.id];
+          newState.items[item.id].amount = item.amountChange;
         }
       });
       return newState;
