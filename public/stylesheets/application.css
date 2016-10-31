@@ -1,0 +1,12 @@
+html{
+  overflow-x: hidden;
+}
+img.item-image{
+  padding: 0px;
+  height: 10rem;
+  border: 3px solid black;
+}
+
+span.inline-bold{
+  font-weight: bold;
+}

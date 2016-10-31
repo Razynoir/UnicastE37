@@ -1,15 +1,29 @@
-import { MODIFY_INVENTORY } from './actions'
+import { MODIFY_INVENTORY } from './actions';
+import Wiki from './wiki/full_wiki.js';
 
 const _initState = {
+  conditions: {},
+  attributes: {},
+  qualities: {},
+  equipments: {},
   items: {
     "0001A00": {
       id: "0001A00",
       name: "Dollar",
       description: "People disagrees on whether it's the key to happiness.",
-      image_url: "http://imgur.com/oaxWsNW",
+      image_url: "http://i.imgur.com/oaxWsNW.png",
+      amount: 100
+    },
+    "0002B94": {
+      id: "0002B94",
+      name: "Stock Chart",
+      description: "Source of information.",
+      image_url: "http://i.imgur.com/Pwqz5wg.png",
       amount: 100
     }
-  }
+  },
+  information: {},
+  relationships: {}
 }
 
 // In the following format:
@@ -22,7 +36,6 @@ const _initState = {
 // }
 
 const reducer = (prevState=_initState, action) => {
-  debugger;
   switch(action.type){
     case "MODIFY_INVENTORY":
       var newState = $.extend(true, {}, prevState);
