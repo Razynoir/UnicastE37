@@ -1,6 +1,6 @@
-export const ADD_ITEM = "ADD_ITEM"
+export const MODIFY_INVENTORY = "MODIFY_INVENTORY";
 
-export const addItem = name => ({
-  type: ADD_ITEM,
-  name: name
+export const modifyInventoryWithSpecs = (spec) => ({
+  type: MODIFY_INVENTORY,
+  payload: spec
 });
