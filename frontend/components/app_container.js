@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
-import { modifyInventoryWithSpecs } from '../actions';
+import { modifyInventoryWithSpecs, switchNode } from '../actions';
 
 import ItemList from './item_list';
 
 const mapStateToProps = (state) => state;
 const mapDispatchToProps = (dispatch) => ({
-  modifyInventoryWithSpecs: (specs) => dispatch(modifyInventoryWithSpecs(specs))
+  modifyInventoryWithSpecs: (specs) => dispatch(modifyInventoryWithSpecs(specs)),
+  switchNode: (nextNode) => dispatch(switchNode(nextNode))
 })
 
 export default connect(

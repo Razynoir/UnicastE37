@@ -35,5 +35,117 @@ export default {
     description: "A chance for exploring the noctournal activities in the city.",
     note: "This item is required for participation in night activites, such as going to bars.",
     image_url: "http://i.imgur.com/6thzQ0o.png",
+  },
+
+  // Nodes Start Here
+
+  "1001A00": {
+    id: "1001A00",
+    class: "node",
+    type: "split-two",
+    name: "Your Apartment",
+    description: "A modest but comfortable lodging.",
+    image_url: "http://i.imgur.com/v2bl35p.png",
+    choices: [
+      {
+        title: "Go Hangout with Zane Galaychglov",
+        note: "Visit the genius and his scrap shop.",
+        buttonText: "Decide on This",
+        nextNode: "1001A01",
+      },
+      {
+        title: "Go Hangout with Cpt. Phil Dowerstone",
+        note: "Visit the half bionics with double the balls.",
+        buttonText: "Decide on This",
+        nextNode: "1001A02",
+      }
+    ]
+  },
+
+  "1001A01": {
+    id: "1001A01",
+    class: "node",
+    type: "split-two",
+    name: "Zane Galaychglov's Usual Spot in the Tech Lounge",
+    description: "He emits an air of intense focus.",
+    image_url: "http://i.imgur.com/xgmIj2o.png",
+    choices: [
+      {
+        title: "Converse with Him about Technology",
+        note: "Acquire information from him",
+        buttonText: "Talk to Him",
+        requirements: {},
+        nextNode: "1001A44",
+      },
+      {
+        title: "Go Home",
+        note: "Enough tech talk for the day.",
+        buttonText: "Decide on This",
+        requirements: {},
+        nextNode: "1001A00",
+      }
+    ]
+  },
+
+  "1001A44": {
+    id: "1001A44",
+    class: "node",
+    type: "reward",
+    name: "Zane Galaychglov's Information Reward",
+    description: "He gives you information",
+    image_url: "http://i.imgur.com/xgmIj2o.png",
+    rewards: [],
+    choices: [
+      {
+        title: "Back to Zane Galaychglov",
+        note: "Visit the genius and his scrap shop.",
+        buttonText: "Thank You",
+        nextNode: "1001A01",
+      },
+    ]
+  },
+
+  "1001A02": {
+    id: "1001A02",
+    class: "node",
+    type: "split-two",
+    name: "Phil Dowerstone's Office in a Shared Work Space",
+    description: "Visit the veteran's office",
+    image_url: "http://i.imgur.com/2wT2TLz.png",
+    choices: [
+      {
+        title: "Go Home",
+        note: "Enough talk with the veteran.",
+        buttonText: "Decide on This",
+        nextNode: "1001A00",
+      }
+    ]
   }
+
+  // Nodes Start Here
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////

@@ -1,7 +1,8 @@
-import { MODIFY_INVENTORY } from './actions';
+import { MODIFY_INVENTORY, SWITCH_NODE } from './actions';
 import Wiki from './wiki/full_wiki.js';
 
 const _initState = {
+  currentNode: Wiki["1001A00"],
   conditions: {},
   attributes: {},
   qualities: {},
@@ -51,6 +52,10 @@ const reducer = (prevState=_initState, action) => {
           newState.items[item.id].amount = item.amountChange;
         }
       });
+      return newState;
+    case "SWITCH_NODE":
+      var newState = $.extend(true, {}, prevState);
+      newState.currentNode = Wiki[action.nextNode];
       return newState;
     default:
       return prevState;

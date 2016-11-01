@@ -1,4 +1,5 @@
 import React from 'react';
+import ScenarioNode from './ScenarioNode';
 
 const ItemList = (props) => {
   var items = [];
@@ -15,6 +16,7 @@ const ItemList = (props) => {
 
   return(
     <div className="container">
+      <ScenarioNode node={props.currentNode} switchNode={props.switchNode}/>
       {items.map((item, idx) => (
         <div className="row" key={idx}>
           <img className="item-image" src={item.image_url}/>
