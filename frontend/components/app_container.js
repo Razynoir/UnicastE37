@@ -1,15 +1,16 @@
 import { connect } from 'react-redux';
-import { modifyInventoryWithSpecs, switchNode } from '../actions';
+import { modifyInventoryWithSpecs, switchNode, switchMode } from '../actions';
 
-import ItemList from './item_list';
+import AppContent from './app_content';
 
 const mapStateToProps = (state) => state;
 const mapDispatchToProps = (dispatch) => ({
   modifyInventoryWithSpecs: (specs) => dispatch(modifyInventoryWithSpecs(specs)),
-  switchNode: (nextNode) => dispatch(switchNode(nextNode))
+  switchNode: (nextNode) => dispatch(switchNode(nextNode)),
+  switchMode: (newMode) => dispatch(switchMode(newMode)),
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ItemList)
+)(AppContent)

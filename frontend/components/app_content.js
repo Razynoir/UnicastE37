@@ -1,9 +1,22 @@
 import React from 'react';
-import ScenarioNode from './ScenarioNode';
+import ScenarioNode from './components/ScenarioNode';
+import ToolBar from './components/ToolBar';
+import Dashboard from './components/DashBoard';
 
-const ItemList = (props) => {
+const AppContent = (props) => {
   var items = [];
   var tradingDeviceButton = "";
+
+  var contentInterface;
+  switch (props.currentMode) {
+    case "Dashboard":
+      contentInterface = <Dashboard />;
+      break;
+    case "Scenario":
+      contentInterface = <ScenarioNode node={props.currentNode} switchNode={props.switchNode} />
+    default:
+
+  }
 
   for(var key in props.items){
     items.push(props.items[key])
@@ -15,8 +28,9 @@ const ItemList = (props) => {
   }
 
   return(
-    <div className="container">
-      <ScenarioNode node={props.currentNode} switchNode={props.switchNode}/>
+    <div className="container book">
+      <ToolBar mode={props.currentMode} switchMode={props.switchMode} />
+      {contentInterface}
       {items.map((item, idx) => (
         <div className="row" key={idx}>
           <img className="item-image" src={item.image_url}/>
@@ -38,4 +52,4 @@ const ItemList = (props) => {
   );
 }
 
-export default ItemList;
+export default AppContent;

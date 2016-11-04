@@ -4,7 +4,7 @@ import Choice from './Choice'
 const SplitTwo = (props) => {
   var currentNode = props.node;
   return (
-    <div className="row">
+    <div className="row split-two">
       <div className="col-md-6 split-two-media">
         <img className="split-two-img" src={currentNode.image_url} />
       </div>

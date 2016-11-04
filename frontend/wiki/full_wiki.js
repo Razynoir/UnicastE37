@@ -1,4 +1,4 @@
-export default {
+const WIKI = {
   "0001A00": {
     id: "0001A00",
     class: "item",
@@ -39,22 +39,59 @@ export default {
 
   // Nodes Start Here
 
+  "1007A01": {
+    id: "1007A01",
+    class: "node",
+    type: "single",
+    isChapter: true,
+    title: "Chapter One<br/>Your Son is Missing",
+    content: "",
+    shouldLog: true,
+    logContent: "",
+  },
+
   "1001A00": {
     id: "1001A00",
     class: "node",
     type: "split-two",
-    name: "Your Apartment",
+    name: "Your Apartment on Lower East Side",
     description: "A modest but comfortable lodging.",
     image_url: "http://i.imgur.com/v2bl35p.png",
     choices: [
       {
-        title: "Go Hangout with Zane Galaychglov",
-        note: "Visit the genius and his scrap shop.",
-        buttonText: "Decide on This",
+        title: "Visit Zane Galaychglov at NYU Tech Co-Op",
+        note: "A regular at the NYU tech scene.",
+        buttonText: "Go",
+        hasCondition: true,
+        satisfyCondition: function(currentStore){
+          var state= currentStore.getState();
+          return state.items['0001A00'].amount > 450 &&
+                 state.items['0002B94'].amount < 5;
+        },
+        requirements: [
+          {
+            id: "0001A00",
+            name: "Cash",
+            amount: 450,
+            isMoreThan: true,
+          },
+          {
+            id: "0002B94",
+            name: "Stock Chart",
+            amount: 5,
+            isMoreThan: false,
+          }
+        ],
+        assetImpact: [
+          {
+            id: "0001A00",
+            amountChange: -450,
+          }
+        ],
         nextNode: "1001A01",
       },
       {
-        title: "Go Hangout with Cpt. Phil Dowerstone",
+        title: "Take N to Cpt. Phil Dowerstone",
         note: "Visit the half bionics with double the balls.",
         buttonText: "Decide on This",
         nextNode: "1001A02",
@@ -126,7 +163,7 @@ export default {
 }
 
 
-
+export default WIKI;
 
 
 

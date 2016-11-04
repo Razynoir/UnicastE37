@@ -1,7 +1,8 @@
-import { MODIFY_INVENTORY, SWITCH_NODE } from './actions';
+import { MODIFY_INVENTORY, SWITCH_NODE, SWITCH_MODE } from './actions';
 import Wiki from './wiki/full_wiki.js';
 
 const _initState = {
+  currentMode: "Scenario",
   currentNode: Wiki["1001A00"],
   conditions: {},
   attributes: {},
@@ -56,6 +57,11 @@ const reducer = (prevState=_initState, action) => {
     case "SWITCH_NODE":
       var newState = $.extend(true, {}, prevState);
       newState.currentNode = Wiki[action.nextNode];
+      return newState;
+    case "SWITCH_MODE":
+    debugger;
+      var newState = $.extend(true, {}, prevState);
+      newState.currentMode = action.newMode;
       return newState;
     default:
       return prevState;
