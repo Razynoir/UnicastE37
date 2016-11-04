@@ -4,6 +4,7 @@ html{
 
 .book{
   height: 100vh;
+  margin: 0 auto;
 }
 
 img.item-image{
@@ -22,10 +23,30 @@ span.inline-bold{
 
 .tool-bar{
   height: 5%;
+  text-align: center;
+}
+
+.btn-dashboard, .btn-scenario, .btn-inventory{
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  width: 20rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  color: white;
+  font-size: 1.5rem;
+}
+.btn-dashboard{
+  background-color: #192231;
+}
+.btn-scenario{
+  background-color: #062f4f;
+}
+.btn-inventory{
+  background-color: #224267;
 }
 
 .split-two, .dashboard{
-  height: 90%;
+  height: 80%;
 }
 
 .dashboard{
@@ -33,8 +54,8 @@ span.inline-bold{
 }
 
 .split-two-media, .split-two-main{
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   height: 100%;
   overflow-y: scroll;
 }

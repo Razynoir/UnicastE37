@@ -62,6 +62,10 @@ const WIKI = {
         title: "Visit Zane Galaychglov at NYU Tech Co-Op",
         note: "A regular at the NYU tech scene.",
         buttonText: "Go",
+        hasDisplayCondition: true,
+        satisfyDisplayCondition: function(currentStore){
+
+        },
         hasCondition: true,
         satisfyCondition: function(currentStore){
           var state= currentStore.getState();
