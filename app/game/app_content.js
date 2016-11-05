@@ -1,8 +1,8 @@
 import React from 'react';
-import ScenarioNode from './components/ScenarioNode';
 import ToolBar from './components/ToolBar';
 import Dashboard from './components/DashBoard';
-import Item from './components/Item';
+import ScenarioNode from './components/ScenarioNode';
+import Inventory from './components/Inventory';
 
 const AppContent = (props) => {
   var items = [];
@@ -15,8 +15,10 @@ const AppContent = (props) => {
       break;
     case "Scenario":
       contentInterface = <ScenarioNode node={props.currentNode} switchNode={props.switchNode} />
+      break;
+    case "Inventory":
+      contentInterface = <Inventory store={props} />
     default:
-
   }
 
   for(var key in props.items){
@@ -32,8 +34,6 @@ const AppContent = (props) => {
     <div className="container book">
       <ToolBar mode={props.currentMode} switchMode={props.switchMode} />
       {contentInterface}
-      {items.map((item, idx) => (<Item key={idx} item={item} />))}
-
     </div>
   );
 }

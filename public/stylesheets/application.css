@@ -14,6 +14,12 @@ html{
   position: relative;
 }
 
+.item.equipped{
+  -webkit-box-shadow: 0px 0px 10px 5px rgba(255,231,0,1);
+  -moz-box-shadow: 0px 0px 10px 5px rgba(255,231,0,1);
+  box-shadow: 0px 0px 10px 5px rgba(255,231,0,1);
+}
+
 .item-info-over{
   padding: 2rem;
   display: none;

@@ -7,7 +7,7 @@ const ToolBar = (props) => {
         <button className="btn btn-dashboard" onClick={()=>{props.switchMode("Dashboard")}}>Dashboard</button>
         <button className="btn btn-analysis">Analysis</button>
         <button className="btn btn-scenario" onClick={()=>{props.switchMode("Scenario")}}>Scenario</button>
-        <button className="btn btn-inventory">Inventory</button>
+        <button className="btn btn-inventory" onClick={() => {props.switchMode("Inventory")}}>Inventory</button>
         <button className="btn btn-journal">Journal</button>
       </div>
     </div>

@@ -12,7 +12,7 @@ var Item = React.createClass({
     var item = this.state.item;
 
     return (
-      <div className="item">
+      <div className="item equipped">
         <div className="item-display">
           <img className="item-image" src={item.image_url}/>
         </div>
