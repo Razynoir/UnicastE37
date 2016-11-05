@@ -9,14 +9,6 @@ const _initState = {
   qualities: {},
   equipments: {},
   items: {
-    "0001A00": {
-      id: "0001A00",
-      name: "Dollar",
-      description: "People disagrees on whether it's the key to happiness.",
-      note: "Can be used to purchase things or gain favors.",
-      image_url: "http://i.imgur.com/oaxWsNW.png",
-      amount: 100
-    },
     "0002B94": {
       id: "0002B94",
       name: "Stock Chart",

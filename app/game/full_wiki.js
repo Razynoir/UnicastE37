@@ -69,8 +69,8 @@ const WIKI = {
         hasCondition: true,
         satisfyCondition: function(currentStore){
           var state= currentStore.getState();
-          return state.items['0001A00'].amount > 450 &&
-                 state.items['0002B94'].amount < 5;
+          return (!!state.items['0001A00'] && state.items['0001A00'].amount > 450) &&
+                 (!!state.items['0002B94'] && state.items['0002B94'].amount < 5);
         },
         requirements: [
           {

@@ -7,6 +7,40 @@ html{
   margin: 0 auto;
 }
 
+/*Item*/
+
+.item{
+  display: inline-block;
+  position: relative;
+}
+
+.item-info-over{
+  padding: 2rem;
+  display: none;
+  position: absolute;
+  background-color: #fef8e5;
+  color: black;
+  top: 0.5rem;
+  left: 7rem;
+  width: 28rem;
+  z-index: 9999999;
+}
+.item-display:hover + .item-info-over{
+  display: block;
+}
+.item-info-over:hover{
+  display: block;
+}
+.item-count-over{
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 4px;
+  color: black;
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
 img.item-image{
   padding: 0px;
   height: 10rem;

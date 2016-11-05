@@ -5,7 +5,6 @@ import Reward from './Reward';
 // import Single from './node_components/Single';
 
 const ScenarioNode = (props) => {
-  debugger;
   var nodeRendered;
   switch (props.node.type) {
     case "split-two":

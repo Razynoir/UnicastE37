@@ -2,7 +2,6 @@ import React from 'react'
 import Item from './Item'
 
 const Choice = (props) => {
-  debugger;
   var choice = props.choice;
 
   var conditionalStatement;
