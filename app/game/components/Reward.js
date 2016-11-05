@@ -3,6 +3,7 @@ import Choice from './Choice'
 
 const Reward = (props) => {
   var currentNode = props.node;
+  debugger;
   return (
     <div className="row">
       <div className="col-md-6 split-two-media">
@@ -12,7 +13,7 @@ const Reward = (props) => {
         <h1>{currentNode.name}</h1>
         <p>{currentNode.description}</p>
         <hr/>
-        {currentNode.choices.map((choice, idx) => (<Choice key={idx} choice={choice} switchNode={props.switchNode} />))}
+        {currentNode.choices.map((choice, idx) => (<Choice key={idx} choice={choice} switchNode={props.switchNode} modifyInventoryWithSpecs={props.modifyInventoryWithSpecs} />))}
       </div>
     </div>
   )

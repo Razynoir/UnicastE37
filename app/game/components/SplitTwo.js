@@ -2,6 +2,7 @@ import React from 'react'
 import Choice from './Choice'
 
 const SplitTwo = (props) => {
+  debugger;
   var currentNode = props.node;
   return (
     <div className="row split-two">
@@ -12,7 +13,7 @@ const SplitTwo = (props) => {
         <h1>{currentNode.name}</h1>
         <p>{currentNode.description}</p>
         <hr/>
-        {currentNode.choices.map((choice, idx) => (<Choice key={idx} choice={choice} switchNode={props.switchNode} />))}
+        {currentNode.choices.map((choice, idx) => (<Choice key={idx} choice={choice} switchNode={props.switchNode} modifyInventoryWithSpecs={props.modifyInventoryWithSpecs} />))}
       </div>
     </div>
   )

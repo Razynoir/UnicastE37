@@ -4,12 +4,17 @@ import Wiki from '../full_wiki';
 var Item = React.createClass({
   getInitialState: function(){
     return {
-      item: this.props.item
+      item: this.props.item,
+      isSuppressed: this.props.isSuppressed
     };
   },
 
   render: function(){
     var item = this.state.item;
+    var button = (<button>Use</button>);
+    if(this.state.isSuppressed){
+      button = "";  
+    }
 
     return (
       <div className="item equipped">
@@ -20,7 +25,7 @@ var Item = React.createClass({
         <p>You have <span className="inline-bold">x{item.amount}</span> <span className="inline-bold">{item.name}</span></p>
         <p>{item.description}</p>
         <p className="item-note">{item.note}</p>
-        <button>Use</button>
+        {button}
         </div>
         <div className="item-count-over">
           {item.amount}

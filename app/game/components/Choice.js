@@ -13,9 +13,13 @@ const Choice = (props) => {
     )
     conditionalButton = (<p className="color-red">You do not meet the requirement.</p>);
   }else{
-    conditionalButton = (<button onClick={() => props.switchNode(choice.nextNode)}>{choice.buttonText}</button>);
+    function callBack(){
+      props.modifyInventoryWithSpecs(choice.storeImpact);
+      props.switchNode(choice.nextNode);
+    }
+    conditionalButton = (<button onClick={callBack}>{choice.buttonText}</button>);
   }
-
+  debugger;
   return (
     <div className="choice-item">
       <h3>{choice.title}</h3>
