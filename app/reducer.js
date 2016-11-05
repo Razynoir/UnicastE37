@@ -1,5 +1,5 @@
 import { MODIFY_INVENTORY, SWITCH_NODE, SWITCH_MODE } from './actions';
-import Wiki from './wiki/full_wiki.js';
+import Wiki from './game/full_wiki';
 
 const _initState = {
   currentMode: "Scenario",

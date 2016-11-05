@@ -29,7 +29,7 @@ function getTimeInfo(){
   var time = [today.getHours(), today.getMinutes()];
   var noon = "AM";
   noon = (time[0]  == (time[0] %= 12) ? "AM" : "PM");
-  if(time[0] == 0 && noon == "PM"){ h = 12 }
+  if(time[0] == 0 && noon == "PM"){ time[0] = 12 }
   if(time[1] < 10){ time[1] = "0" + time[1]; }
 
   var date = [_dayInWeek[today.getDay()], _monthInYear[today.getMonth()], today.getDate(), today.getFullYear()];

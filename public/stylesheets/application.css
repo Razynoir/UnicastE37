@@ -21,12 +21,14 @@ span.inline-bold{
   font-weight: bold;
 }
 
+/*Tool bar related */
+
 .tool-bar{
   height: 5%;
   text-align: center;
 }
 
-.btn-dashboard, .btn-scenario, .btn-inventory{
+.btn-dashboard, .btn-analysis, .btn-scenario, .btn-inventory, .btn-journal{
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   width: 20rem;
@@ -38,10 +40,16 @@ span.inline-bold{
 .btn-dashboard{
   background-color: #192231;
 }
+.btn-analysis{
+  background-color: #224267;
+}
 .btn-scenario{
-  background-color: #062f4f;
+  background-color: #b82601;
 }
 .btn-inventory{
+  background-color: #224267;
+}
+.btn-journal{
   background-color: #224267;
 }
 

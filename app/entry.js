@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import store from './store';
-import AppContainer from './components/app_container';
+import AppContainer from './game/app_container';
 // import { MODIFY_INVENTORY } from './actions';
 
 // put store and actions on the window
