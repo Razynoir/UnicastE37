@@ -22,7 +22,9 @@ var _monthInYear = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "S
 
 function getTimeInfo(){
   var today = new Date();
-  var utc = today.toUTCString().split(" ");
+  var utc = today.toString().split(" ");
+  var timeZone = utc[utc.length - 1];
+  timeZone = timeZone.slice(1,4);
 
   var time = [today.getHours(), today.getMinutes()];
   var noon = "AM";
@@ -32,7 +34,7 @@ function getTimeInfo(){
 
   var date = [_dayInWeek[today.getDay()], _monthInYear[today.getMonth()], today.getDate(), today.getFullYear()];
 
-  return time.concat(noon).concat(date);
+  return time.concat(noon).concat(_timezoneHash[timeZone]).concat(date);
 
 }
 
@@ -53,10 +55,30 @@ var DateTime = React.createClass({
   },
 
   render: function(){
+    var timeInfo = this.state.timeInfo;
     return(
       <div>
-        <div id="analog-clock">{this.state.timeInfo}</div>
-        <div id="date"></div>
+        <div className="col-xs-6">
+          <div className="panel panel-primary panel-date">
+            <div className="panel-heading panel-date-heading">
+              {timeInfo[5]} {timeInfo[6]}, {timeInfo[7]}
+            </div>
+            <div className="panel-body panel-date-body">
+              {timeInfo[4]}
+            </div>
+          </div>
+        </div>
+
+        <div className="col-xs-6">
+          <div className="panel panel-primary panel-clock">
+            <div className="panel-heading panel-clock-heading">
+              {timeInfo[3]}
+            </div>
+            <div className="panel-body panel-clock-body">
+              {timeInfo[0]}:{timeInfo[1]} {timeInfo[2]}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

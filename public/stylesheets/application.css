@@ -49,9 +49,7 @@ span.inline-bold{
   height: 80%;
 }
 
-.dashboard{
-  background-color: #192231;
-}
+
 
 .split-two-media, .split-two-main{
   padding-top: 3rem;
@@ -84,4 +82,53 @@ span.inline-bold{
 
 .color-red{
   color: red;
+}
+
+
+/*widgets on the dashboard*/
+.dashboard{
+  padding: 2rem;
+  background-color: #222222;
+}
+
+.dashboard-left{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/*date time*/
+.panel-clock{
+  border: none;
+}
+.panel-clock-heading{
+  background-color: #ffa700 !important;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  font-size: 2rem;
+}
+.panel-clock-body{
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: bold;
+
+}
+.panel-date{
+  border: none;
+}
+.panel-date-heading{
+  background-color: #0057e7 !important;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  font-size: 2rem;
+}
+.panel-date-body{
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: bolder;
 }
