@@ -11,10 +11,10 @@ const AppContent = (props) => {
   var contentInterface;
   switch (props.currentMode) {
     case "Dashboard":
-      contentInterface = <Dashboard />;
+      contentInterface = <Dashboard store={props} />;
       break;
     case "Scenario":
-      contentInterface = <ScenarioNode node={props.currentNode} switchNode={props.switchNode} modifyInventoryWithSpecs={props.modifyInventoryWithSpecs} />
+      contentInterface = <ScenarioNode store={props} node={props.currentNode} switchNode={props.switchNode} modifyInventoryWithSpecs={props.modifyInventoryWithSpecs} />
       break;
     case "Inventory":
       contentInterface = <Inventory store={props} switchNode={props.switchNode} modifyInventoryWithSpecs={props.modifyInventoryWithSpecs} />

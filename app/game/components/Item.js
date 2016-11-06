@@ -14,10 +14,10 @@ var Item = React.createClass({
     if(item.choices){
       buttons = item.choices.map((choice, idx) => {
         if(!choice.hasDisplayCondition && !choice.hasCondition){
-          return (<button key={idx} onClick={() => {modifyInventoryWithSpecs(choice.storeImpact)}}>{choice.buttonText}</button>);
+          return (<button className="btn btn-default" key={idx} onClick={() => {modifyInventoryWithSpecs(choice.storeImpact)}}>{choice.buttonText}</button>);
         }else if(!!choice.hasDisplayCondition && choice.satisfyDisplayCondition(props.store) &&
                 (!choice.hasCondition || (!!choice.hasCondition && choice.satisfyCondition(props.store)))){
-          return (<button key={idx} onClick={() => {modifyInventoryWithSpecs(choice.storeImpact)}}>{choice.buttonText}</button>);
+          return (<button className="btn btn-default" key={idx} onClick={() => {modifyInventoryWithSpecs(choice.storeImpact)}}>{choice.buttonText}</button>);
         }else{
           return (<li>You do not meet requirement to use this.</li>)
         }
@@ -44,10 +44,11 @@ var Item = React.createClass({
             <img className="item-image" src={item.image_url}/>
           </div>
           <div className="item-info-over">
-          <p>You have <span className="inline-bold">x{this.props.item.amount}</span> <span className="inline-bold">{item.name}</span></p>
-          <p>{item.description}</p>
-          <p className="item-note">{item.note}</p>
-          {buttons}
+            <p>You have <span className="inline-bold">x{this.props.item.amount || 0}</span> <span className="inline-bold">{item.name}</span></p>
+            <p>{item.description}</p>
+            <p className="item-note">{item.note}</p>
+            <br/>
+            {buttons}
           </div>
           <div className="item-count-over">
             {item.amount}

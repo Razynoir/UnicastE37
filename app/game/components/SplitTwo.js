@@ -3,6 +3,7 @@ import Choice from './Choice'
 
 const SplitTwo = (props) => {
   debugger;
+  var store = props.store;
   var currentNode = props.node;
   return (
     <div className="row split-two">
@@ -13,7 +14,16 @@ const SplitTwo = (props) => {
         <h1>{currentNode.name}</h1>
         <p>{currentNode.description}</p>
         <hr/>
-        {currentNode.choices.map((choice, idx) => (<Choice key={idx} choice={choice} switchNode={props.switchNode} modifyInventoryWithSpecs={props.modifyInventoryWithSpecs} />))}
+        {
+          currentNode.choices.map((choice, idx) => {
+            if(!choice.hasDisplayCondition || (choice.hasDisplayCondition && choice.satisfyDisplayCondition(store))){
+              return(<Choice store={store} key={idx} choice={choice} switchNode={props.switchNode} modifyInventoryWithSpecs={props.modifyInventoryWithSpecs} />);
+            }else{
+              return("");
+            }
+          })
+        }
+
       </div>
     </div>
   )

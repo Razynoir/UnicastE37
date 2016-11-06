@@ -2,6 +2,9 @@ import { MODIFY_INVENTORY, SWITCH_NODE, SWITCH_MODE } from './actions';
 import Wiki from './game/full_wiki';
 
 const _initState = {
+  notifications: [
+    // Store notifications
+  ],
   currentMode: "Scenario",
   currentNode: Wiki["1001A00"],
   life_conditions: {},  // such as job, weather and other macro conditions
@@ -12,14 +15,6 @@ const _initState = {
     "0002A00": $.extend({}, Wiki["0002A00"], {amount: 1})
   }, // items that carry functionalities (means)
   items: {  // items that don't carry functionalities (resources)
-    "0002B94": {
-      id: "0002B94",
-      name: "Stock Chart",
-      description: "Source of information.",
-      note: "Can be used for trading or favors.",
-      image_url: "http://i.imgur.com/Pwqz5wg.png",
-      amount: 100
-    }
   },
   information: {}, // intangible information resources
   relationships: {} // intangible interpersonal resources

@@ -23233,6 +23233,9 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var _initState = {
+	  notifications: [
+	    // Store notifications
+	  ],
 	  currentMode: "Scenario",
 	  currentNode: _full_wiki2.default["1001A00"],
 	  life_conditions: {}, // such as job, weather and other macro conditions
@@ -23242,15 +23245,7 @@
 	  equipments: {
 	    "0002A00": $.extend({}, _full_wiki2.default["0002A00"], { amount: 1 })
 	  }, // items that carry functionalities (means)
-	  items: { // items that don't carry functionalities (resources)
-	    "0002B94": {
-	      id: "0002B94",
-	      name: "Stock Chart",
-	      description: "Source of information.",
-	      note: "Can be used for trading or favors.",
-	      image_url: "http://i.imgur.com/Pwqz5wg.png",
-	      amount: 100
-	    }
+	  items: {// items that don't carry functionalities (resources)
 	  },
 	  information: {}, // intangible information resources
 	  relationships: {} // intangible interpersonal resources
@@ -23364,7 +23359,7 @@
 	    id: "0002B94",
 	    class: "item",
 	    name: "Stock Chart",
-	    description: "Line drawings designed to illustrate a stock's well-being.",
+	    description: "Line drawings decipharable to certain trained eyes.",
 	    note: "Can be used for trading or favors.",
 	    image_url: "http://i.imgur.com/Pwqz5wg.png"
 	  },
@@ -23409,10 +23404,29 @@
 	  "0001A23": {
 	    id: "0001A23",
 	    class: "quality",
-	    name: "Stree",
+	    name: "Stress",
 	    description: "An unpleasant by-product of life.",
 	    note: "When stress reach certain levels, you won't be able to select certain options.",
 	    image_url: "http://i.imgur.com/YGOlU5z.png"
+	  },
+	
+	  // Relationship items
+	  "0027A23": {
+	    id: "0027A23",
+	    class: "relationship",
+	    name: "Zane's Friendship",
+	    description: "The tech-driven fella find you a great company.",
+	    note: "Maintaining a good relationship with Zane will open up his advanced hardware arsenal to you.",
+	    image_url: "http://i.imgur.com/xgmIj2o.png"
+	  },
+	
+	  "0027A27": {
+	    id: "0027A27",
+	    class: "relationship",
+	    name: "Erez's Friendship",
+	    description: "Culturally driven, his friendship is a reflection of your sophistication.",
+	    note: "Maintaining a good relationship with Erez will bring you opportunities to socialize with other creatives.",
+	    image_url: "http://i.imgur.com/JinWLf4.png"
 	  },
 	
 	  // Nodes Start Here
@@ -23430,9 +23444,8 @@
 	      buttonText: "Work",
 	      hasDisplayCondition: false,
 	      hasCondition: true,
-	      satisfyCondition: function satisfyCondition(currentStore) {
-	        var state = currentStore.getState();
-	        return !!!state.qualities["0001A23"] || state.qualities["0001A23"].amount < 75;
+	      satisfyCondition: function satisfyCondition(store) {
+	        return !!!store.qualities["0001A23"] || store.qualities["0001A23"].amount < 75;
 	      },
 	      requirements: [{
 	        id: "0001A23",
@@ -23450,15 +23463,25 @@
 	      }],
 	      nextNode: "1001A45"
 	    }, {
+	      title: "Visit Your Neighbor Erez D. Fordorn",
+	      note: "Conversing with your neighbor can help you feel at ease and reduce stress. Also, Erez is a well-connected creative professional and can introduce you to a variety of key characters.",
+	      buttonText: "Pay a Visit",
+	      hasDisplayCondition: false,
+	      hasCondition: false,
+	      requirements: [],
+	      storeImpact: [],
+	      nextNode: "1001A02"
+	    }, {
 	      title: "Visit Zane Galaychglov at NYU Tech Co-Op",
 	      note: "A regular at the NYU tech scene.",
 	      buttonText: "Go",
 	      hasDisplayCondition: true,
-	      satisfyDisplayCondition: function satisfyDisplayCondition(currentStore) {},
+	      satisfyDisplayCondition: function satisfyDisplayCondition(store) {
+	        return !!store.relationships["0027A23"] && store.relationships["0027A23"].amount > 0;
+	      },
 	      hasCondition: true,
-	      satisfyCondition: function satisfyCondition(currentStore) {
-	        var state = currentStore.getState();
-	        return !!state.items['0001A00'] && state.items['0001A00'].amount > 450 && !!state.items['0002B94'] && state.items['0002B94'].amount < 5;
+	      satisfyCondition: function satisfyCondition(store) {
+	        return !!store.items['0001A00'] && store.items['0001A00'].amount > 450 && !!store.items['0002B94'] && store.items['0002B94'].amount < 5;
 	      },
 	      requirements: [{
 	        id: "0001A00",
@@ -23471,7 +23494,7 @@
 	        amount: 5,
 	        isMoreThan: false
 	      }],
-	      assetImpact: [{
+	      storeImpact: [{
 	        id: "0001A00",
 	        amountChange: -450
 	      }],
@@ -23498,6 +23521,114 @@
 	      buttonText: "Decide on This",
 	      requirements: {},
 	      nextNode: "1001A00"
+	    }]
+	  },
+	
+	  "1001A02": {
+	    id: "1001A02",
+	    class: "node",
+	    type: "split-two",
+	    name: "With Erez out on the Street",
+	    description: "Erez is the rare breed of creatives that actively invest in his friend's work. Sometimes he spares some cash, other times his own effort. But his fascination with the creative community has earned him a fruitful network.",
+	    image_url: "http://i.imgur.com/JinWLf4.png",
+	    choices: [{
+	      title: "Converse with Him about Life",
+	      note: "He enjoys a good chat about life on the lower east side and how it used to be more culturally diverse. (-2 Stress)",
+	      buttonText: "Choose Topic",
+	      hasCondition: true,
+	      satisfyCondition: function satisfyCondition(store) {
+	        return !!store.qualities["0001A23"] && store.qualities["0001A23"].amount >= 2;
+	      },
+	      requirements: [{
+	        id: "0001A23",
+	        amount: 1,
+	        isMoreThan: true
+	      }],
+	      storeImpact: [{
+	        id: "0001A23",
+	        amountChange: -2
+	      }],
+	      nextNode: "1001A02"
+	    }, {
+	      title: "Ask if You Can Help His Friends",
+	      note: "He knows a number of friends who can use some additional support, either with cash or specific resources. You can develop friendship with his friends through these investments.",
+	      buttonText: "Inquire on Topic",
+	      hasDisplayCondition: false,
+	      hasCondition: false,
+	      requirements: [],
+	      storeImpact: [],
+	      nextNode: "1001A03"
+	    }, {
+	      title: "Say Bye",
+	      note: "You've done enough catching up with him.",
+	      buttonText: "Go Home",
+	      hasDisplayCondition: false,
+	      hasCondition: false,
+	      nextNode: "1001A00"
+	    }]
+	  },
+	
+	  "1001A03": {
+	    id: "1001A03",
+	    class: "node",
+	    type: "split-two",
+	    name: "He Speaks on a few Promissing Projects",
+	    description: "By nature, he remembers the very best that capture his fancy. Some of the projects he know are expensive to support but in any case, a great investment comes with a price.",
+	    image_url: "http://i.imgur.com/JinWLf4.png",
+	    choices: [{
+	      title: "Support Zane with His Reference Cabin",
+	      note: "Erez's tech friend Zane is developing a market access portal and need to acquire some expensive reference books. Helping him can potentially lead to advanced hardware. (-200 Cash; +1 Zane's Friendship; +1 Erez's Friendship; Be able to visit Zane from home.)",
+	      buttonText: "Invest in This Project",
+	      hasDisplayCondition: true,
+	      satisfyDisplayCondition: function satisfyDisplayCondition(store) {
+	        return !!!store.relationships["0027A23"] || store.relationships["0027A23"].amount < 1;
+	      },
+	      hasCondition: true,
+	      satisfyCondition: function satisfyCondition(store) {
+	        return !!store.items["0001A00"] && store.items["0001A00"].amount >= 200;
+	      },
+	      requirements: [{
+	        id: "0001A00",
+	        amount: 200,
+	        isMoreThan: true
+	      }],
+	      storeImpact: [{
+	        id: "0001A00",
+	        category: "items",
+	        amountChange: -200
+	      }, {
+	        id: "0027A23",
+	        category: "relationships",
+	        amountChange: 1
+	      }, {
+	        id: "0027A27",
+	        category: "relationships",
+	        amountChange: 1
+	      }],
+	      nextNode: "1001A09"
+	    }, {
+	      title: "Back to Casual Conversation",
+	      note: "Done inquiring about the projects.",
+	      buttonText: "Back",
+	      hasDisplayCondition: false,
+	      hasCondition: false,
+	      nextNode: "1001A02"
+	    }]
+	  },
+	
+	  "1001A09": {
+	    id: "1001A09",
+	    class: "node",
+	    type: "reward",
+	    name: "Erez and Zane will Remember You",
+	    description: "The duo has a long coworking history and has worked on several pieces of intriguing technologies. Their well-funded venture will soon produce equipments ahead of their time.",
+	    image_url: "http://i.imgur.com/hPTwmXV.png",
+	    rewards: [],
+	    choices: [{
+	      title: "Back to Erez D Fordorn",
+	      note: "Continue conversing with him",
+	      buttonText: "Keep Talking",
+	      nextNode: "1001A02"
 	    }]
 	  },
 	
@@ -23528,21 +23659,6 @@
 	    choices: [{
 	      title: "Go Home",
 	      note: "Best destination for any work-drained soul.",
-	      buttonText: "Decide on This",
-	      nextNode: "1001A00"
-	    }]
-	  },
-	
-	  "1001A02": {
-	    id: "1001A02",
-	    class: "node",
-	    type: "split-two",
-	    name: "Phil Dowerstone's Office in a Shared Work Space",
-	    description: "Visit the veteran's office",
-	    image_url: "http://i.imgur.com/2wT2TLz.png",
-	    choices: [{
-	      title: "Go Home",
-	      note: "Enough talk with the veteran.",
 	      buttonText: "Decide on This",
 	      nextNode: "1001A00"
 	    }]
@@ -23643,10 +23759,10 @@
 	  var contentInterface;
 	  switch (props.currentMode) {
 	    case "Dashboard":
-	      contentInterface = _react2.default.createElement(_DashBoard2.default, null);
+	      contentInterface = _react2.default.createElement(_DashBoard2.default, { store: props });
 	      break;
 	    case "Scenario":
-	      contentInterface = _react2.default.createElement(_ScenarioNode2.default, { node: props.currentNode, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
+	      contentInterface = _react2.default.createElement(_ScenarioNode2.default, { store: props, node: props.currentNode, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
 	      break;
 	    case "Inventory":
 	      contentInterface = _react2.default.createElement(_Inventory2.default, { store: props, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
@@ -23935,17 +24051,16 @@
 	// import Single from './node_components/Single';
 	
 	var ScenarioNode = function ScenarioNode(props) {
-	  debugger;
 	  var nodeRendered;
 	  switch (props.node.type) {
 	    case "split-two":
-	      nodeRendered = _react2.default.createElement(_SplitTwo2.default, { node: props.node, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
+	      nodeRendered = _react2.default.createElement(_SplitTwo2.default, { store: props.store, node: props.node, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
 	      break;
 	    case "single":
-	      nodeRendered = _react2.default.createElement(Single, { node: props.node, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
+	      nodeRendered = _react2.default.createElement(Single, { store: props.store, node: props.node, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
 	      break;
 	    case "reward":
-	      nodeRendered = _react2.default.createElement(_Reward2.default, { node: props.node, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
+	      nodeRendered = _react2.default.createElement(_Reward2.default, { store: props.store, node: props.node, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
 	      break;
 	    default:
 	  }
@@ -23980,6 +24095,7 @@
 	
 	var SplitTwo = function SplitTwo(props) {
 	  debugger;
+	  var store = props.store;
 	  var currentNode = props.node;
 	  return _react2.default.createElement(
 	    'div',
@@ -24004,7 +24120,11 @@
 	      ),
 	      _react2.default.createElement('hr', null),
 	      currentNode.choices.map(function (choice, idx) {
-	        return _react2.default.createElement(_Choice2.default, { key: idx, choice: choice, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
+	        if (!choice.hasDisplayCondition || choice.hasDisplayCondition && choice.satisfyDisplayCondition(store)) {
+	          return _react2.default.createElement(_Choice2.default, { store: store, key: idx, choice: choice, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
+	        } else {
+	          return "";
+	        }
 	      })
 	    )
 	  );
@@ -24030,10 +24150,15 @@
 	
 	var _Item2 = _interopRequireDefault(_Item);
 	
+	var _full_wiki = __webpack_require__(203);
+	
+	var _full_wiki2 = _interopRequireDefault(_full_wiki);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Choice = function Choice(props) {
 	  var choice = props.choice;
+	  var store = props.store;
 	
 	  var conditionalStatement;
 	  var conditionalButton;
@@ -24042,18 +24167,28 @@
 	    var conditionalStatement = choice.requirements.map(function (item, idx) {
 	      return item.isMoreThan ? _react2.default.createElement(
 	        'li',
-	        { key: idx },
-	        'More than ',
-	        item.amount,
-	        ' ',
-	        item.name
+	        { key: idx, className: 'choice-item-list-item' },
+	        _react2.default.createElement(_Item2.default, { item: _full_wiki2.default[item.id], isSuppressed: true }),
+	        ' More than ',
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'inline-bold' },
+	          item.amount
+	        ),
+	        ' in ',
+	        _full_wiki2.default[item.id].name
 	      ) : _react2.default.createElement(
 	        'li',
-	        { key: idx },
-	        'Less than ',
-	        item.amount,
-	        ' ',
-	        item.name
+	        { key: idx, className: 'choice-item-list-item' },
+	        _react2.default.createElement(_Item2.default, { item: _full_wiki2.default[item.id], isSuppressed: true }),
+	        ' Less than ',
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'inline-bold' },
+	          item.amount
+	        ),
+	        ' in ',
+	        _full_wiki2.default[item.id].name
 	      );
 	    });
 	    conditionalButton = _react2.default.createElement(
@@ -24069,11 +24204,10 @@
 	
 	    conditionalButton = _react2.default.createElement(
 	      'button',
-	      { onClick: callBack },
+	      { className: 'btn btn-default', onClick: callBack },
 	      choice.buttonText
 	    );
 	  }
-	  debugger;
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'choice-item' },
@@ -24087,11 +24221,17 @@
 	      { className: 'item-note' },
 	      choice.note
 	    ),
+	    !!conditionalStatement ? _react2.default.createElement(
+	      'p',
+	      { className: 'inline-requirement' },
+	      '**Requirements:'
+	    ) : "",
 	    _react2.default.createElement(
 	      'ul',
-	      null,
+	      { className: 'choice-item-list' },
 	      conditionalStatement
 	    ),
+	    _react2.default.createElement('br', null),
 	    conditionalButton
 	  );
 	};
@@ -24135,7 +24275,7 @@
 	        if (!choice.hasDisplayCondition && !choice.hasCondition) {
 	          return _react2.default.createElement(
 	            'button',
-	            { key: idx, onClick: function onClick() {
+	            { className: 'btn btn-default', key: idx, onClick: function onClick() {
 	                modifyInventoryWithSpecs(choice.storeImpact);
 	              } },
 	            choice.buttonText
@@ -24143,7 +24283,7 @@
 	        } else if (!!choice.hasDisplayCondition && choice.satisfyDisplayCondition(props.store) && (!choice.hasCondition || !!choice.hasCondition && choice.satisfyCondition(props.store))) {
 	          return _react2.default.createElement(
 	            'button',
-	            { key: idx, onClick: function onClick() {
+	            { className: 'btn btn-default', key: idx, onClick: function onClick() {
 	                modifyInventoryWithSpecs(choice.storeImpact);
 	              } },
 	            choice.buttonText
@@ -24211,7 +24351,7 @@
 	              'span',
 	              { className: 'inline-bold' },
 	              'x',
-	              this.props.item.amount
+	              this.props.item.amount || 0
 	            ),
 	            ' ',
 	            _react2.default.createElement(
@@ -24230,6 +24370,7 @@
 	            { className: 'item-note' },
 	            item.note
 	          ),
+	          _react2.default.createElement('br', null),
 	          buttons
 	        ),
 	        _react2.default.createElement(
@@ -24320,17 +24461,24 @@
 	
 	var Inventory = function Inventory(props) {
 	  var equipments = props.store.equipments;
+	
 	  var items = props.store.items;
 	  var itemsDisplayList = [];
 	
 	  var equipments = props.store.equipments;
 	  var equipmentsDisplayList = [];
 	
+	  var relationships = props.store.relationships;
+	  var relationshipsDisplayList = [];
+	
 	  $.each(items, function (key, value) {
 	    itemsDisplayList.push(_react2.default.createElement(_Item2.default, { key: key, item: value, store: props.store, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs }));
 	  });
 	  $.each(equipments, function (key, value) {
 	    equipmentsDisplayList.push(_react2.default.createElement(_Item2.default, { key: key, item: value, store: props.store, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs }));
+	  });
+	  $.each(relationships, function (key, value) {
+	    relationshipsDisplayList.push(_react2.default.createElement(_Item2.default, { key: key, item: value, store: props.store, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs }));
 	  });
 	
 	  return _react2.default.createElement(
@@ -24352,7 +24500,14 @@
 	        'Equipments'
 	      ),
 	      _react2.default.createElement('hr', null),
-	      equipmentsDisplayList
+	      equipmentsDisplayList,
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Relationships'
+	      ),
+	      _react2.default.createElement('hr', null),
+	      relationshipsDisplayList
 	    ),
 	    _react2.default.createElement('div', { className: 'col-md-6 inventory-right' })
 	  );

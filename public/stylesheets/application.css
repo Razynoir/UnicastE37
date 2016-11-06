@@ -3,7 +3,7 @@ html{
 }
 
 .book{
-  height: 100vh;
+  /*height: 100vh;*/
   margin: 0 auto;
 }
 
@@ -62,6 +62,10 @@ p.item-note{
 span.inline-bold{
   font-weight: bold;
 }
+p.inline-requirement{
+  font-family: sans-serif;
+  font-weight: bolder;
+}
 
 /*Tool bar related */
 
@@ -96,7 +100,7 @@ span.inline-bold{
 }
 
 .split-two, .dashboard{
-  height: 80%;
+  /*height: 80%;*/
 }
 
 
@@ -104,7 +108,7 @@ span.inline-bold{
 .split-two-media, .split-two-main{
   padding-top: 3rem;
   padding-bottom: 3rem;
-  height: 100%;
+  /*height: 100%;*/
   overflow-y: scroll;
 }
 .split-two-media{
@@ -120,7 +124,9 @@ span.inline-bold{
 
 .split-two-img{
   display: inline-block;
-  height: 100%;
+  /*height: 50rem;*/
+  width: 80%;
+  /*height: 100%;*/
 }
 
 .choice-item{
@@ -128,6 +134,13 @@ span.inline-bold{
   padding-bottom: 2rem;
   padding-left: 2rem;
   border-bottom: 1px solid lightgrey;
+}
+.choice-item-list{
+  vertical-align: bottom;
+  font-size: 1.5rem;
+}
+.choice-item-list-item{
+  margin-bottom: 1rem;
 }
 
 .color-red{
