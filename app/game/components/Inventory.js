@@ -4,10 +4,16 @@ import Item from './Item';
 const Inventory = (props) => {
   var equipments = props.store.equipments;
   var items = props.store.items;
-  var items_display_list = [];
+  var itemsDisplayList = [];
+
+  var equipments = props.store.equipments;
+  var equipmentsDisplayList = [];
 
   $.each(items, function(key, value){
-    items_display_list.push(<Item key={key} item={value} />);
+    itemsDisplayList.push(<Item key={key} item={value} store={props.store} modifyInventoryWithSpecs={props.modifyInventoryWithSpecs} />);
+  })
+  $.each(equipments, function(key, value){
+    equipmentsDisplayList.push(<Item key={key} item={value} store={props.store} modifyInventoryWithSpecs={props.modifyInventoryWithSpecs} />);
   })
 
   return (
@@ -15,7 +21,10 @@ const Inventory = (props) => {
       <div className="col-md-6 inventory-left">
         <h2>Items</h2>
         <hr/>
-        {items_display_list}
+        {itemsDisplayList}
+        <h2>Equipments</h2>
+        <hr/>
+        {equipmentsDisplayList}
       </div>
       <div className="col-md-6 inventory-right">
       </div>

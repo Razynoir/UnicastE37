@@ -7,7 +7,7 @@ const WIKI = {
     class: "item",
     name: "Cash",
     description: "People disagrees on whether it's the key to happiness.",
-    note: "Can be used to purchase things or gain favors.",
+    note: "Can be used to acquire assets.",
     image_url: "http://i.imgur.com/oaxWsNW.png",
     message_insufficiency: "Not enough coins for you to squander.",
     message_acquisition: "Obtained a fortune."
