@@ -48,14 +48,14 @@ const Choice = (props) => {
       <div className="panel panel-default">
         <div className="panel-heading" onClick={callback}>View Details</div>
         <div className="panel-body">
-          {!!impactStatement ? (<p className="inline-requirement">**Effect:</p>) : ("")}
-          <ul className="choice-effect-list">
-          {impactStatement}
-          </ul>
-          {(!!impactStatement && !!conditionalStatement)? (<hr/>) : ("")}
           {!!conditionalStatement ? (<p className="inline-requirement">**Requirements:</p>) : ("")}
           <ul className="choice-item-list">
           {conditionalStatement}
+          </ul>
+          {(!!conditionalStatement && !!impactStatement)? (<hr/>) : ("")}
+          {!!impactStatement ? (<p className="inline-requirement">**Effect:</p>) : ("")}
+          <ul className="choice-effect-list">
+          {impactStatement}
           </ul>
         </div>
       </div>

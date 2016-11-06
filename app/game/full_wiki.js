@@ -233,6 +233,7 @@ const WIKI = {
         storeImpact: [
           {
             id: "0001A23",
+            category: "qualities",
             amountChange: -2,
           }
         ],

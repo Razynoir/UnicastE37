@@ -23558,6 +23558,7 @@
 	      }],
 	      storeImpact: [{
 	        id: "0001A23",
+	        category: "qualities",
 	        amountChange: -2
 	      }],
 	      nextNode: "1001A02"
@@ -24283,17 +24284,6 @@
 	      _react2.default.createElement(
 	        'div',
 	        { className: 'panel-body' },
-	        !!impactStatement ? _react2.default.createElement(
-	          'p',
-	          { className: 'inline-requirement' },
-	          '**Effect:'
-	        ) : "",
-	        _react2.default.createElement(
-	          'ul',
-	          { className: 'choice-effect-list' },
-	          impactStatement
-	        ),
-	        !!impactStatement && !!conditionalStatement ? _react2.default.createElement('hr', null) : "",
 	        !!conditionalStatement ? _react2.default.createElement(
 	          'p',
 	          { className: 'inline-requirement' },
@@ -24303,6 +24293,17 @@
 	          'ul',
 	          { className: 'choice-item-list' },
 	          conditionalStatement
+	        ),
+	        !!conditionalStatement && !!impactStatement ? _react2.default.createElement('hr', null) : "",
+	        !!impactStatement ? _react2.default.createElement(
+	          'p',
+	          { className: 'inline-requirement' },
+	          '**Effect:'
+	        ) : "",
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'choice-effect-list' },
+	          impactStatement
 	        )
 	      )
 	    );
