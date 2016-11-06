@@ -13,11 +13,11 @@ var Item = React.createClass({
     var item = this.state.item;
     var button = (<button>Use</button>);
     if(this.state.isSuppressed){
-      button = "";  
+      button = "";
     }
 
     return (
-      <div className="item equipped">
+      <div className="item">
         <div className="item-display">
           <img className="item-image" src={item.image_url}/>
         </div>
