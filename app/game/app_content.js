@@ -3,6 +3,7 @@ import ToolBar from './components/ToolBar';
 import Dashboard from './components/DashBoard';
 import ScenarioNode from './components/ScenarioNode';
 import Inventory from './components/Inventory';
+import Notifications from './components/Notifications';
 
 const AppContent = (props) => {
   var items = [];
@@ -30,11 +31,12 @@ const AppContent = (props) => {
     tradingDeviceButton = (<button className="btn btn-default" onClick={() => props.modifyInventoryWithSpecs({changes: [{id: "0003C73", amountChange: 1}, {id: "0001A00", amountChange: -100}]})}>Buy DS47 Home Market Portal (-100 Dollars, +1 Device)</button>)
   }
 
+  // <Notifications notifications={props.notifications} />
   return(
-    <div className="container book">
-      <ToolBar mode={props.currentMode} switchMode={props.switchMode} />
-      {contentInterface}
-    </div>
+      <div className="container book">
+        <ToolBar mode={props.currentMode} switchMode={props.switchMode} />
+        {contentInterface}
+      </div>
   );
 }
 

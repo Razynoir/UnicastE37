@@ -7,6 +7,34 @@ html{
   margin: 0 auto;
 }
 
+/*Notifications*/
+.notifications-holder{
+  position: relative;
+  height: 0px;
+  text-align: center;
+}
+.notifications{
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: block;
+  top: 0px;
+  width: 100%;
+  text-align: center;
+  z-index: 999;
+}
+.notification-item{
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-bottom: 2rem;
+  border: 1px solid grey;
+}
+.notification-span{
+  margin-left: 2rem;
+  margin-right: 2rem;
+  font-weight: bold;
+}
+
 /*Item*/
 
 .item{
@@ -32,6 +60,9 @@ html{
   left: 7rem;
   width: 28rem;
   z-index: 9999999;
+  font-size: 1.5rem;
+  font-weight: normal;
+  text-align: left;
 }
 .item-display:hover + .item-info-over{
   display: block;

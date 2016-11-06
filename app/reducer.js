@@ -3,7 +3,21 @@ import Wiki from './game/full_wiki';
 
 const _initState = {
   notifications: [
-    // Store notifications
+    {
+      type: "storeChange",
+      changes: [
+        {
+          category: "qualities",
+          id: "0001A23",
+          amountChange: 1,
+        },
+        {
+          category: "items",
+          id: "0001A00",
+          amountChange: 100,
+        }
+      ]
+    }
   ],
   currentMode: "Scenario",
   currentNode: Wiki["1001A00"],

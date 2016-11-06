@@ -23233,9 +23233,18 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var _initState = {
-	  notifications: [
-	    // Store notifications
-	  ],
+	  notifications: [{
+	    type: "storeChange",
+	    changes: [{
+	      category: "qualities",
+	      id: "0001A23",
+	      amountChange: 1
+	    }, {
+	      category: "items",
+	      id: "0001A00",
+	      amountChange: 100
+	    }]
+	  }],
 	  currentMode: "Scenario",
 	  currentNode: _full_wiki2.default["1001A00"],
 	  life_conditions: {}, // such as job, weather and other macro conditions
@@ -23746,9 +23755,13 @@
 	
 	var _ScenarioNode2 = _interopRequireDefault(_ScenarioNode);
 	
-	var _Inventory = __webpack_require__(213);
+	var _Inventory = __webpack_require__(214);
 	
 	var _Inventory2 = _interopRequireDefault(_Inventory);
+	
+	var _Notifications = __webpack_require__(215);
+	
+	var _Notifications2 = _interopRequireDefault(_Notifications);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -23790,6 +23803,7 @@
 	    );
 	  }
 	
+	  // <Notifications notifications={props.notifications} />
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'container book' },
@@ -24042,7 +24056,7 @@
 	
 	var _SplitTwo2 = _interopRequireDefault(_SplitTwo);
 	
-	var _Reward = __webpack_require__(212);
+	var _Reward = __webpack_require__(213);
 	
 	var _Reward2 = _interopRequireDefault(_Reward);
 	
@@ -24146,7 +24160,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Item = __webpack_require__(214);
+	var _Item = __webpack_require__(212);
 	
 	var _Item2 = _interopRequireDefault(_Item);
 	
@@ -24325,136 +24339,6 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Choice = __webpack_require__(211);
-	
-	var _Choice2 = _interopRequireDefault(_Choice);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Reward = function Reward(props) {
-	  var currentNode = props.node;
-	  debugger;
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'row' },
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'col-md-6 split-two-media' },
-	      _react2.default.createElement('img', { className: 'split-two-img', src: currentNode.image_url })
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'col-md-6 split-two-main' },
-	      _react2.default.createElement(
-	        'h1',
-	        null,
-	        currentNode.name
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        currentNode.description
-	      ),
-	      _react2.default.createElement('hr', null),
-	      currentNode.choices.map(function (choice, idx) {
-	        return _react2.default.createElement(_Choice2.default, { key: idx, choice: choice, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
-	      })
-	    )
-	  );
-	};
-	
-	exports.default = Reward;
-
-/***/ },
-/* 213 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _Item = __webpack_require__(214);
-	
-	var _Item2 = _interopRequireDefault(_Item);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Inventory = function Inventory(props) {
-	  var equipments = props.store.equipments;
-	
-	  var items = props.store.items;
-	  var itemsDisplayList = [];
-	
-	  var equipments = props.store.equipments;
-	  var equipmentsDisplayList = [];
-	
-	  var relationships = props.store.relationships;
-	  var relationshipsDisplayList = [];
-	
-	  $.each(items, function (key, value) {
-	    itemsDisplayList.push(_react2.default.createElement(_Item2.default, { key: key, item: value, store: props.store, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs }));
-	  });
-	  $.each(equipments, function (key, value) {
-	    equipmentsDisplayList.push(_react2.default.createElement(_Item2.default, { key: key, item: value, store: props.store, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs }));
-	  });
-	  $.each(relationships, function (key, value) {
-	    relationshipsDisplayList.push(_react2.default.createElement(_Item2.default, { key: key, item: value, store: props.store, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs }));
-	  });
-	
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'row inventory' },
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'col-md-6 inventory-left' },
-	      _react2.default.createElement(
-	        'h2',
-	        null,
-	        'Items'
-	      ),
-	      _react2.default.createElement('hr', null),
-	      itemsDisplayList,
-	      _react2.default.createElement(
-	        'h2',
-	        null,
-	        'Equipments'
-	      ),
-	      _react2.default.createElement('hr', null),
-	      equipmentsDisplayList,
-	      _react2.default.createElement(
-	        'h2',
-	        null,
-	        'Relationships'
-	      ),
-	      _react2.default.createElement('hr', null),
-	      relationshipsDisplayList
-	    ),
-	    _react2.default.createElement('div', { className: 'col-md-6 inventory-right' })
-	  );
-	};
-	
-	exports.default = Inventory;
-
-/***/ },
-/* 214 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
 	var _full_wiki = __webpack_require__(203);
 	
 	var _full_wiki2 = _interopRequireDefault(_full_wiki);
@@ -24587,6 +24471,236 @@
 	});
 	
 	exports.default = Item;
+
+/***/ },
+/* 213 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Choice = __webpack_require__(211);
+	
+	var _Choice2 = _interopRequireDefault(_Choice);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Reward = function Reward(props) {
+	  var currentNode = props.node;
+	  debugger;
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'row' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'col-md-6 split-two-media' },
+	      _react2.default.createElement('img', { className: 'split-two-img', src: currentNode.image_url })
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'col-md-6 split-two-main' },
+	      _react2.default.createElement(
+	        'h1',
+	        null,
+	        currentNode.name
+	      ),
+	      _react2.default.createElement(
+	        'p',
+	        null,
+	        currentNode.description
+	      ),
+	      _react2.default.createElement('hr', null),
+	      currentNode.choices.map(function (choice, idx) {
+	        return _react2.default.createElement(_Choice2.default, { key: idx, choice: choice, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
+	      })
+	    )
+	  );
+	};
+	
+	exports.default = Reward;
+
+/***/ },
+/* 214 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Item = __webpack_require__(212);
+	
+	var _Item2 = _interopRequireDefault(_Item);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Inventory = function Inventory(props) {
+	  var equipments = props.store.equipments;
+	
+	  var items = props.store.items;
+	  var itemsDisplayList = [];
+	
+	  var equipments = props.store.equipments;
+	  var equipmentsDisplayList = [];
+	
+	  var relationships = props.store.relationships;
+	  var relationshipsDisplayList = [];
+	
+	  $.each(items, function (key, value) {
+	    itemsDisplayList.push(_react2.default.createElement(_Item2.default, { key: key, item: value, store: props.store, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs }));
+	  });
+	  $.each(equipments, function (key, value) {
+	    equipmentsDisplayList.push(_react2.default.createElement(_Item2.default, { key: key, item: value, store: props.store, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs }));
+	  });
+	  $.each(relationships, function (key, value) {
+	    relationshipsDisplayList.push(_react2.default.createElement(_Item2.default, { key: key, item: value, store: props.store, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs }));
+	  });
+	
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'row inventory' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'col-md-6 inventory-left' },
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Items'
+	      ),
+	      _react2.default.createElement('hr', null),
+	      itemsDisplayList,
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Equipments'
+	      ),
+	      _react2.default.createElement('hr', null),
+	      equipmentsDisplayList,
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Relationships'
+	      ),
+	      _react2.default.createElement('hr', null),
+	      relationshipsDisplayList
+	    ),
+	    _react2.default.createElement('div', { className: 'col-md-6 inventory-right' })
+	  );
+	};
+	
+	exports.default = Inventory;
+
+/***/ },
+/* 215 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Item = __webpack_require__(212);
+	
+	var _Item2 = _interopRequireDefault(_Item);
+	
+	var _full_wiki = __webpack_require__(203);
+	
+	var _full_wiki2 = _interopRequireDefault(_full_wiki);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Notifications = function (_React$Component) {
+	  _inherits(Notifications, _React$Component);
+	
+	  function Notifications(props) {
+	    _classCallCheck(this, Notifications);
+	
+	    var _this = _possibleConstructorReturn(this, (Notifications.__proto__ || Object.getPrototypeOf(Notifications)).call(this, props));
+	
+	    _this.notifications = props.notifications;
+	    return _this;
+	  }
+	
+	  _createClass(Notifications, [{
+	    key: 'render',
+	    value: function render() {
+	      setTimeout(function () {
+	        $(".notifications").css("opacity", "1");
+	        setTimeout(function () {
+	          $(".notifications").css("opacity", "0");
+	        }, 1500);
+	      }, 100);
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'row notifications-holder' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'notifications' },
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'list-group notification-list' },
+	            this.notifications.map(function (notification, idx) {
+	              if (notification.type == "storeChange") {
+	                return _react2.default.createElement(
+	                  'li',
+	                  { key: idx, className: 'list-group-item notification-item' },
+	                  notification.changes.map(function (item, idxx) {
+	                    return _react2.default.createElement(
+	                      'span',
+	                      { key: idxx, className: 'notification-span' },
+	                      _react2.default.createElement(_Item2.default, { isSuppressed: true, item: _full_wiki2.default[item.id] }),
+	                      ' ',
+	                      item.amountChange > 0 ? "+" : "-",
+	                      ' ',
+	                      item.amountChange,
+	                      ' ',
+	                      _full_wiki2.default[item.id].name
+	                    );
+	                  })
+	                );
+	              } else if (notification.type == "journalChange") {
+	                return _react2.default.createElement(
+	                  'li',
+	                  { key: idx, className: 'list-group-item notification-item' },
+	                  'New Journal Entry'
+	                );
+	              }
+	            })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Notifications;
+	}(_react2.default.Component);
+	
+	exports.default = Notifications;
 
 /***/ }
 /******/ ]);
