@@ -78,6 +78,7 @@ p.inline-requirement{
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   width: 20rem;
+  max-width: 15%;
   padding-top: 2rem;
   padding-bottom: 1rem;
   color: white;
@@ -141,6 +142,12 @@ p.inline-requirement{
 }
 .choice-item-list-item{
   margin-bottom: 1rem;
+}
+.panel-heading:hover{
+  cursor: pointer;
+}
+.panel-body{
+  display: none;
 }
 
 .color-red{

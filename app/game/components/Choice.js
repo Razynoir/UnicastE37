@@ -41,15 +41,18 @@ const Choice = (props) => {
 
   var details;
   if(!!impactStatement || !!conditionalStatement){
+    var callback = function(e){
+      $(e.currentTarget).next().toggle();
+    };
     details = (
       <div className="panel panel-default">
-        <div className="panel-heading">View Details</div>
+        <div className="panel-heading" onClick={callback}>View Details</div>
         <div className="panel-body">
           {!!impactStatement ? (<p className="inline-requirement">**Effect:</p>) : ("")}
           <ul className="choice-effect-list">
           {impactStatement}
           </ul>
-          {!!impactStatement ? (<hr/>) : ("")}
+          {(!!impactStatement && !!conditionalStatement)? (<hr/>) : ("")}
           {!!conditionalStatement ? (<p className="inline-requirement">**Requirements:</p>) : ("")}
           <ul className="choice-item-list">
           {conditionalStatement}

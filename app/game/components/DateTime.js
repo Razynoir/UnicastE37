@@ -63,7 +63,7 @@ var DateTime = React.createClass({
             <div className="panel-heading panel-date-heading">
               {timeInfo[5]} {timeInfo[6]}, {timeInfo[7]}
             </div>
-            <div className="panel-body panel-date-body">
+            <div className="panel-date-body">
               {timeInfo[4]}
             </div>
           </div>
@@ -74,7 +74,7 @@ var DateTime = React.createClass({
             <div className="panel-heading panel-clock-heading">
               {timeInfo[3]}
             </div>
-            <div className="panel-body panel-clock-body">
+            <div className="panel-clock-body">
               {timeInfo[0]}:{timeInfo[1]} {timeInfo[2]}
             </div>
           </div>

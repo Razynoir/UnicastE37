@@ -23991,7 +23991,7 @@
 	          ),
 	          _react2.default.createElement(
 	            "div",
-	            { className: "panel-body panel-date-body" },
+	            { className: "panel-date-body" },
 	            timeInfo[4]
 	          )
 	        )
@@ -24009,7 +24009,7 @@
 	          ),
 	          _react2.default.createElement(
 	            "div",
-	            { className: "panel-body panel-clock-body" },
+	            { className: "panel-clock-body" },
 	            timeInfo[0],
 	            ":",
 	            timeInfo[1],
@@ -24252,12 +24252,15 @@
 	
 	  var details;
 	  if (!!impactStatement || !!conditionalStatement) {
+	    var callback = function callback(e) {
+	      $(e.currentTarget).next().toggle();
+	    };
 	    details = _react2.default.createElement(
 	      'div',
 	      { className: 'panel panel-default' },
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'panel-heading' },
+	        { className: 'panel-heading', onClick: callback },
 	        'View Details'
 	      ),
 	      _react2.default.createElement(
@@ -24273,7 +24276,7 @@
 	          { className: 'choice-effect-list' },
 	          impactStatement
 	        ),
-	        !!impactStatement ? _react2.default.createElement('hr', null) : "",
+	        !!impactStatement && !!conditionalStatement ? _react2.default.createElement('hr', null) : "",
 	        !!conditionalStatement ? _react2.default.createElement(
 	          'p',
 	          { className: 'inline-requirement' },
