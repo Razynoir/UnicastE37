@@ -23440,7 +23440,7 @@
 	    image_url: "http://i.imgur.com/v2bl35p.png",
 	    choices: [{
 	      title: "Work in Your Midtown Office",
-	      note: "Without subsistence, the investigation is doomed. However, you won't be able to work if your stress is more than 75. (+1 stress each time you work)",
+	      note: "Without subsistence, the investigation is doomed. However, you won't be able to work if your stress is more than 75.",
 	      buttonText: "Work",
 	      hasDisplayCondition: false,
 	      hasCondition: true,
@@ -23533,7 +23533,7 @@
 	    image_url: "http://i.imgur.com/JinWLf4.png",
 	    choices: [{
 	      title: "Converse with Him about Life",
-	      note: "He enjoys a good chat about life on the lower east side and how it used to be more culturally diverse. (-2 Stress)",
+	      note: "He enjoys a good chat about life on the lower east side and how it used to be more culturally diverse.",
 	      buttonText: "Choose Topic",
 	      hasCondition: true,
 	      satisfyCondition: function satisfyCondition(store) {
@@ -23577,7 +23577,7 @@
 	    image_url: "http://i.imgur.com/JinWLf4.png",
 	    choices: [{
 	      title: "Support Zane with His Reference Cabin",
-	      note: "Erez's tech friend Zane is developing a market access portal and need to acquire some expensive reference books. Helping him can potentially lead to advanced hardware. (-200 Cash; +1 Zane's Friendship; +1 Erez's Friendship; Be able to visit Zane from home.)",
+	      note: "Erez's tech friend Zane is developing a market access portal and need to acquire some expensive reference books. Helping him can potentially lead to advanced hardware.",
 	      buttonText: "Invest in This Project",
 	      hasDisplayCondition: true,
 	      satisfyDisplayCondition: function satisfyDisplayCondition(store) {
@@ -23746,7 +23746,7 @@
 	
 	var _ScenarioNode2 = _interopRequireDefault(_ScenarioNode);
 	
-	var _Inventory = __webpack_require__(214);
+	var _Inventory = __webpack_require__(213);
 	
 	var _Inventory2 = _interopRequireDefault(_Inventory);
 	
@@ -24042,7 +24042,7 @@
 	
 	var _SplitTwo2 = _interopRequireDefault(_SplitTwo);
 	
-	var _Reward = __webpack_require__(213);
+	var _Reward = __webpack_require__(212);
 	
 	var _Reward2 = _interopRequireDefault(_Reward);
 	
@@ -24146,7 +24146,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Item = __webpack_require__(212);
+	var _Item = __webpack_require__(214);
 	
 	var _Item2 = _interopRequireDefault(_Item);
 	
@@ -24160,37 +24160,78 @@
 	  var choice = props.choice;
 	  var store = props.store;
 	
-	  var conditionalStatement;
-	  var conditionalButton;
-	
-	  if (!!choice.hasCondition && !choice.satisfyCondition(store)) {
-	    var conditionalStatement = choice.requirements.map(function (item, idx) {
-	      return item.isMoreThan ? _react2.default.createElement(
-	        'li',
-	        { key: idx, className: 'choice-item-list-item' },
-	        _react2.default.createElement(_Item2.default, { item: _full_wiki2.default[item.id], isSuppressed: true }),
-	        ' More than ',
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'inline-bold' },
-	          item.amount
-	        ),
-	        ' in ',
-	        _full_wiki2.default[item.id].name
-	      ) : _react2.default.createElement(
-	        'li',
-	        { key: idx, className: 'choice-item-list-item' },
-	        _react2.default.createElement(_Item2.default, { item: _full_wiki2.default[item.id], isSuppressed: true }),
-	        ' Less than ',
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'inline-bold' },
-	          item.amount
-	        ),
-	        ' in ',
-	        _full_wiki2.default[item.id].name
-	      );
+	  var impactStatement;
+	  if (!!choice.storeImpact && choice.storeImpact.length > 0) {
+	    impactStatement = choice.storeImpact.map(function (item, idx) {
+	      if (item.amountChange > 0) {
+	        return _react2.default.createElement(
+	          'li',
+	          { key: idx, className: 'choice-item-list-item' },
+	          _react2.default.createElement(_Item2.default, { item: _full_wiki2.default[item.id], isSuppressed: true }),
+	          ' Gain ',
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'inline-bold' },
+	            Math.abs(item.amountChange)
+	          ),
+	          ' in ',
+	          _full_wiki2.default[item.id].name
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'li',
+	          { key: idx, className: 'choice-item-list-item' },
+	          _react2.default.createElement(_Item2.default, { item: _full_wiki2.default[item.id], isSuppressed: true }),
+	          ' Lose ',
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'inline-bold' },
+	            Math.abs(item.amountChange)
+	          ),
+	          ' in ',
+	          _full_wiki2.default[item.id].name
+	        );
+	      }
 	    });
+	  }
+	
+	  var conditionalStatement;
+	  if (!!choice.requirements && choice.requirements.length > 0) {
+	    conditionalStatement = choice.requirements.map(function (item, idx) {
+	      if (item.isMoreThan) {
+	        return _react2.default.createElement(
+	          'li',
+	          { key: idx, className: 'choice-item-list-item' },
+	          _react2.default.createElement(_Item2.default, { item: _full_wiki2.default[item.id], isSuppressed: true }),
+	          ' More than ',
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'inline-bold' },
+	            item.amount
+	          ),
+	          ' in ',
+	          _full_wiki2.default[item.id].name
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'li',
+	          { key: idx, className: 'choice-item-list-item' },
+	          _react2.default.createElement(_Item2.default, { item: _full_wiki2.default[item.id], isSuppressed: true }),
+	          ' Less than ',
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'inline-bold' },
+	            item.amount
+	          ),
+	          ' in ',
+	          _full_wiki2.default[item.id].name
+	        );
+	      }
+	    });
+	  }
+	
+	  var conditionalButton;
+	  if (!!choice.hasCondition && !choice.satisfyCondition(store)) {
 	    conditionalButton = _react2.default.createElement(
 	      'p',
 	      { className: 'color-red' },
@@ -24208,6 +24249,45 @@
 	      choice.buttonText
 	    );
 	  }
+	
+	  var details;
+	  if (!!impactStatement || !!conditionalStatement) {
+	    details = _react2.default.createElement(
+	      'div',
+	      { className: 'panel panel-default' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'panel-heading' },
+	        'View Details'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'panel-body' },
+	        !!impactStatement ? _react2.default.createElement(
+	          'p',
+	          { className: 'inline-requirement' },
+	          '**Effect:'
+	        ) : "",
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'choice-effect-list' },
+	          impactStatement
+	        ),
+	        !!impactStatement ? _react2.default.createElement('hr', null) : "",
+	        !!conditionalStatement ? _react2.default.createElement(
+	          'p',
+	          { className: 'inline-requirement' },
+	          '**Requirements:'
+	        ) : "",
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'choice-item-list' },
+	          conditionalStatement
+	        )
+	      )
+	    );
+	  }
+	
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'choice-item' },
@@ -24221,17 +24301,7 @@
 	      { className: 'item-note' },
 	      choice.note
 	    ),
-	    !!conditionalStatement ? _react2.default.createElement(
-	      'p',
-	      { className: 'inline-requirement' },
-	      '**Requirements:'
-	    ) : "",
-	    _react2.default.createElement(
-	      'ul',
-	      { className: 'choice-item-list' },
-	      conditionalStatement
-	    ),
-	    _react2.default.createElement('br', null),
+	    details,
 	    conditionalButton
 	  );
 	};
@@ -24240,6 +24310,136 @@
 
 /***/ },
 /* 212 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Choice = __webpack_require__(211);
+	
+	var _Choice2 = _interopRequireDefault(_Choice);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Reward = function Reward(props) {
+	  var currentNode = props.node;
+	  debugger;
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'row' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'col-md-6 split-two-media' },
+	      _react2.default.createElement('img', { className: 'split-two-img', src: currentNode.image_url })
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'col-md-6 split-two-main' },
+	      _react2.default.createElement(
+	        'h1',
+	        null,
+	        currentNode.name
+	      ),
+	      _react2.default.createElement(
+	        'p',
+	        null,
+	        currentNode.description
+	      ),
+	      _react2.default.createElement('hr', null),
+	      currentNode.choices.map(function (choice, idx) {
+	        return _react2.default.createElement(_Choice2.default, { key: idx, choice: choice, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
+	      })
+	    )
+	  );
+	};
+	
+	exports.default = Reward;
+
+/***/ },
+/* 213 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Item = __webpack_require__(214);
+	
+	var _Item2 = _interopRequireDefault(_Item);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Inventory = function Inventory(props) {
+	  var equipments = props.store.equipments;
+	
+	  var items = props.store.items;
+	  var itemsDisplayList = [];
+	
+	  var equipments = props.store.equipments;
+	  var equipmentsDisplayList = [];
+	
+	  var relationships = props.store.relationships;
+	  var relationshipsDisplayList = [];
+	
+	  $.each(items, function (key, value) {
+	    itemsDisplayList.push(_react2.default.createElement(_Item2.default, { key: key, item: value, store: props.store, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs }));
+	  });
+	  $.each(equipments, function (key, value) {
+	    equipmentsDisplayList.push(_react2.default.createElement(_Item2.default, { key: key, item: value, store: props.store, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs }));
+	  });
+	  $.each(relationships, function (key, value) {
+	    relationshipsDisplayList.push(_react2.default.createElement(_Item2.default, { key: key, item: value, store: props.store, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs }));
+	  });
+	
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'row inventory' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'col-md-6 inventory-left' },
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Items'
+	      ),
+	      _react2.default.createElement('hr', null),
+	      itemsDisplayList,
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Equipments'
+	      ),
+	      _react2.default.createElement('hr', null),
+	      equipmentsDisplayList,
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Relationships'
+	      ),
+	      _react2.default.createElement('hr', null),
+	      relationshipsDisplayList
+	    ),
+	    _react2.default.createElement('div', { className: 'col-md-6 inventory-right' })
+	  );
+	};
+	
+	exports.default = Inventory;
+
+/***/ },
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24384,136 +24584,6 @@
 	});
 	
 	exports.default = Item;
-
-/***/ },
-/* 213 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _Choice = __webpack_require__(211);
-	
-	var _Choice2 = _interopRequireDefault(_Choice);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Reward = function Reward(props) {
-	  var currentNode = props.node;
-	  debugger;
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'row' },
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'col-md-6 split-two-media' },
-	      _react2.default.createElement('img', { className: 'split-two-img', src: currentNode.image_url })
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'col-md-6 split-two-main' },
-	      _react2.default.createElement(
-	        'h1',
-	        null,
-	        currentNode.name
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        currentNode.description
-	      ),
-	      _react2.default.createElement('hr', null),
-	      currentNode.choices.map(function (choice, idx) {
-	        return _react2.default.createElement(_Choice2.default, { key: idx, choice: choice, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
-	      })
-	    )
-	  );
-	};
-	
-	exports.default = Reward;
-
-/***/ },
-/* 214 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _Item = __webpack_require__(212);
-	
-	var _Item2 = _interopRequireDefault(_Item);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Inventory = function Inventory(props) {
-	  var equipments = props.store.equipments;
-	
-	  var items = props.store.items;
-	  var itemsDisplayList = [];
-	
-	  var equipments = props.store.equipments;
-	  var equipmentsDisplayList = [];
-	
-	  var relationships = props.store.relationships;
-	  var relationshipsDisplayList = [];
-	
-	  $.each(items, function (key, value) {
-	    itemsDisplayList.push(_react2.default.createElement(_Item2.default, { key: key, item: value, store: props.store, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs }));
-	  });
-	  $.each(equipments, function (key, value) {
-	    equipmentsDisplayList.push(_react2.default.createElement(_Item2.default, { key: key, item: value, store: props.store, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs }));
-	  });
-	  $.each(relationships, function (key, value) {
-	    relationshipsDisplayList.push(_react2.default.createElement(_Item2.default, { key: key, item: value, store: props.store, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs }));
-	  });
-	
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'row inventory' },
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'col-md-6 inventory-left' },
-	      _react2.default.createElement(
-	        'h2',
-	        null,
-	        'Items'
-	      ),
-	      _react2.default.createElement('hr', null),
-	      itemsDisplayList,
-	      _react2.default.createElement(
-	        'h2',
-	        null,
-	        'Equipments'
-	      ),
-	      _react2.default.createElement('hr', null),
-	      equipmentsDisplayList,
-	      _react2.default.createElement(
-	        'h2',
-	        null,
-	        'Relationships'
-	      ),
-	      _react2.default.createElement('hr', null),
-	      relationshipsDisplayList
-	    ),
-	    _react2.default.createElement('div', { className: 'col-md-6 inventory-right' })
-	  );
-	};
-	
-	exports.default = Inventory;
 
 /***/ }
 /******/ ]);

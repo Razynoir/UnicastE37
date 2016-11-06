@@ -103,7 +103,7 @@ const WIKI = {
     choices: [
       {
         title: "Work in Your Midtown Office",
-        note: "Without subsistence, the investigation is doomed. However, you won't be able to work if your stress is more than 75. (+1 stress each time you work)",
+        note: "Without subsistence, the investigation is doomed. However, you won't be able to work if your stress is more than 75.",
         buttonText: "Work",
         hasDisplayCondition: false,
         hasCondition: true,
@@ -216,7 +216,7 @@ const WIKI = {
     choices: [
       {
         title: "Converse with Him about Life",
-        note: "He enjoys a good chat about life on the lower east side and how it used to be more culturally diverse. (-2 Stress)",
+        note: "He enjoys a good chat about life on the lower east side and how it used to be more culturally diverse.",
         buttonText: "Choose Topic",
         hasCondition: true,
         satisfyCondition: function(store){
@@ -269,7 +269,7 @@ const WIKI = {
     choices: [
       {
         title: "Support Zane with His Reference Cabin",
-        note: "Erez's tech friend Zane is developing a market access portal and need to acquire some expensive reference books. Helping him can potentially lead to advanced hardware. (-200 Cash; +1 Zane's Friendship; +1 Erez's Friendship; Be able to visit Zane from home.)",
+        note: "Erez's tech friend Zane is developing a market access portal and need to acquire some expensive reference books. Helping him can potentially lead to advanced hardware.",
         buttonText: "Invest in This Project",
         hasDisplayCondition: true,
         satisfyDisplayCondition: function(store){
