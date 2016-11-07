@@ -2,23 +2,22 @@ import { MODIFY_INVENTORY, SWITCH_NODE, SWITCH_MODE } from './actions';
 import Wiki from './game/full_wiki';
 
 const _initState = {
-  notifications: [
-    {
-      type: "storeChange",
-      changes: [
+  chapters: {
+    sequence: ["7000A00"],
+    contents: {"7000A00": {
+      id: "7000A00",
+      class: "journal_entry",
+      title: "Chapter 1",
+      subtitle: "Aaron is Missing",
+      paragraphs: [
         {
-          category: "qualities",
-          id: "0001A23",
-          amountChange: 1,
-        },
-        {
-          category: "items",
-          id: "0001A00",
-          amountChange: 100,
+          sectionTitle: "November",
+          content: "Your son is missing.",
         }
-      ]
-    }
-  ],
+      ],
+    }}
+  },
+  notifications: [],
   currentMode: "Scenario",
   currentNode: Wiki["1001A00"],
   life_conditions: {},  // such as job, weather and other macro conditions

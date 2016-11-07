@@ -2,7 +2,6 @@ import React from 'react'
 import Choice from './Choice'
 
 const SplitTwo = (props) => {
-  debugger;
   var store = props.store;
   var currentNode = props.node;
   return (

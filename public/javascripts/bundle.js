@@ -23233,18 +23233,20 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var _initState = {
-	  notifications: [{
-	    type: "storeChange",
-	    changes: [{
-	      category: "qualities",
-	      id: "0001A23",
-	      amountChange: 1
-	    }, {
-	      category: "items",
-	      id: "0001A00",
-	      amountChange: 100
-	    }]
-	  }],
+	  chapters: {
+	    sequence: ["7000A00"],
+	    contents: { "7000A00": {
+	        id: "7000A00",
+	        class: "journal_entry",
+	        title: "Chapter 1",
+	        subtitle: "Aaron is Missing",
+	        paragraphs: [{
+	          sectionTitle: "November",
+	          content: "Your son is missing."
+	        }]
+	      } }
+	  },
+	  notifications: [],
 	  currentMode: "Scenario",
 	  currentNode: _full_wiki2.default["1001A00"],
 	  life_conditions: {}, // such as job, weather and other macro conditions
@@ -23681,12 +23683,25 @@
 	  "4007A01": {
 	    id: "4007A01",
 	    class: "node",
-	    type: "single",
-	    isChapter: true,
-	    title: "Chapter One<br/>Your Son is Missing",
-	    content: "",
-	    shouldLog: true,
-	    logContent: ""
+	    type: "chapter",
+	    title: "Chapter OneYour Son is Missing",
+	    subtitle: "",
+	    paragraphs: [{
+	      sectionTitle: "",
+	      content: ""
+	    }]
+	  },
+	
+	  // Journal Logs Starts Here
+	  "7000A00": {
+	    id: "7000A00",
+	    class: "journal_entry",
+	    title: "Chapter 1",
+	    subtitle: "Aaron is Missing",
+	    paragraphs: [{
+	      sectionTitle: "November",
+	      content: "Your son is missing."
+	    }]
 	  }
 	};
 	
@@ -23767,6 +23782,10 @@
 	
 	var _Notifications2 = _interopRequireDefault(_Notifications);
 	
+	var _Journal = __webpack_require__(216);
+	
+	var _Journal2 = _interopRequireDefault(_Journal);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var AppContent = function AppContent(props) {
@@ -23783,6 +23802,9 @@
 	      break;
 	    case "Inventory":
 	      contentInterface = _react2.default.createElement(_Inventory2.default, { store: props, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
+	      break;
+	    case "Journal":
+	      contentInterface = _react2.default.createElement(_Journal2.default, { chapters: props.chapters, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
 	    default:
 	  }
 	
@@ -23869,7 +23891,9 @@
 	      ),
 	      _react2.default.createElement(
 	        "button",
-	        { className: "btn btn-journal" },
+	        { className: "btn btn-journal", onClick: function onClick() {
+	            props.switchMode("Journal");
+	          } },
 	        "Journal"
 	      )
 	    )
@@ -24112,7 +24136,6 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var SplitTwo = function SplitTwo(props) {
-	  debugger;
 	  var store = props.store;
 	  var currentNode = props.node;
 	  return _react2.default.createElement(
@@ -24705,6 +24728,77 @@
 	}(_react2.default.Component);
 	
 	exports.default = Notifications;
+
+/***/ },
+/* 216 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _full_wiki = __webpack_require__(203);
+	
+	var _full_wiki2 = _interopRequireDefault(_full_wiki);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Journal = function Journal(props) {
+	  var sequence = props.chapters.sequence;
+	  var contents = props.chapters.contents;
+	
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "row journal" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "col-xs-12 journal-field" },
+	      sequence.map(function (label) {
+	        var entry = contents[label];
+	        var output = [];
+	        if (!!entry.title && entry.title.length > 0) {
+	          output.push(_react2.default.createElement(
+	            "h1",
+	            null,
+	            entry.title
+	          ));
+	        }
+	        if (!!entry.subtitle && entry.subtitle.length > 0) {
+	          output.push(_react2.default.createElement(
+	            "h3",
+	            null,
+	            entry.subtitle
+	          ));
+	        }
+	        if (!!entry.paragraphs && entry.paragraphs.length > 0) {
+	          entry.paragraphs.forEach(function (paragraph) {
+	            if (!!paragraph.sectionTitle && paragraph.sectionTitle.length > 0) {
+	              output.push(_react2.default.createElement(
+	                "h5",
+	                null,
+	                paragraph.sectionTitle
+	              ));
+	            }
+	            output.push(_react2.default.createElement(
+	              "p",
+	              null,
+	              paragraph.content
+	            ));
+	          });
+	        }
+	        return output;
+	      })
+	    )
+	  );
+	};
+	
+	exports.default = Journal;
 
 /***/ }
 /******/ ]);

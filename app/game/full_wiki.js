@@ -378,13 +378,30 @@ const WIKI = {
   "4007A01": {
     id: "4007A01",
     class: "node",
-    type: "single",
-    isChapter: true,
-    title: "Chapter One<br/>Your Son is Missing",
-    content: "",
-    shouldLog: true,
-    logContent: "",
+    type: "chapter",
+    title: "Chapter OneYour Son is Missing",
+    subtitle: "",
+    paragraphs: [
+      {
+        sectionTitle: "",
+        content: "",
+      }
+    ],
   },
+
+  // Journal Logs Starts Here
+  "7000A00": {
+    id: "7000A00",
+    class: "journal_entry",
+    title: "Chapter 1",
+    subtitle: "Aaron is Missing",
+    paragraphs: [
+      {
+        sectionTitle: "November",
+        content: "Your son is missing.",
+      }
+    ],
+  }
 }
 
 
