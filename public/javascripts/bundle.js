@@ -24999,9 +24999,36 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Journal = function Journal(props) {
+	  function print() {
+	    var doc = new jsPDF();
+	
+	    // We'll make our own renderer to skip this editor
+	    var specialElementHandlers = {
+	      '#editor': function editor(element, renderer) {
+	        return true;
+	      }
+	    };
+	
+	    // All units are in the set measurement for the document
+	    // This can be changed to "pt" (points), "mm" (Default), "cm", "in"
+	    doc.fromHTML($('journal-field').get(0), 15, 15, {
+	      'width': 170,
+	      'elementHandlers': specialElementHandlers
+	    });
+	  }
+	
 	  return _react2.default.createElement(
 	    "div",
 	    { className: "row journal" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "col-xs-12" },
+	      _react2.default.createElement(
+	        "button",
+	        { className: "btn btn-default", onClick: print },
+	        "Print PDF"
+	      )
+	    ),
 	    _react2.default.createElement(
 	      "div",
 	      { className: "col-xs-12 journal-field" },
