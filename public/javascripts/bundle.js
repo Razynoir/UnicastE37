@@ -23289,6 +23289,9 @@
 	    case "SWITCH_MODE":
 	      var newState = $.extend(true, {}, prevState);
 	      if (newState.currentMode == action.newMode && action.newMode == "Scenario") {
+	        if (newState.currentNode.type == "single") {
+	          return prevState;
+	        }
 	        newState.currentNode = _full_wiki2.default["1001A00"];
 	      } else {
 	        newState.currentMode = action.newMode;
@@ -24018,15 +24021,15 @@
 	
 	var _ScenarioNode2 = _interopRequireDefault(_ScenarioNode);
 	
-	var _Inventory = __webpack_require__(214);
+	var _Inventory = __webpack_require__(215);
 	
 	var _Inventory2 = _interopRequireDefault(_Inventory);
 	
-	var _Notifications = __webpack_require__(215);
+	var _Notifications = __webpack_require__(216);
 	
 	var _Notifications2 = _interopRequireDefault(_Notifications);
 	
-	var _Journal = __webpack_require__(216);
+	var _Journal = __webpack_require__(217);
 	
 	var _Journal2 = _interopRequireDefault(_Journal);
 	
@@ -24324,15 +24327,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Single = __webpack_require__(217);
+	var _Single = __webpack_require__(210);
 	
 	var _Single2 = _interopRequireDefault(_Single);
 	
-	var _SplitTwo = __webpack_require__(210);
+	var _SplitTwo = __webpack_require__(213);
 	
 	var _SplitTwo2 = _interopRequireDefault(_SplitTwo);
 	
-	var _Reward = __webpack_require__(213);
+	var _Reward = __webpack_require__(214);
 	
 	var _Reward2 = _interopRequireDefault(_Reward);
 	
@@ -24384,43 +24387,93 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var SplitTwo = function SplitTwo(props) {
-	  var store = props.store;
-	  var currentNode = props.node;
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'row split-two' },
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'col-md-6 split-two-media' },
-	      _react2.default.createElement('img', { className: 'split-two-img', src: currentNode.image_url })
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'col-md-6 split-two-main' },
-	      _react2.default.createElement(
+	var Single = _react2.default.createClass({
+	  displayName: 'Single',
+	
+	  getInitialState: function getInitialState(props) {
+	    return this.props;
+	  },
+	
+	  componentDidMount: function componentDidMount() {
+	    if (!!this.props.node.shouldLog && this.props.node.shouldLog(this.props.store)) {
+	      this.props.addJournalEntry(this.props.node);
+	    }
+	  },
+	
+	  componentDidUpdate: function componentDidUpdate() {
+	    if (!!this.props.node.shouldLog && this.props.node.shouldLog(this.props.store)) {
+	      this.props.addJournalEntry(this.props.node);
+	    }
+	  },
+	
+	  render: function render() {
+	    var _this = this;
+	
+	    if (!this.props.node.shouldDisplay) {
+	      this.props.switchNode(this.props.node.nextNode);
+	      return _react2.default.createElement('div', null);
+	    }
+	
+	    var store = this.props.store;
+	    var currentNode = this.props.node;
+	
+	    var content = [];
+	    if (!!currentNode.title && currentNode.title.length > 0) {
+	      content.push(_react2.default.createElement(
 	        'h1',
-	        null,
-	        currentNode.name
-	      ),
+	        { className: 'chapter-title', key: currentNode.title },
+	        currentNode.title
+	      ));
+	    }
+	    if (!!currentNode.subtitle && currentNode.subtitle.length > 0) {
+	      content.push(_react2.default.createElement(
+	        'h3',
+	        { className: 'chapter-subtitle', key: currentNode.subtitle },
+	        currentNode.subtitle
+	      ));
+	    }
+	    if (!!currentNode.paragraphs && currentNode.paragraphs.length > 0) {
+	      currentNode.paragraphs.forEach(function (paragraph, idx) {
+	        if (!!paragraph.sectionTitle && paragraph.sectionTitle.length > 0) {
+	          content.push(_react2.default.createElement(
+	            'h5',
+	            { className: 'chapter-sectionTitle', key: paragraph.sectionTitle },
+	            paragraph.sectionTitle
+	          ));
+	        }
+	        content.push(_react2.default.createElement(
+	          'p',
+	          { className: 'chapter-paragraph', key: paragraph.content.slice(0, 10) },
+	          paragraph.content
+	        ));
+	      });
+	    }
+	
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'row single' },
 	      _react2.default.createElement(
-	        'p',
-	        null,
-	        currentNode.description
+	        'div',
+	        { className: 'col-xs-12 single-content' },
+	        content
 	      ),
 	      _react2.default.createElement('hr', null),
-	      currentNode.choices.map(function (choice, idx) {
-	        if (!choice.hasDisplayCondition || choice.hasDisplayCondition && choice.satisfyDisplayCondition(store)) {
-	          return _react2.default.createElement(_Choice2.default, { store: store, key: idx, choice: choice, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
-	        } else {
-	          return "";
-	        }
-	      })
-	    )
-	  );
-	};
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'col-xs-12 single-choices' },
+	        currentNode.choices.map(function (choice, idx) {
+	          if (!choice.hasDisplayCondition || choice.hasDisplayCondition && choice.satisfyDisplayCondition(store)) {
+	            return _react2.default.createElement(_Choice2.default, { store: store, key: idx, choice: choice, switchNode: _this.props.switchNode, modifyInventoryWithSpecs: _this.props.modifyInventoryWithSpecs });
+	          } else {
+	            return "";
+	          }
+	        })
+	      )
+	    );
+	  }
+	});
 	
-	exports.default = SplitTwo;
+	exports.default = Single;
 
 /***/ },
 /* 211 */
@@ -24768,6 +24821,64 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	var SplitTwo = function SplitTwo(props) {
+	  var store = props.store;
+	  var currentNode = props.node;
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'row split-two' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'col-md-6 split-two-media' },
+	      _react2.default.createElement('img', { className: 'split-two-img', src: currentNode.image_url })
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'col-md-6 split-two-main' },
+	      _react2.default.createElement(
+	        'h1',
+	        null,
+	        currentNode.name
+	      ),
+	      _react2.default.createElement(
+	        'p',
+	        null,
+	        currentNode.description
+	      ),
+	      _react2.default.createElement('hr', null),
+	      currentNode.choices.map(function (choice, idx) {
+	        if (!choice.hasDisplayCondition || choice.hasDisplayCondition && choice.satisfyDisplayCondition(store)) {
+	          return _react2.default.createElement(_Choice2.default, { store: store, key: idx, choice: choice, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
+	        } else {
+	          return "";
+	        }
+	      })
+	    )
+	  );
+	};
+	
+	exports.default = SplitTwo;
+
+/***/ },
+/* 214 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Choice = __webpack_require__(211);
+	
+	var _Choice2 = _interopRequireDefault(_Choice);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	var Reward = function Reward(props) {
 	  var currentNode = props.node;
 	  debugger;
@@ -24803,7 +24914,7 @@
 	exports.default = Reward;
 
 /***/ },
-/* 214 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24879,7 +24990,7 @@
 	exports.default = Inventory;
 
 /***/ },
-/* 215 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24979,7 +25090,7 @@
 	exports.default = Notifications;
 
 /***/ },
-/* 216 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25045,114 +25156,6 @@
 	};
 	
 	exports.default = Journal;
-
-/***/ },
-/* 217 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _Choice = __webpack_require__(211);
-	
-	var _Choice2 = _interopRequireDefault(_Choice);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Single = _react2.default.createClass({
-	  displayName: 'Single',
-	
-	  getInitialState: function getInitialState(props) {
-	    return this.props;
-	  },
-	
-	  componentDidMount: function componentDidMount() {
-	    if (!!this.props.node.shouldLog && this.props.node.shouldLog(this.props.store)) {
-	      this.props.addJournalEntry(this.props.node);
-	    }
-	  },
-	
-	  componentDidUpdate: function componentDidUpdate() {
-	    if (!!this.props.node.shouldLog && this.props.node.shouldLog(this.props.store)) {
-	      this.props.addJournalEntry(this.props.node);
-	    }
-	  },
-	
-	  render: function render() {
-	    var _this = this;
-	
-	    if (!this.props.node.shouldDisplay) {
-	      this.props.switchNode(this.props.node.nextNode);
-	      return _react2.default.createElement('div', null);
-	    }
-	
-	    var store = this.props.store;
-	    var currentNode = this.props.node;
-	
-	    var content = [];
-	    if (!!currentNode.title && currentNode.title.length > 0) {
-	      content.push(_react2.default.createElement(
-	        'h1',
-	        { className: 'chapter-title', key: currentNode.title },
-	        currentNode.title
-	      ));
-	    }
-	    if (!!currentNode.subtitle && currentNode.subtitle.length > 0) {
-	      content.push(_react2.default.createElement(
-	        'h3',
-	        { className: 'chapter-subtitle', key: currentNode.subtitle },
-	        currentNode.subtitle
-	      ));
-	    }
-	    if (!!currentNode.paragraphs && currentNode.paragraphs.length > 0) {
-	      currentNode.paragraphs.forEach(function (paragraph, idx) {
-	        if (!!paragraph.sectionTitle && paragraph.sectionTitle.length > 0) {
-	          content.push(_react2.default.createElement(
-	            'h5',
-	            { className: 'chapter-sectionTitle', key: paragraph.sectionTitle },
-	            paragraph.sectionTitle
-	          ));
-	        }
-	        content.push(_react2.default.createElement(
-	          'p',
-	          { className: 'chapter-paragraph', key: paragraph.content.slice(0, 10) },
-	          paragraph.content
-	        ));
-	      });
-	    }
-	
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'row single' },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'col-xs-12 single-content' },
-	        content
-	      ),
-	      _react2.default.createElement('hr', null),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'col-xs-12 single-choices' },
-	        currentNode.choices.map(function (choice, idx) {
-	          if (!choice.hasDisplayCondition || choice.hasDisplayCondition && choice.satisfyDisplayCondition(store)) {
-	            return _react2.default.createElement(_Choice2.default, { store: store, key: idx, choice: choice, switchNode: _this.props.switchNode, modifyInventoryWithSpecs: _this.props.modifyInventoryWithSpecs });
-	          } else {
-	            return "";
-	          }
-	        })
-	      )
-	    );
-	  }
-	});
-	
-	exports.default = Single;
 
 /***/ }
 /******/ ]);

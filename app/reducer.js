@@ -53,6 +53,9 @@ const reducer = (prevState=_initState, action) => {
     case "SWITCH_MODE":
       var newState = $.extend(true, {}, prevState);
       if(newState.currentMode == action.newMode && action.newMode == "Scenario"){
+        if(newState.currentNode.type == "single"){
+          return prevState;
+        }
         newState.currentNode = Wiki["1001A00"];
       }else{
         newState.currentMode = action.newMode;
