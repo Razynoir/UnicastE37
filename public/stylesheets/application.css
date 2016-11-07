@@ -141,8 +141,16 @@ p.inline-requirement{
 .split-two-media{
   text-align: center;
 }
+.single{
+  padding-left: 15%;
+  padding-right: 15%;
+}
 .journal{
+  padding-left: 15%;
+  padding-right: 15%;
   margin-bottom: 50rem;
+}
+.journal-field{
 }
 
 .tool-bar{
