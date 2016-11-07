@@ -374,34 +374,128 @@ const WIKI = {
     ]
   },
 
-  // Chapter nodes Start Here
-  "4007A01": {
-    id: "4007A01",
+  // Complicated nodes (elaborate ones) starts here
+  "7000A99": {
+    id: "7000A99",
     class: "node",
-    type: "chapter",
-    title: "Chapter OneYour Son is Missing",
-    subtitle: "",
+    type: "single",
+    shouldDisplay: function(store){
+      return !(!!store.chapters.contents["7000A99"]);
+    },
+    shouldLog: function(store){
+      return !(!!store.chapters.contents["7000A99"]);
+    },
+    title: "Foreword",
+    subtitle: "Plunging and Emptying",
     paragraphs: [
       {
-        sectionTitle: "",
-        content: "",
+        sectionTitle: "October 2030, New York.",
+        content: "The chaos wasn’t fueled with outcries. Instead it was nailed in with dead silence, as the crowd on the floor of the NYSE paused and looked up at the plunging price of the Elliot & Shinka Agricultural Holding Co. (ESA). Seasoned traders, brokers, though witnessed thousands of collapsing cases before the day, came to a halt and stared in disbelief. ",
+      },
+      {
+        content: "Falling prices on miniature screens never stirred these crafty folks, but something else might. Elliot & Shinka, nicknamed TechGrow, a 6-year-old tech new-comer, the embodiment of the once searing concept to decentralize the trading activities of agricultural produces in mid-west United States, today announces that 78% of its seasonal warehouse stores, together with its 40 billion asset of farming equipments, are in fact forged numbers on its corporate sheet; that over 43% of the winter supplies of agricultural produces for the entire country has been created out of the wildest imaginations and has evaporated, under just a short span of one minute, into thin air. ",
+      },
+      {
+        content: "Someone will lose his shirt on Wall Street of course, but famine is coming for everyone. The storages once ripe and filled with promises of a well-stocked winter, now show their guts as empty and bloated only by the chilly breeze of October. You know you won’t bother going to the groceries after 5pm today, for no matter how hard you seek, supplies won’t come off from an empty shelf. ",
       }
     ],
+    choices: [
+      {
+        title: "Continue Reading",
+        note: "You can review the past readings by pressing the Journal button in your Navbar.",
+        buttonText: "Decide on This",
+        nextNode: "7000A98",
+      }
+    ],
+    nextNode: "0001A00",
   },
 
-  // Journal Logs Starts Here
-  "7000A00": {
-    id: "7000A00",
-    class: "journal_entry",
-    title: "Chapter 1",
+  "7000A98": {
+    id: "7000A98",
+    class: "node",
+    type: "single",
+    shouldDisplay: function(store){
+      return !(!!store.chapters.contents["7000A98"]);
+    },
+    shouldLog: function(store){
+      return !(!!store.chapters.contents["7000A98"]);
+    },
+    title: "Chapter One",
     subtitle: "Aaron is Missing",
     paragraphs: [
       {
-        sectionTitle: "November",
-        content: "Your son is missing.",
+        content: "No grocery trip today means no sauces for the bland pasta you shelved up for last-minute dinners. As if a flavorless dinner is not enough symbolism for a bleak night, your phone rings up just minutes before your usual bed time. "
+      },
+      {
+        content: "“Yes?” Tired and torn, you struggled to engage an interaction. ",
+      },
+      {
+        content: "“Hey! Hey!! Do you know Aaron?”",
+      },
+      {
+        content: "“Yes, he’s my son…” Half-awaken by the other voice’s show of urgency, you trailed off with an inviting silence. ",
+      },
+      {
+        content: "“He disappeared from the office. We thought he went out for pizza… But he left your number on the desk and never came back. We called everyone……”"
+      },
+      {
+        content: "You didn’t catch all of what he said and could only assume it’s a hasty summary of their failed attempts to locate him. The police was there, but left with no results. ",
+      },
+      {
+        content: "You wanted to pick up your feet and rush to the police station, but was discouraged by a siege of fatigue. You thought about how your son left home, and how he seldom leaves any message to you. In the end, you decided to pursue the case in the morning.",
+      },
+      {
+        content: "But it was no use. Your unexpected attention to your ungrateful son’s missing was met by a cold wall of vague police speeches decorated by a politeness half-genuine. You learnt nothing but a lesson, that those who get to control the information are never the ones to ask. "
+      },
+      {
+        content: "In the coming days, as you witness the uniforms being deployed to ordinary stores to prevent people from trampling each other in the craze for scarce supplies, you realized you’re alone in the search to come. "
       }
     ],
-  }
+    choices: [
+      {
+        title: "Continue Reading",
+        note: "You will be prompted to select your character background next.",
+        buttonText: "Decide on This",
+        nextNode: "7000A98",
+      }
+    ],
+    nextNode: "0001A00",
+  },
+
+  "7000A97": {
+    id: "7000A97",
+    class: "node",
+    type: "single",
+    shouldDisplay: function(store){
+      return !(!!store.chapters.contents["7000A97"]);
+    },
+    shouldLog: false,
+    title: "Who Are You?",
+    subtitle: "Choose a Background to Initialize Your Base Attributes",
+    paragraphs: [
+      {
+        sectionTitle: "Learning about The Game: Attributes",
+        content: "The chaos wasn’t fueled with outcries. Instead it was nailed in with dead silence, as the crowd on the floor of the NYSE paused and looked up at the plunging price of the Elliot & Shinka Agricultural Holding Co. (ESA). Seasoned traders, brokers, though witnessed thousands of collapsing cases before the day, came to a halt and stared in disbelief. ",
+      },
+      {
+        content: "Falling prices on miniature screens never stirred these crafty folks, but something else might. Elliot & Shinka, nicknamed TechGrow, a 6-year-old tech new-comer, the embodiment of the once searing concept to decentralize the trading activities of agricultural produces in mid-west United States, today announces that 78% of its seasonal warehouse stores, together with its 40 billion asset of farming equipments, are in fact forged numbers on its corporate sheet; that over 43% of the winter supplies of agricultural produces for the entire country has been created out of the wildest imaginations and has evaporated, under just a short span of one minute, into thin air. ",
+      },
+      {
+        content: "Someone will lose his shirt on Wall Street of course, but famine is coming for everyone. The storages once ripe and filled with promises of a well-stocked winter, now show their guts as empty and bloated only by the chilly breeze of October. You know you won’t bother going to the groceries after 5pm today, for no matter how hard you seek, supplies won’t come off from an empty shelf. ",
+      }
+    ],
+    choices: [
+      {
+        title: "Continue Reading",
+        note: "You can review the past readings by pressing the Journal button in your Navbar.",
+        buttonText: "Decide on This",
+        nextNode: "7000A98",
+      }
+    ],
+    nextNode: "0001A00",
+  },
+
+
 }
 
 

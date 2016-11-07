@@ -2,15 +2,12 @@ import React from "react";
 import Wiki from "../full_wiki";
 
 const Journal = (props) => {
-  var sequence = props.chapters.sequence;
-  var contents = props.chapters.contents;
-
   return (
     <div className="row journal">
       <div className="col-xs-12 journal-field">
         {
-          sequence.map((label) => {
-            var entry = contents[label];
+          props.chapters.sequence.map((label) => {
+            var entry = props.chapters.contents[label];
             var output = [];
             if(!!entry.title && entry.title.length > 0){
               output.push(<h1>{entry.title}</h1>);

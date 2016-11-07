@@ -132,19 +132,17 @@ p.inline-requirement{
 }
 
 .split-two, .dashboard{
-  /*height: 80%;*/
 }
-
-
-
 .split-two-media, .split-two-main{
   padding-top: 3rem;
   padding-bottom: 3rem;
-  /*height: 100%;*/
   overflow-y: scroll;
 }
 .split-two-media{
   text-align: center;
+}
+.journal{
+  margin-bottom: 50rem;
 }
 
 .tool-bar{
