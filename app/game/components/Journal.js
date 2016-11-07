@@ -2,30 +2,8 @@ import React from "react";
 import Wiki from "../full_wiki";
 
 const Journal = (props) => {
-  function print(){
-    var doc = new jsPDF();
-
-    // We'll make our own renderer to skip this editor
-    var specialElementHandlers = {
-    	'#editor': function(element, renderer){
-    		return true;
-    	}
-    };
-
-    // All units are in the set measurement for the document
-    // This can be changed to "pt" (points), "mm" (Default), "cm", "in"
-    doc.fromHTML($('journal-field').get(0), 15, 15, {
-    	'width': 170,
-    	'elementHandlers': specialElementHandlers
-    });
-
-  }
-
   return (
     <div className="row journal">
-      <div className="col-xs-12">
-        <button className="btn btn-default" onClick={print}>Print PDF</button>
-      </div>
       <div className="col-xs-12 journal-field">
         {
           props.chapters.sequence.map((label) => {
