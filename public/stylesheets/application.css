@@ -131,7 +131,8 @@ p.inline-requirement{
   background-color: #224267;
 }
 
-.split-two, .dashboard{
+.split-two, .dashboard, .journal, .single{
+  margin-bottom: 50rem;
 }
 .split-two-media, .split-two-main{
   padding-top: 3rem;
@@ -148,7 +149,6 @@ p.inline-requirement{
 .journal{
   padding-left: 15%;
   padding-right: 15%;
-  margin-bottom: 50rem;
 }
 .journal-field{
 }
@@ -238,4 +238,23 @@ p.inline-requirement{
   font-size: 2.5rem;
   text-align: center;
   font-weight: bolder;
+}
+
+/*Chapter related*/
+.chapter-title{
+  font-weight: bold;
+  margin-top: 5rem;
+}
+.chapter-subtitle{
+  margin-top: 0px;
+  font-style: italic;
+  margin-bottom: 5rem;
+}
+.chapter-sectionTitle{
+  margin-top: 2rem;
+  font-weight: bold;
+  text-indent: 2rem;
+}
+.chapter-paragraph{
+  text-indent: 2rem;
 }

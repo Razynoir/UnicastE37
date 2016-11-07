@@ -29,17 +29,17 @@ var Single = React.createClass({
 
     var content = [];
     if(!!currentNode.title && currentNode.title.length > 0){
-      content.push(<h1 key={currentNode.title}>{currentNode.title}</h1>);
+      content.push(<h1 className="chapter-title" key={currentNode.title}>{currentNode.title}</h1>);
     }
     if(!!currentNode.subtitle && currentNode.subtitle.length > 0){
-      content.push(<h3 key={currentNode.subtitle}>{currentNode.subtitle}</h3>)
+      content.push(<h3 className="chapter-subtitle" key={currentNode.subtitle}>{currentNode.subtitle}</h3>)
     }
     if(!!currentNode.paragraphs && currentNode.paragraphs.length > 0){
       currentNode.paragraphs.forEach(function(paragraph, idx){
         if(!!paragraph.sectionTitle && paragraph.sectionTitle.length > 0){
-          content.push(<h5 key={paragraph.sectionTitle}>{paragraph.sectionTitle}</h5>);
+          content.push(<h5 className="chapter-sectionTitle" key={paragraph.sectionTitle}>{paragraph.sectionTitle}</h5>);
         }
-        content.push(<p key={paragraph.content.slice(0,10)}>{paragraph.content}</p>)
+        content.push(<p className="chapter-paragraph" key={paragraph.content.slice(0,10)}>{paragraph.content}</p>)
       })
     }
 

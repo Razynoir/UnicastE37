@@ -35,7 +35,6 @@ const reducer = (prevState=_initState, action) => {
   switch(action.type){
     case "MODIFY_INVENTORY":
       var newState = $.extend(true, {}, prevState);
-      debugger;
       var changes = action.payload;
       if(!(!!changes)){ return prevState; }
       changes.forEach(function(item){

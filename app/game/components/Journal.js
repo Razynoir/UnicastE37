@@ -10,17 +10,17 @@ const Journal = (props) => {
             var entry = props.chapters.contents[label];
             var output = [];
             if(!!entry.title && entry.title.length > 0){
-              output.push(<h1>{entry.title}</h1>);
+              output.push(<h1 className="chapter-title">{entry.title}</h1>);
             }
             if(!!entry.subtitle && entry.subtitle.length > 0){
-              output.push(<h3>{entry.subtitle}</h3>);
+              output.push(<h3 className="chapter-subtitle">{entry.subtitle}</h3>);
             }
             if(!!entry.paragraphs && entry.paragraphs.length > 0){
               entry.paragraphs.forEach(function(paragraph){
                 if(!!paragraph.sectionTitle && paragraph.sectionTitle.length > 0){
-                  output.push(<h5>{paragraph.sectionTitle}</h5>);
+                  output.push(<h5 className="chapter-sectionTitle">{paragraph.sectionTitle}</h5>);
                 }
-                output.push(<p>{paragraph.content}</p>)
+                output.push(<p className="chapter-paragraph">{paragraph.content}</p>)
               })
             }
             return output;

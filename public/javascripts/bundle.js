@@ -23269,7 +23269,6 @@
 	  switch (action.type) {
 	    case "MODIFY_INVENTORY":
 	      var newState = $.extend(true, {}, prevState);
-	      debugger;
 	      var changes = action.payload;
 	      if (!!!changes) {
 	        return prevState;
@@ -23724,7 +23723,7 @@
 	      return !!!store.chapters.contents["7000A98"];
 	    },
 	    title: "Chapter One",
-	    subtitle: "Aaron is Missing",
+	    subtitle: "A Hasty Departure",
 	    paragraphs: [{
 	      content: "No grocery trip today means no sauces for the bland pasta you shelved up for last-minute dinners. As if a flavorless dinner is not enough symbolism for a bleak night, your phone rings up just minutes before your usual bed time. "
 	    }, {
@@ -23748,12 +23747,178 @@
 	      title: "Continue Reading",
 	      note: "You will be prompted to select your character background next.",
 	      buttonText: "Decide on This",
-	      nextNode: "7000A98"
+	      nextNode: "7000A97"
 	    }],
 	    nextNode: "0001A00"
 	  },
 	
 	  "7000A97": {
+	    id: "7000A97",
+	    class: "node",
+	    type: "single",
+	    shouldDisplay: function shouldDisplay(store) {
+	      return !!!store.chapters.contents["7000A97"];
+	    },
+	    shouldLog: false,
+	    title: "Who Are You?",
+	    subtitle: "Choose a Background to Initialize Your Base Attributes",
+	    paragraphs: [{
+	      sectionTitle: "Learning about The Game: Attributes",
+	      content: "You will have a temperament profile consisted of five basic attributes: Dominance, Diplomacy, Fluency, Perception and Knowledge (DDFPK, pronounced as 'Duffpack')."
+	    }, {
+	      sectionTitle: "1. Dominance",
+	      content: "Dominance is the combined account for physical and mental strength. Dominance establishes the degree of confidence and advantage in physical and hierarchical conflicts. It is closely related to armed conflicts, the ability to wield weapons, the ability to overcome challenges, and the ability to establish an influential position in a social group. "
+	    }, {
+	      sectionTitle: "2. Diplomacy",
+	      content: "Diplomacy is related to interpersonal relationships, establishing contacts, navigating social contexts and forming alliance. "
+	    }, {
+	      sectionTitle: "3. Fluency",
+	      content: "Fluency is related to the protagonist’s ability to handle incidental situations. Unlike diplomacy which gives you an edge in formalized social relationships, fluency gives you flexibility in navigating the chaotic scenes on the street of New York. "
+	    }, {
+	      sectionTitle: "4. Perception",
+	      content: "Perception is related to investigation, knowledge acquisition, revealing secrets, detecting lies, and various information-driven activities. "
+	    }, {
+	      sectionTitle: "5. Knowledge",
+	      content: "Knowledge is closely related to dissecting information, processing puzzles, making sense of situations, tying together snippets of intrigues and developing valuable theories. Unlike Perception which deals primarily with the acquisition of information, Knowledge helps to make use of them. "
+	    }],
+	    choices: [{
+	      title: "You're a Relocated Veteran (+10 Dominance)",
+	      note: "Once a soldier, you opted to establish a family in the great city. After your divorce, you obtained the child right and continued to support him till he stormed out on you in pursuit of a plush high life. Now, having lost contact with him, you decide to take matter into your own hand.",
+	      buttonText: "Choose This Background",
+	      nextNode: "7000A95"
+	    }, {
+	      title: "You're a District Advisor (+10 Diplomacy)",
+	      note: "Once the governor’s favorite intern, you effortlessly obtained a post as the chief adviser for a wealthy city district. Your extensive outreach into the corporate world propelled your son’s financial career and ultimately your own wealth. Your son left little traces, but your persuaded friends, assuming they’re as eager as you to find your missing child, might provide insight in his case. ",
+	      buttonText: "Choose This Background",
+	      nextNode: "7000A94"
+	    }, {
+	      title: "You're a New Artist (+10 Fluency)",
+	      note: "You lead one of the prominent niche genres in the city, having a substantial following from a diverse set of audience. Your child was a creative one just like you, well-versed and adept, almost mysterious. He must have left some unique strokes on the vast canvas of the financial scene, and it’s up to you to pick them up and interpret his tellings.",
+	      buttonText: "Choose This Background",
+	      nextNode: "7000A93"
+	    }, {
+	      title: "You're a Forensic Accountant (+10 Perception)",
+	      note: "People assume you’re a finance person, but you’re not. Instead, your breed is more closely related to the police officers sitting in their concrete headquarter on 1st Ave, except obviously without government-sponsored cars for mid-day coffee run. Having dealt with numbers for as long as you remember, you opt to follow the scant scent of shenanigans from all those crafted figures on the corporate papers.",
+	      buttonText: "Choose This Background",
+	      nextNode: "7000A92"
+	    }, {
+	      title: "You're a Scientific Contractor (+10 Knowledge)",
+	      note: "You are one of the less-known commissioners of the most elusive scientific problems. With a broad industrial background and a well-stocked conceptual toolbox, you contributed to the foundation of the modern financial system. Your child, however, cares more about people than intricate constructs. Concerned he might have been consumed in the deep politics of the financial world, you set out to discover his whereabouts through the eyes and ears you installed on the digital trading network decades ago.",
+	      buttonText: "Choose This Background",
+	      nextNode: "7000A91"
+	    }],
+	    nextNode: "1001A00"
+	  },
+	
+	  "7000A95": {
+	    id: "7000A97",
+	    class: "node",
+	    type: "single",
+	    shouldDisplay: function shouldDisplay(store) {
+	      return !!!store.chapters.contents["7000A97"];
+	    },
+	    shouldLog: false,
+	    title: "Who Are You?",
+	    subtitle: "Choose a Background to Initialize Your Base Attributes",
+	    paragraphs: [{
+	      sectionTitle: "Learning about The Game: Attributes",
+	      content: "The chaos wasn’t fueled with outcries. Instead it was nailed in with dead silence, as the crowd on the floor of the NYSE paused and looked up at the plunging price of the Elliot & Shinka Agricultural Holding Co. (ESA). Seasoned traders, brokers, though witnessed thousands of collapsing cases before the day, came to a halt and stared in disbelief. "
+	    }, {
+	      content: "Falling prices on miniature screens never stirred these crafty folks, but something else might. Elliot & Shinka, nicknamed TechGrow, a 6-year-old tech new-comer, the embodiment of the once searing concept to decentralize the trading activities of agricultural produces in mid-west United States, today announces that 78% of its seasonal warehouse stores, together with its 40 billion asset of farming equipments, are in fact forged numbers on its corporate sheet; that over 43% of the winter supplies of agricultural produces for the entire country has been created out of the wildest imaginations and has evaporated, under just a short span of one minute, into thin air. "
+	    }, {
+	      content: "Someone will lose his shirt on Wall Street of course, but famine is coming for everyone. The storages once ripe and filled with promises of a well-stocked winter, now show their guts as empty and bloated only by the chilly breeze of October. You know you won’t bother going to the groceries after 5pm today, for no matter how hard you seek, supplies won’t come off from an empty shelf. "
+	    }],
+	    choices: [{
+	      title: "Continue Reading",
+	      note: "You can review the past readings by pressing the Journal button in your Navbar.",
+	      buttonText: "Decide on This",
+	      nextNode: "7000A98"
+	    }],
+	    nextNode: "0001A00"
+	  },
+	
+	  "7000A94": {
+	    id: "7000A97",
+	    class: "node",
+	    type: "single",
+	    shouldDisplay: function shouldDisplay(store) {
+	      return !!!store.chapters.contents["7000A97"];
+	    },
+	    shouldLog: false,
+	    title: "Who Are You?",
+	    subtitle: "Choose a Background to Initialize Your Base Attributes",
+	    paragraphs: [{
+	      sectionTitle: "Learning about The Game: Attributes",
+	      content: "The chaos wasn’t fueled with outcries. Instead it was nailed in with dead silence, as the crowd on the floor of the NYSE paused and looked up at the plunging price of the Elliot & Shinka Agricultural Holding Co. (ESA). Seasoned traders, brokers, though witnessed thousands of collapsing cases before the day, came to a halt and stared in disbelief. "
+	    }, {
+	      content: "Falling prices on miniature screens never stirred these crafty folks, but something else might. Elliot & Shinka, nicknamed TechGrow, a 6-year-old tech new-comer, the embodiment of the once searing concept to decentralize the trading activities of agricultural produces in mid-west United States, today announces that 78% of its seasonal warehouse stores, together with its 40 billion asset of farming equipments, are in fact forged numbers on its corporate sheet; that over 43% of the winter supplies of agricultural produces for the entire country has been created out of the wildest imaginations and has evaporated, under just a short span of one minute, into thin air. "
+	    }, {
+	      content: "Someone will lose his shirt on Wall Street of course, but famine is coming for everyone. The storages once ripe and filled with promises of a well-stocked winter, now show their guts as empty and bloated only by the chilly breeze of October. You know you won’t bother going to the groceries after 5pm today, for no matter how hard you seek, supplies won’t come off from an empty shelf. "
+	    }],
+	    choices: [{
+	      title: "Continue Reading",
+	      note: "You can review the past readings by pressing the Journal button in your Navbar.",
+	      buttonText: "Decide on This",
+	      nextNode: "7000A98"
+	    }],
+	    nextNode: "0001A00"
+	  },
+	
+	  "7000A93": {
+	    id: "7000A97",
+	    class: "node",
+	    type: "single",
+	    shouldDisplay: function shouldDisplay(store) {
+	      return !!!store.chapters.contents["7000A97"];
+	    },
+	    shouldLog: false,
+	    title: "Who Are You?",
+	    subtitle: "Choose a Background to Initialize Your Base Attributes",
+	    paragraphs: [{
+	      sectionTitle: "Learning about The Game: Attributes",
+	      content: "The chaos wasn’t fueled with outcries. Instead it was nailed in with dead silence, as the crowd on the floor of the NYSE paused and looked up at the plunging price of the Elliot & Shinka Agricultural Holding Co. (ESA). Seasoned traders, brokers, though witnessed thousands of collapsing cases before the day, came to a halt and stared in disbelief. "
+	    }, {
+	      content: "Falling prices on miniature screens never stirred these crafty folks, but something else might. Elliot & Shinka, nicknamed TechGrow, a 6-year-old tech new-comer, the embodiment of the once searing concept to decentralize the trading activities of agricultural produces in mid-west United States, today announces that 78% of its seasonal warehouse stores, together with its 40 billion asset of farming equipments, are in fact forged numbers on its corporate sheet; that over 43% of the winter supplies of agricultural produces for the entire country has been created out of the wildest imaginations and has evaporated, under just a short span of one minute, into thin air. "
+	    }, {
+	      content: "Someone will lose his shirt on Wall Street of course, but famine is coming for everyone. The storages once ripe and filled with promises of a well-stocked winter, now show their guts as empty and bloated only by the chilly breeze of October. You know you won’t bother going to the groceries after 5pm today, for no matter how hard you seek, supplies won’t come off from an empty shelf. "
+	    }],
+	    choices: [{
+	      title: "Continue Reading",
+	      note: "You can review the past readings by pressing the Journal button in your Navbar.",
+	      buttonText: "Decide on This",
+	      nextNode: "7000A98"
+	    }],
+	    nextNode: "0001A00"
+	  },
+	
+	  "7000A92": {
+	    id: "7000A97",
+	    class: "node",
+	    type: "single",
+	    shouldDisplay: function shouldDisplay(store) {
+	      return !!!store.chapters.contents["7000A97"];
+	    },
+	    shouldLog: false,
+	    title: "Who Are You?",
+	    subtitle: "Choose a Background to Initialize Your Base Attributes",
+	    paragraphs: [{
+	      sectionTitle: "Learning about The Game: Attributes",
+	      content: "The chaos wasn’t fueled with outcries. Instead it was nailed in with dead silence, as the crowd on the floor of the NYSE paused and looked up at the plunging price of the Elliot & Shinka Agricultural Holding Co. (ESA). Seasoned traders, brokers, though witnessed thousands of collapsing cases before the day, came to a halt and stared in disbelief. "
+	    }, {
+	      content: "Falling prices on miniature screens never stirred these crafty folks, but something else might. Elliot & Shinka, nicknamed TechGrow, a 6-year-old tech new-comer, the embodiment of the once searing concept to decentralize the trading activities of agricultural produces in mid-west United States, today announces that 78% of its seasonal warehouse stores, together with its 40 billion asset of farming equipments, are in fact forged numbers on its corporate sheet; that over 43% of the winter supplies of agricultural produces for the entire country has been created out of the wildest imaginations and has evaporated, under just a short span of one minute, into thin air. "
+	    }, {
+	      content: "Someone will lose his shirt on Wall Street of course, but famine is coming for everyone. The storages once ripe and filled with promises of a well-stocked winter, now show their guts as empty and bloated only by the chilly breeze of October. You know you won’t bother going to the groceries after 5pm today, for no matter how hard you seek, supplies won’t come off from an empty shelf. "
+	    }],
+	    choices: [{
+	      title: "Continue Reading",
+	      note: "You can review the past readings by pressing the Journal button in your Navbar.",
+	      buttonText: "Decide on This",
+	      nextNode: "7000A98"
+	    }],
+	    nextNode: "0001A00"
+	  },
+	
+	  "7000A91": {
 	    id: "7000A97",
 	    class: "node",
 	    type: "single",
@@ -23779,7 +23944,6 @@
 	    }],
 	    nextNode: "0001A00"
 	  }
-	
 	};
 	
 	exports.default = WIKI;
@@ -24178,6 +24342,7 @@
 	
 	var ScenarioNode = function ScenarioNode(props) {
 	  var nodeRendered;
+	  debugger;
 	  switch (props.node.type) {
 	    case "split-two":
 	      nodeRendered = _react2.default.createElement(_SplitTwo2.default, { store: props.store, node: props.node, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
@@ -24846,14 +25011,14 @@
 	        if (!!entry.title && entry.title.length > 0) {
 	          output.push(_react2.default.createElement(
 	            "h1",
-	            null,
+	            { className: "chapter-title" },
 	            entry.title
 	          ));
 	        }
 	        if (!!entry.subtitle && entry.subtitle.length > 0) {
 	          output.push(_react2.default.createElement(
 	            "h3",
-	            null,
+	            { className: "chapter-subtitle" },
 	            entry.subtitle
 	          ));
 	        }
@@ -24862,13 +25027,13 @@
 	            if (!!paragraph.sectionTitle && paragraph.sectionTitle.length > 0) {
 	              output.push(_react2.default.createElement(
 	                "h5",
-	                null,
+	                { className: "chapter-sectionTitle" },
 	                paragraph.sectionTitle
 	              ));
 	            }
 	            output.push(_react2.default.createElement(
 	              "p",
-	              null,
+	              { className: "chapter-paragraph" },
 	              paragraph.content
 	            ));
 	          });
@@ -24935,14 +25100,14 @@
 	    if (!!currentNode.title && currentNode.title.length > 0) {
 	      content.push(_react2.default.createElement(
 	        'h1',
-	        { key: currentNode.title },
+	        { className: 'chapter-title', key: currentNode.title },
 	        currentNode.title
 	      ));
 	    }
 	    if (!!currentNode.subtitle && currentNode.subtitle.length > 0) {
 	      content.push(_react2.default.createElement(
 	        'h3',
-	        { key: currentNode.subtitle },
+	        { className: 'chapter-subtitle', key: currentNode.subtitle },
 	        currentNode.subtitle
 	      ));
 	    }
@@ -24951,13 +25116,13 @@
 	        if (!!paragraph.sectionTitle && paragraph.sectionTitle.length > 0) {
 	          content.push(_react2.default.createElement(
 	            'h5',
-	            { key: paragraph.sectionTitle },
+	            { className: 'chapter-sectionTitle', key: paragraph.sectionTitle },
 	            paragraph.sectionTitle
 	          ));
 	        }
 	        content.push(_react2.default.createElement(
 	          'p',
-	          { key: paragraph.content.slice(0, 10) },
+	          { className: 'chapter-paragraph', key: paragraph.content.slice(0, 10) },
 	          paragraph.content
 	        ));
 	      });

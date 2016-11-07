@@ -6,6 +6,7 @@ import Reward from './Reward';
 
 const ScenarioNode = (props) => {
   var nodeRendered;
+  debugger;
   switch (props.node.type) {
     case "split-two":
       nodeRendered = (<SplitTwo store={props.store} node={props.node} switchNode={props.switchNode} modifyInventoryWithSpecs={props.modifyInventoryWithSpecs} />);
