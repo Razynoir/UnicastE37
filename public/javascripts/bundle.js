@@ -23578,7 +23578,7 @@
 	      hasCondition: false,
 	      requirements: [],
 	      storeImpact: [],
-	      nextNode: "1001A03"
+	      nextNode: "7000B98"
 	    }, {
 	      title: "Say Bye",
 	      note: "You've done enough catching up with him.",
@@ -23938,6 +23938,28 @@
 	      nextNode: "1001A02"
 	    }],
 	    nextNode: "1001A02"
+	  },
+	
+	  "7000B98": {
+	    id: "7000B98",
+	    class: "node",
+	    type: "single",
+	    shouldDisplay: function shouldDisplay(store) {
+	      return !!!store.chapters.contents["7000B98"];
+	    },
+	    shouldLog: function shouldLog(store) {
+	      return !!!store.chapters.contents["7000B98"];
+	    },
+	    paragraphs: [{
+	      content: "He speaks of a few projects, which you find fascinating, especially the ones closely related to your son’s case. Among them, you picked a market access project from Erez’s friend Zane, an auto-enhancement project run by Zane’s friend Derek and a side-tracked art exhibition show by a curator named Anthony. "
+	    }],
+	    choices: [{
+	      title: "Inquire Details",
+	      note: "You won't see this text next time you ask Erez about these projects. The text will be logged to your journal.",
+	      buttonText: "Proceed",
+	      nextNode: "1001A03"
+	    }],
+	    nextNode: "1001A03"
 	  }
 	};
 	
