@@ -1,6 +1,48 @@
 const WIKI = {
   // Modifiers starts here
 
+  // Qualities starts here
+  "0001A24": {
+    id: "0001A24",
+    class: "quality",
+    name: "Dominance",
+    description: "An attribute responsible for installing your standings in many social groups.",
+    note: "A high dominance may reduce the cost of certain options, particularly the ones related to favors.",
+    image_url: "http://i.imgur.com/jmjDapu.png",
+  },
+  "0001A25": {
+    id: "0001A25",
+    class: "quality",
+    name: "Diplomacy",
+    description: "An attribute responsible for proper communication in structured social environment such as meetings and conferences.",
+    note: "A high diplomacy opens up choices otherwise unavailable in social settings.",
+    image_url: "http://i.imgur.com/FFZrsof.png",
+  },
+  "0001A26": {
+    id: "0001A26",
+    class: "quality",
+    name: "Fluency",
+    description: "An attribute responsible for getting out of incidental or unpredictable situations.",
+    note: "A high fluency helps you fend off incidental conflicts.",
+    image_url: "http://i.imgur.com/y3v3Iwu.png",
+  },
+  "0001A27": {
+    id: "0001A27",
+    class: "quality",
+    name: "Perception",
+    description: "An attribute responsible for your information acquisition abilities.",
+    note: "A high perception helps you detect options that are otherwise unavailable.",
+    image_url: "http://i.imgur.com/5rpfPHK.png",
+  },
+  "0001A28": {
+    id: "0001A28",
+    class: "quality",
+    name: "Knowledge",
+    description: "An attribute responsible for decipharing the information you acquire.",
+    note: "A high knowledge helps you understand the meaning of the pieces you collect.",
+    image_url: "http://i.imgur.com/rS1tvUK.png",
+  },
+
   // Items starts here
   "0001A00": {
     id: "0001A00",
@@ -500,30 +542,65 @@ const WIKI = {
         title: "You're a Relocated Veteran (+10 Dominance)",
         note: "Once a soldier, you opted to establish a family in the great city. After your divorce, you obtained the child right and continued to support him till he stormed out on you in pursuit of a plush high life. Now, having lost contact with him, you decide to take matter into your own hand.",
         buttonText: "Choose This Background",
+        storeImpact: [
+          {
+            id: "0001A24",
+            category: "qualities",
+            amountChange: 10,
+          }
+        ],
         nextNode: "7000A95",
       },
       {
         title: "You're a District Advisor (+10 Diplomacy)",
         note: "Once the governor’s favorite intern, you effortlessly obtained a post as the chief adviser for a wealthy city district. Your extensive outreach into the corporate world propelled your son’s financial career and ultimately your own wealth. Your son left little traces, but your persuaded friends, assuming they’re as eager as you to find your missing child, might provide insight in his case. ",
         buttonText: "Choose This Background",
+        storeImpact: [
+          {
+            id: "0001A25",
+            category: "qualities",
+            amountChange: 10,
+          }
+        ],
         nextNode: "7000A94",
       },
       {
         title: "You're a New Artist (+10 Fluency)",
         note: "You lead one of the prominent niche genres in the city, having a substantial following from a diverse set of audience. Your child was a creative one just like you, well-versed and adept, almost mysterious. He must have left some unique strokes on the vast canvas of the financial scene, and it’s up to you to pick them up and interpret his tellings.",
         buttonText: "Choose This Background",
+        storeImpact: [
+          {
+            id: "0001A26",
+            category: "qualities",
+            amountChange: 10,
+          }
+        ],
         nextNode: "7000A93",
       },
       {
         title: "You're a Forensic Accountant (+10 Perception)",
         note: "People assume you’re a finance person, but you’re not. Instead, your breed is more closely related to the police officers sitting in their concrete headquarter on 1st Ave, except obviously without government-sponsored cars for mid-day coffee run. Having dealt with numbers for as long as you remember, you opt to follow the scant scent of shenanigans from all those crafted figures on the corporate papers.",
         buttonText: "Choose This Background",
+        storeImpact: [
+          {
+            id: "0001A27",
+            category: "qualities",
+            amountChange: 10,
+          }
+        ],
         nextNode: "7000A92",
       },
       {
         title: "You're a Scientific Contractor (+10 Knowledge)",
         note: "You are one of the less-known commissioners of the most elusive scientific problems. With a broad industrial background and a well-stocked conceptual toolbox, you contributed to the foundation of the modern financial system. Your child, however, cares more about people than intricate constructs. Concerned he might have been consumed in the deep politics of the financial world, you set out to discover his whereabouts through the eyes and ears you installed on the digital trading network decades ago.",
         buttonText: "Choose This Background",
+        storeImpact: [
+          {
+            id: "0001A28",
+            category: "qualities",
+            amountChange: 10,
+          }
+        ],
         nextNode: "7000A91",
       }
     ],

@@ -205,9 +205,20 @@ p.inline-requirement{
   background-color: #222222;
 }
 
-.dashboard-left{
+.dashboard-left, .dashboard-middle, .dashboard-right{
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+.qualities-table, .attributes-table{
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid grey;
+}
+td{
+  vertical-align: middle !important;
+  border: none !important;
 }
 
 /*date time*/
