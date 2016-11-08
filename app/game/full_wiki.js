@@ -25,7 +25,7 @@ const WIKI = {
   "0002A00": {
     id: "0002A00",
     class: "equipment",
-    name: "Daily Wall Street Journal Beeper",
+    name: "Wall Street Journal Beeper",
     description: "For those who can only afford the worst but strive to play the best.",
     note: "This ultimate poor man's stock portal will randomly select a stock chart from the billions on the market. (+1 Stock Chart)",
     image_url: "http://i.imgur.com/8fBs1H6.png",
@@ -140,7 +140,7 @@ const WIKI = {
         hasCondition: false,
         requirements: [],
         storeImpact: [],
-        nextNode: "1001A02",
+        nextNode: "7000B99",
       },
       {
         title: "Visit Zane Galaychglov at NYU Tech Co-Op",
@@ -380,7 +380,7 @@ const WIKI = {
     class: "node",
     type: "single",
     shouldDisplay: function(store){
-      return !(!!store.chapters.contents["7000A99"]);
+      return true;
     },
     shouldLog: function(store){
       return !(!!store.chapters.contents["7000A99"]);
@@ -415,7 +415,7 @@ const WIKI = {
     class: "node",
     type: "single",
     shouldDisplay: function(store){
-      return !(!!store.chapters.contents["7000A98"]);
+      return true;
     },
     shouldLog: function(store){
       return !(!!store.chapters.contents["7000A98"]);
@@ -467,9 +467,11 @@ const WIKI = {
     class: "node",
     type: "single",
     shouldDisplay: function(store){
-      return !(!!store.chapters.contents["7000A97"]);
+      return true;
     },
-    shouldLog: false,
+    shouldLog: function(store){
+      return false;
+    },
     title: "Who Are You?",
     subtitle: "Choose a Background to Initialize Your Base Attributes",
     paragraphs: [
@@ -534,171 +536,151 @@ const WIKI = {
   },
 
   "7000A95": {
-    id: "7000A97",
+    id: "7000A95",
     class: "node",
     type: "single",
     shouldDisplay: function(store){
-      return !(!!store.chapters.contents["7000A97"]);
+      return false;
     },
-    shouldLog: false,
-    title: "Who Are You?",
-    subtitle: "Choose a Background to Initialize Your Base Attributes",
+    shouldLog: function(store){
+      return !(!!store.chapters.contents["7000A95"]);
+    },
     paragraphs: [
       {
-        sectionTitle: "Learning about The Game: Attributes",
-        content: "The chaos wasn’t fueled with outcries. Instead it was nailed in with dead silence, as the crowd on the floor of the NYSE paused and looked up at the plunging price of the Elliot & Shinka Agricultural Holding Co. (ESA). Seasoned traders, brokers, though witnessed thousands of collapsing cases before the day, came to a halt and stared in disbelief. ",
+        sectionTitle: "You are who you are, but you're prepared",
+        content: "Once a soldier, you opted to establish a family in the great city. After your divorce, you obtained the child right and continued to support him till he stormed out on you in pursuit of a plush high life. Now, having lost contact with him, you decide to take matter into your own hand."
       },
       {
-        content: "Falling prices on miniature screens never stirred these crafty folks, but something else might. Elliot & Shinka, nicknamed TechGrow, a 6-year-old tech new-comer, the embodiment of the once searing concept to decentralize the trading activities of agricultural produces in mid-west United States, today announces that 78% of its seasonal warehouse stores, together with its 40 billion asset of farming equipments, are in fact forged numbers on its corporate sheet; that over 43% of the winter supplies of agricultural produces for the entire country has been created out of the wildest imaginations and has evaporated, under just a short span of one minute, into thin air. ",
-      },
-      {
-        content: "Someone will lose his shirt on Wall Street of course, but famine is coming for everyone. The storages once ripe and filled with promises of a well-stocked winter, now show their guts as empty and bloated only by the chilly breeze of October. You know you won’t bother going to the groceries after 5pm today, for no matter how hard you seek, supplies won’t come off from an empty shelf. ",
+        content: "In any case, it's best you go home first.",
       }
     ],
-    choices: [
-      {
-        title: "Continue Reading",
-        note: "You can review the past readings by pressing the Journal button in your Navbar.",
-        buttonText: "Decide on This",
-        nextNode: "7000A98",
-      }
-    ],
-    nextNode: "0001A00",
+    choices: [],
+    nextNode: "1001A00",
   },
 
   "7000A94": {
-    id: "7000A97",
+    id: "7000A94",
     class: "node",
     type: "single",
     shouldDisplay: function(store){
-      return !(!!store.chapters.contents["7000A97"]);
+      return false;
     },
-    shouldLog: false,
-    title: "Who Are You?",
-    subtitle: "Choose a Background to Initialize Your Base Attributes",
+    shouldLog: function(store){
+      return !(!!store.chapters.contents["7000A94"]);
+    },
     paragraphs: [
       {
-        sectionTitle: "Learning about The Game: Attributes",
-        content: "The chaos wasn’t fueled with outcries. Instead it was nailed in with dead silence, as the crowd on the floor of the NYSE paused and looked up at the plunging price of the Elliot & Shinka Agricultural Holding Co. (ESA). Seasoned traders, brokers, though witnessed thousands of collapsing cases before the day, came to a halt and stared in disbelief. ",
+        sectionTitle: "You are who you are, but you're prepared",
+        content: "Once the governor’s favorite intern, you effortlessly obtained a post as the chief adviser for a wealthy city district. Your extensive outreach into the corporate world propelled your son’s financial career and ultimately your own wealth. Your son left little traces, but your persuaded friends, assuming they’re as eager as you to find your missing child, might provide insight in his case.",
       },
       {
-        content: "Falling prices on miniature screens never stirred these crafty folks, but something else might. Elliot & Shinka, nicknamed TechGrow, a 6-year-old tech new-comer, the embodiment of the once searing concept to decentralize the trading activities of agricultural produces in mid-west United States, today announces that 78% of its seasonal warehouse stores, together with its 40 billion asset of farming equipments, are in fact forged numbers on its corporate sheet; that over 43% of the winter supplies of agricultural produces for the entire country has been created out of the wildest imaginations and has evaporated, under just a short span of one minute, into thin air. ",
-      },
-      {
-        content: "Someone will lose his shirt on Wall Street of course, but famine is coming for everyone. The storages once ripe and filled with promises of a well-stocked winter, now show their guts as empty and bloated only by the chilly breeze of October. You know you won’t bother going to the groceries after 5pm today, for no matter how hard you seek, supplies won’t come off from an empty shelf. ",
+        content: "In any case, it's best you go home first.",
       }
     ],
-    choices: [
-      {
-        title: "Continue Reading",
-        note: "You can review the past readings by pressing the Journal button in your Navbar.",
-        buttonText: "Decide on This",
-        nextNode: "7000A98",
-      }
-    ],
-    nextNode: "0001A00",
+    choices: [],
+    nextNode: "1001A00",
   },
 
   "7000A93": {
-    id: "7000A97",
+    id: "7000A93",
     class: "node",
     type: "single",
     shouldDisplay: function(store){
-      return !(!!store.chapters.contents["7000A97"]);
+      return false;
     },
-    shouldLog: false,
-    title: "Who Are You?",
-    subtitle: "Choose a Background to Initialize Your Base Attributes",
+    shouldLog: function(store){
+      return !(!!store.chapters.contents["7000A93"]);
+    },
     paragraphs: [
       {
-        sectionTitle: "Learning about The Game: Attributes",
-        content: "The chaos wasn’t fueled with outcries. Instead it was nailed in with dead silence, as the crowd on the floor of the NYSE paused and looked up at the plunging price of the Elliot & Shinka Agricultural Holding Co. (ESA). Seasoned traders, brokers, though witnessed thousands of collapsing cases before the day, came to a halt and stared in disbelief. ",
+        sectionTitle: "You are who you are, but you're prepared",
+        content: "You lead one of the prominent niche genres in the city, having a substantial following from a diverse set of audience. Your child was a creative one just like you, well-versed and adept, almost mysterious. He must have left some unique strokes on the vast canvas of the financial scene, and it’s up to you to pick them up and interpret his tellings.",
       },
       {
-        content: "Falling prices on miniature screens never stirred these crafty folks, but something else might. Elliot & Shinka, nicknamed TechGrow, a 6-year-old tech new-comer, the embodiment of the once searing concept to decentralize the trading activities of agricultural produces in mid-west United States, today announces that 78% of its seasonal warehouse stores, together with its 40 billion asset of farming equipments, are in fact forged numbers on its corporate sheet; that over 43% of the winter supplies of agricultural produces for the entire country has been created out of the wildest imaginations and has evaporated, under just a short span of one minute, into thin air. ",
-      },
-      {
-        content: "Someone will lose his shirt on Wall Street of course, but famine is coming for everyone. The storages once ripe and filled with promises of a well-stocked winter, now show their guts as empty and bloated only by the chilly breeze of October. You know you won’t bother going to the groceries after 5pm today, for no matter how hard you seek, supplies won’t come off from an empty shelf. ",
+        content: "In any case, it's best you go home first.",
       }
     ],
-    choices: [
-      {
-        title: "Continue Reading",
-        note: "You can review the past readings by pressing the Journal button in your Navbar.",
-        buttonText: "Decide on This",
-        nextNode: "7000A98",
-      }
-    ],
-    nextNode: "0001A00",
+    choices: [],
+    nextNode: "1001A00",
   },
 
   "7000A92": {
-    id: "7000A97",
+    id: "7000A92",
     class: "node",
     type: "single",
-    shouldDisplay: function(store){
-      return !(!!store.chapters.contents["7000A97"]);
+    shouldDisplay: false,
+    shouldLog: function(store){
+      return !(!!store.chapters.contents["7000A92"]);
     },
-    shouldLog: false,
-    title: "Who Are You?",
-    subtitle: "Choose a Background to Initialize Your Base Attributes",
     paragraphs: [
       {
-        sectionTitle: "Learning about The Game: Attributes",
-        content: "The chaos wasn’t fueled with outcries. Instead it was nailed in with dead silence, as the crowd on the floor of the NYSE paused and looked up at the plunging price of the Elliot & Shinka Agricultural Holding Co. (ESA). Seasoned traders, brokers, though witnessed thousands of collapsing cases before the day, came to a halt and stared in disbelief. ",
+        sectionTitle: "You are who you are, but you're prepared",
+        content: "People assume you’re a finance person, but you’re not. Instead, your breed is more closely related to the police officers sitting in their concrete headquarter on 1st Ave, except obviously without government-sponsored cars for mid-day coffee run. Having dealt with numbers for as long as you remember, you opt to follow the scant scent of shenanigans from all those crafted figures on the corporate papers.",
       },
       {
-        content: "Falling prices on miniature screens never stirred these crafty folks, but something else might. Elliot & Shinka, nicknamed TechGrow, a 6-year-old tech new-comer, the embodiment of the once searing concept to decentralize the trading activities of agricultural produces in mid-west United States, today announces that 78% of its seasonal warehouse stores, together with its 40 billion asset of farming equipments, are in fact forged numbers on its corporate sheet; that over 43% of the winter supplies of agricultural produces for the entire country has been created out of the wildest imaginations and has evaporated, under just a short span of one minute, into thin air. ",
-      },
-      {
-        content: "Someone will lose his shirt on Wall Street of course, but famine is coming for everyone. The storages once ripe and filled with promises of a well-stocked winter, now show their guts as empty and bloated only by the chilly breeze of October. You know you won’t bother going to the groceries after 5pm today, for no matter how hard you seek, supplies won’t come off from an empty shelf. ",
+        content: "In any case, it's best you go home first.",
       }
     ],
-    choices: [
-      {
-        title: "Continue Reading",
-        note: "You can review the past readings by pressing the Journal button in your Navbar.",
-        buttonText: "Decide on This",
-        nextNode: "7000A98",
-      }
-    ],
-    nextNode: "0001A00",
+    choices: [],
+    nextNode: "1001A00",
   },
 
   "7000A91": {
-    id: "7000A97",
+    id: "7000A91",
     class: "node",
     type: "single",
     shouldDisplay: function(store){
-      return !(!!store.chapters.contents["7000A97"]);
+      return false;
     },
-    shouldLog: false,
-    title: "Who Are You?",
-    subtitle: "Choose a Background to Initialize Your Base Attributes",
+    shouldLog: function(store){
+      return !(!!store.chapters.contents["7000A91"]);
+    },
     paragraphs: [
       {
-        sectionTitle: "Learning about The Game: Attributes",
-        content: "The chaos wasn’t fueled with outcries. Instead it was nailed in with dead silence, as the crowd on the floor of the NYSE paused and looked up at the plunging price of the Elliot & Shinka Agricultural Holding Co. (ESA). Seasoned traders, brokers, though witnessed thousands of collapsing cases before the day, came to a halt and stared in disbelief. ",
+        sectionTitle: "You are who you are, but you're prepared",
+        content: "You are one of the less-known commissioners of the most elusive scientific problems. With a broad industrial background and a well-stocked conceptual toolbox, you contributed to the foundation of the modern financial system. Your child, however, cares more about people than intricate constructs. Concerned he might have been consumed in the deep politics of the financial world, you set out to discover his whereabouts through the eyes and ears you installed on the digital trading network decades ago.",
       },
       {
-        content: "Falling prices on miniature screens never stirred these crafty folks, but something else might. Elliot & Shinka, nicknamed TechGrow, a 6-year-old tech new-comer, the embodiment of the once searing concept to decentralize the trading activities of agricultural produces in mid-west United States, today announces that 78% of its seasonal warehouse stores, together with its 40 billion asset of farming equipments, are in fact forged numbers on its corporate sheet; that over 43% of the winter supplies of agricultural produces for the entire country has been created out of the wildest imaginations and has evaporated, under just a short span of one minute, into thin air. ",
+        content: "In any case, it's best you go home first.",
+      }
+    ],
+    choices: [],
+    nextNode: "1001A00",
+  },
+
+  "7000B99": {
+    id: "7000B99",
+    class: "node",
+    type: "single",
+    shouldDisplay: function(store){
+      return !(!!store.chapters.contents["7000B99"]);
+    },
+    shouldLog: function(store){
+      return !(!!store.chapters.contents["7000B99"]);
+    },
+    paragraphs: [
+      {
+        sectionTitle: "You decided to pay a visit to your creative neighbor",
+        content: "Erez might have some ideas. He always does. ",
       },
       {
-        content: "Someone will lose his shirt on Wall Street of course, but famine is coming for everyone. The storages once ripe and filled with promises of a well-stocked winter, now show their guts as empty and bloated only by the chilly breeze of October. You know you won’t bother going to the groceries after 5pm today, for no matter how hard you seek, supplies won’t come off from an empty shelf. ",
+        content: "The well-connected creative must have sponsored a couple dozen of his friends’ projects since he moved into the city, and he certainly have no intention of hiding his generosity. Since he moved next door, the staircase used to be silent throughout the day suddenly becomes filled with heated chatting and debating after work hours, with him, of course, being the center of attention. In the end, the conversations end either in the form of exchanges, handshakes or some reserved promises. "
+      },
+      {
+        content: "You, however, enjoys the privilege of talking with him in the late night hours on the fire escape just reachable from his windows, sometimes with beers in hand, since he doesn’t see any visitors after 10pm.  A calm and thoughtful fella, he talks smoothly about the cultural movements that he’s been proud to be a part of, including the Atlantic Tribe, a de-modernization movement just 3 years ago in protest of the installment of Deep Learning Eyes (DLE) across the city’s dwellings. They told the public that the system was a revolutionary way of detecting any signs of violence, disturbance, or illegal exchanges through a state-of-art machine learning scheme, to enhance residential security. They won’t be needing the ‘eyes’ anymore, ironically, since the prevalent violence in the fight for supplies has already sent enough signals to overwhelm the system, contributing to nothing but constant distraction for the police force. It’s evident that a thousand pairs of eyes can’t be useful if there’s only a few pairs of hands to deal with what they see. ",
       }
     ],
     choices: [
       {
-        title: "Continue Reading",
-        note: "You can review the past readings by pressing the Journal button in your Navbar.",
-        buttonText: "Decide on This",
-        nextNode: "7000A98",
+        title: "Accompany Him Downstairs for a Chat",
+        note: "You won't see this text next time you visit Erez. The text will be logged to your journal.",
+        buttonText: "Proceed",
+        nextNode: "1001A02",
       }
     ],
-    nextNode: "0001A00",
+    nextNode: "1001A02",
   },
 }
-
 
 export default WIKI;
 

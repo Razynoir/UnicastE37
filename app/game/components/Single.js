@@ -6,24 +6,34 @@ var Single = React.createClass({
     return this.props;
   },
 
+  componentWillMount: function(){
+    if(!this.props.node.shouldDisplay(this.props.store)){
+      if(this.props.node.shouldLog(this.props.store)){
+        this.props.addJournalEntry(this.props.node);
+      }
+      this.props.switchNode(this.props.node.nextNode);
+    }
+  },
+
   componentDidMount: function(){
-    if(!!this.props.node.shouldLog && this.props.node.shouldLog(this.props.store)){
+    if(this.props.node.shouldLog(this.props.store)){
       this.props.addJournalEntry(this.props.node);
     }
   },
 
+  componentWillUpdate(){
+    if(!this.props.node.shouldDisplay(this.props.store)){
+      this.props.switchNode(this.props.node.nextNode);
+    }
+  },
+
   componentDidUpdate: function(){
-    if(!!this.props.node.shouldLog && this.props.node.shouldLog(this.props.store)){
+    if(this.props.node.shouldLog(this.props.store)){
       this.props.addJournalEntry(this.props.node);
     }
   },
 
   render: function(){
-    if(!this.props.node.shouldDisplay){
-      this.props.switchNode(this.props.node.nextNode);
-      return (<div></div>);
-    }
-
     var store = this.props.store;
     var currentNode = this.props.node;
 
@@ -42,7 +52,9 @@ var Single = React.createClass({
         content.push(<p className="chapter-paragraph" key={paragraph.content.slice(0,10)}>{paragraph.content}</p>)
       })
     }
-
+    if(!(!!currentNode.choices)){
+      return (<div></div>);
+    }
     return (
       <div className="row single">
         <div className="col-xs-12 single-content">
