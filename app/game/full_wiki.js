@@ -144,7 +144,7 @@ const WIKI = {
       },
       {
         title: "Visit Zane Galaychglov at NYU Tech Co-Op",
-        note: "A regular at the NYU tech scene.",
+        note: "A regular at the NYU tech scene, but he only speaks to people up-to-date with market since he doesn't like wasting time explaining. Also, you need to be partially well-off.",
         buttonText: "Go",
         hasDisplayCondition: true,
         satisfyDisplayCondition: function(store){
@@ -154,7 +154,7 @@ const WIKI = {
         hasCondition: true,
         satisfyCondition: function(store){
           return (!!store.items['0001A00'] && store.items['0001A00'].amount > 450) &&
-                 (!!store.items['0002B94'] && store.items['0002B94'].amount < 5);
+                 (!!store.items['0002B94'] && store.items['0002B94'].amount > 5);
         },
         requirements: [
           {
@@ -166,16 +166,11 @@ const WIKI = {
           {
             id: "0002B94",
             name: "Stock Chart",
-            amount: 5,
-            isMoreThan: false,
+            amount: 10,
+            isMoreThan: true,
           }
         ],
-        storeImpact: [
-          {
-            id: "0001A00",
-            amountChange: -450,
-          }
-        ],
+        storeImpact: [],
         nextNode: "1001A01",
       }
     ]
@@ -342,7 +337,7 @@ const WIKI = {
     id: "1001A44",
     class: "node",
     type: "reward",
-    name: "Zane Galaychglov's Information Reward",
+    name: "Zane Galaychglov's Information",
     description: "He gives you information",
     image_url: "http://i.imgur.com/xgmIj2o.png",
     rewards: [],
@@ -608,7 +603,9 @@ const WIKI = {
     id: "7000A92",
     class: "node",
     type: "single",
-    shouldDisplay: false,
+    shouldDisplay: function(){
+      return false;
+    },
     shouldLog: function(store){
       return !(!!store.chapters.contents["7000A92"]);
     },

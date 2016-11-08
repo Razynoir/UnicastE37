@@ -23493,7 +23493,7 @@
 	      nextNode: "7000B99"
 	    }, {
 	      title: "Visit Zane Galaychglov at NYU Tech Co-Op",
-	      note: "A regular at the NYU tech scene.",
+	      note: "A regular at the NYU tech scene, but he only speaks to people up-to-date with market since he doesn't like wasting time explaining. Also, you need to be partially well-off.",
 	      buttonText: "Go",
 	      hasDisplayCondition: true,
 	      satisfyDisplayCondition: function satisfyDisplayCondition(store) {
@@ -23501,7 +23501,7 @@
 	      },
 	      hasCondition: true,
 	      satisfyCondition: function satisfyCondition(store) {
-	        return !!store.items['0001A00'] && store.items['0001A00'].amount > 450 && !!store.items['0002B94'] && store.items['0002B94'].amount < 5;
+	        return !!store.items['0001A00'] && store.items['0001A00'].amount > 450 && !!store.items['0002B94'] && store.items['0002B94'].amount > 5;
 	      },
 	      requirements: [{
 	        id: "0001A00",
@@ -23511,13 +23511,10 @@
 	      }, {
 	        id: "0002B94",
 	        name: "Stock Chart",
-	        amount: 5,
-	        isMoreThan: false
+	        amount: 10,
+	        isMoreThan: true
 	      }],
-	      storeImpact: [{
-	        id: "0001A00",
-	        amountChange: -450
-	      }],
+	      storeImpact: [],
 	      nextNode: "1001A01"
 	    }]
 	  },
@@ -23657,7 +23654,7 @@
 	    id: "1001A44",
 	    class: "node",
 	    type: "reward",
-	    name: "Zane Galaychglov's Information Reward",
+	    name: "Zane Galaychglov's Information",
 	    description: "He gives you information",
 	    image_url: "http://i.imgur.com/xgmIj2o.png",
 	    rewards: [],
@@ -23879,7 +23876,9 @@
 	    id: "7000A92",
 	    class: "node",
 	    type: "single",
-	    shouldDisplay: false,
+	    shouldDisplay: function shouldDisplay() {
+	      return false;
+	    },
 	    shouldLog: function shouldLog(store) {
 	      return !!!store.chapters.contents["7000A92"];
 	    },
