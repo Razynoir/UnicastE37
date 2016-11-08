@@ -5,6 +5,7 @@ html{
 .book{
   /*height: 100vh;*/
   margin: 0 auto;
+  margin-bottom: 20rem;
 }
 
 /*Notifications*/
@@ -105,7 +106,7 @@ p.inline-requirement{
   text-align: center;
 }
 
-.btn-dashboard, .btn-analysis, .btn-scenario, .btn-inventory, .btn-journal{
+.btn-dashboard, .btn-analysis, .btn-scenario, .btn-inventory, .btn-journal, .btn-print-book{
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   width: 20rem;
@@ -130,9 +131,15 @@ p.inline-requirement{
 .btn-journal{
   background-color: #224267;
 }
+.btn-print-book{
+  display: none;
+  padding-bottom: 2rem;
+  width: 30rem;
+  margin-top: 5rem;
+}
 
 .split-two, .dashboard, .journal, .single{
-  margin-bottom: 50rem;
+  margin-bottom: 20rem;
 }
 .split-two-media, .split-two-main{
   padding-top: 3rem;

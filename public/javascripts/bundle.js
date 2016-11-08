@@ -25140,6 +25140,17 @@
 	    { className: "row journal" },
 	    _react2.default.createElement(
 	      "div",
+	      { className: "col-xs-12" },
+	      _react2.default.createElement(
+	        "button",
+	        { className: "btn btn-print-book", onClick: function onClick() {
+	            window.print();
+	          } },
+	        "Print Book"
+	      )
+	    ),
+	    _react2.default.createElement(
+	      "div",
 	      { className: "col-xs-12 journal-field" },
 	      props.chapters.sequence.map(function (label) {
 	        var entry = props.chapters.contents[label];

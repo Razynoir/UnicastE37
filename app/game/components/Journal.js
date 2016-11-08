@@ -4,6 +4,10 @@ import Wiki from "../full_wiki";
 const Journal = (props) => {
   return (
     <div className="row journal">
+      <div className="col-xs-12">
+        <button className="btn btn-print-book" onClick={() => {window.print();}}>Print Book</button>
+      </div>
+
       <div className="col-xs-12 journal-field">
         {
           props.chapters.sequence.map((label) => {
