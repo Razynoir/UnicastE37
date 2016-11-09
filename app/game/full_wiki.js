@@ -360,11 +360,27 @@ const WIKI = {
   "1001A09": {
     id: "1001A09",
     class: "node",
-    type: "reward",
+    type: "split-two",
     name: "Erez and Zane will Remember You",
     description: "The duo has a long coworking history and has worked on several pieces of intriguing technologies. Their well-funded venture will soon produce equipments ahead of their time.",
     image_url: "http://i.imgur.com/hPTwmXV.png",
-    rewards: [],
+    rewardList: [
+      {
+        id: "0001A00",
+        category: "items",
+        amountChange: -200
+      },
+      {
+        id: "0027A23",
+        category: "relationships",
+        amountChange: 1
+      },
+      {
+        id: "0027A27",
+        category: "relationships",
+        amountChange: 1
+      }
+    ],
     choices: [
       {
         title: "Back to Erez D Fordorn",
@@ -396,11 +412,22 @@ const WIKI = {
   "1001A45": {
     id: "1001A45",
     class: "node",
-    type: "reward",
+    type: "split-two",
     name: "A Productive Working Session",
-    description: "",
+    description: "Your diligence earns you a post, but to continue the investigation, you need to develop other means of income. ",
     image_url: "http://i.imgur.com/nWDkgFb.png",
-    rewards: [],
+    rewardList: [
+      {
+        id: "0001A00",
+        amountChange: 100,
+        category: "items"
+      },
+      {
+        id: "0001A23",
+        amountChange: 1,
+        category: "qualities"
+      }
+    ],
     choices: [
       {
         title: "Go Home",

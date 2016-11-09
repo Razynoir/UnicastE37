@@ -23686,11 +23686,23 @@
 	  "1001A09": {
 	    id: "1001A09",
 	    class: "node",
-	    type: "reward",
+	    type: "split-two",
 	    name: "Erez and Zane will Remember You",
 	    description: "The duo has a long coworking history and has worked on several pieces of intriguing technologies. Their well-funded venture will soon produce equipments ahead of their time.",
 	    image_url: "http://i.imgur.com/hPTwmXV.png",
-	    rewards: [],
+	    rewardList: [{
+	      id: "0001A00",
+	      category: "items",
+	      amountChange: -200
+	    }, {
+	      id: "0027A23",
+	      category: "relationships",
+	      amountChange: 1
+	    }, {
+	      id: "0027A27",
+	      category: "relationships",
+	      amountChange: 1
+	    }],
 	    choices: [{
 	      title: "Back to Erez D Fordorn",
 	      note: "Continue conversing with him",
@@ -23718,11 +23730,19 @@
 	  "1001A45": {
 	    id: "1001A45",
 	    class: "node",
-	    type: "reward",
+	    type: "split-two",
 	    name: "A Productive Working Session",
-	    description: "",
+	    description: "Your diligence earns you a post, but to continue the investigation, you need to develop other means of income. ",
 	    image_url: "http://i.imgur.com/nWDkgFb.png",
-	    rewards: [],
+	    rewardList: [{
+	      id: "0001A00",
+	      amountChange: 100,
+	      category: "items"
+	    }, {
+	      id: "0001A23",
+	      amountChange: 1,
+	      category: "qualities"
+	    }],
 	    choices: [{
 	      title: "Go Home",
 	      note: "Best destination for any work-drained soul.",
@@ -25070,11 +25090,53 @@
 	
 	var _Choice2 = _interopRequireDefault(_Choice);
 	
+	var _Item = __webpack_require__(212);
+	
+	var _Item2 = _interopRequireDefault(_Item);
+	
+	var _full_wiki = __webpack_require__(203);
+	
+	var _full_wiki2 = _interopRequireDefault(_full_wiki);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var SplitTwo = function SplitTwo(props) {
 	  var store = props.store;
 	  var currentNode = props.node;
+	  var rewardList;
+	  if (currentNode.rewardList) {
+	    rewardList = currentNode.rewardList.map(function (item, idx) {
+	      if (item.amountChange > 0) {
+	        return _react2.default.createElement(
+	          'li',
+	          { key: idx, className: 'choice-item-list-item' },
+	          _react2.default.createElement(_Item2.default, { item: _full_wiki2.default[item.id], isSuppressed: true }),
+	          ' You gained ',
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'inline-bold' },
+	            Math.abs(item.amountChange)
+	          ),
+	          ' in ',
+	          _full_wiki2.default[item.id].name
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'li',
+	          { key: idx, className: 'choice-item-list-item' },
+	          _react2.default.createElement(_Item2.default, { item: _full_wiki2.default[item.id], isSuppressed: true }),
+	          ' You Lost ',
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'inline-bold' },
+	            Math.abs(item.amountChange)
+	          ),
+	          ' in ',
+	          _full_wiki2.default[item.id].name
+	        );
+	      }
+	    });
+	  }
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'row split-two' },
@@ -25097,6 +25159,7 @@
 	        currentNode.description
 	      ),
 	      _react2.default.createElement('hr', null),
+	      rewardList,
 	      currentNode.choices.map(function (choice, idx) {
 	        if (!choice.hasDisplayCondition || choice.hasDisplayCondition && choice.satisfyDisplayCondition(store)) {
 	          return _react2.default.createElement(_Choice2.default, { store: store, key: idx, choice: choice, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
