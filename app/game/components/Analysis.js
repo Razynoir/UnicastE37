@@ -43,7 +43,7 @@ var Analysis = React.createClass({
     }
 
     var temperament = {
-      name: "Duffpack",
+      name: "DDFPK",
       children: [
         {
           name: "Dominance",
@@ -134,19 +134,16 @@ var Analysis = React.createClass({
 
     function computeTextRotation(d) {
       return (x(d.x + d.dx / 2) - Math.PI/2) / Math.PI * 180;
-
     }
   },
 
   generateInfoContent: function(){
-
   },
 
   render: function(){
     return (
       <div>
         <div className="analysis-info">
-
         </div>
         <div className="analysis-chart"></div>
       </div>

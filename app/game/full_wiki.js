@@ -95,6 +95,30 @@ const WIKI = {
     ]
   },
 
+  "0002A01": {
+    id: "0002A01",
+    class: "equipment",
+    name: "DS47 Market Access Portal",
+    tokanValue: 164,
+    description: "Entry level device design to make you feel more professional than you really are.",
+    note: "The machine works the same as a beeper, only fancier. (+10 Stock Charts)",
+    image_url: "http://i.imgur.com/HbLXhIE.png",
+    choices: [
+      {
+        buttonText: "Use Portal",
+        hasDisplayCondition: false,
+        hasCondition: false,
+        storeImpact: [
+          {
+            category: "items",
+            id: "0002B94",
+            amountChange: 10
+          }
+        ]
+      }
+    ]
+  },
+
   "0003C73": {
     id: "0003C73",
     class: "equipment",
@@ -237,17 +261,80 @@ const WIKI = {
     image_url: "http://i.imgur.com/xgmIj2o.png",
     choices: [
       {
+        title: "Ask if You Can Buy His Access Portal",
+        note: "DS47 is an entry level stock market access tool and enable you to acquire specific stock charts for companies of interest.",
+        buttonText: "Yes?",
+        hasDisplayCondition: function(){
+          return true;
+        },
+        satisfyDisplayCondition: function(store){
+          return store.relationships["0027A23"].amount > 3 &&
+                 !(!!store.items["0002A01"]);
+        },
+        hasCondition: function(){
+          return true;
+        },
+        satisfyCondition: function(store){
+          return !!store.relationships["0027A23"] && store.relationships["0027A23"].amount >= 5 &&
+                 !!store.items["0001A00"] && store.items["0001A00"].amount >= 684;
+        },
+        requirements: [
+          {
+            id: "0001A00",
+            amount: 684,
+            isMoreThan: true,
+          },
+          {
+            id: "0027A23",
+            amount: 5,
+            isMoreThan: true,
+          }
+        ],
+        storeImpact: [
+          {
+            id: "0001A00",
+            amountChange: -684,
+            category: "items",
+          },
+          {
+            id: "0002A01",
+            amountChange: 1,
+            category: "equipments",
+          },
+          {
+            id: "0027A23",
+            amountChange: -1,
+            category: "relationships"
+          }
+        ],
+        nextNode: "1001A46",
+      },
+      {
         title: "Converse with Him about Technology",
-        note: "Acquire information from him",
+        note: "Zane is very interested in talking about the market trend and will generate Stock Chart if you're a serious audience. By the way, did we say that he finds listeners pleasant?",
         buttonText: "Talk to Him",
-        requirements: {},
+        requirements: [
+
+        ],
+        storeImpact: [
+          {
+            id: "0027A23",
+            amountChange: 1,
+            category: "relationships"
+          },
+          {
+            id: "0002B94",
+            amountChange: 2,
+            category: "items"
+          }
+        ],
         nextNode: "1001A44",
       },
       {
         title: "Go Home",
-        note: "Enough tech talk for the day.",
+        note: "You decided that further tech talk will exhaust you reserve energy to get home.",
         buttonText: "Decide on This",
-        requirements: {},
+        requirements: [],
         nextNode: "1001A00",
       }
     ]
@@ -404,16 +491,27 @@ const WIKI = {
   "1001A44": {
     id: "1001A44",
     class: "node",
-    type: "reward",
-    name: "Zane Galaychglov's Information",
+    type: "split-two",
+    name: "Zane's Intrigues Never Fail to Impress",
     description: "He gives you information",
     image_url: "http://i.imgur.com/xgmIj2o.png",
-    rewards: [],
+    rewardList: [
+      {
+        id: "0027A23",
+        amountChange: 1,
+        category: "qualities"
+      },
+      {
+        id: "0002B94",
+        amountChange: 2,
+        category: "items"
+      }
+    ],
     choices: [
       {
-        title: "Back to Zane Galaychglov",
-        note: "Visit the genius and his scrap shop.",
-        buttonText: "Thank You",
+        title: "Continue Conversing with Him",
+        note: "Maybe he knows more about the information network and can maybe help you get access to it.",
+        buttonText: "Decide on This",
         nextNode: "1001A01",
       },
     ]
@@ -445,6 +543,40 @@ const WIKI = {
         buttonText: "Decide on This",
         nextNode: "1001A00",
       }
+    ]
+  },
+
+  "1001A46": {
+    id: "1001A46",
+    class: "node",
+    type: "split-two",
+    name: "One of Zane's Favorite Machine. Yours.",
+    description: "He likes keeping this old prototype as his company, but he trust you'll put it for better use.",
+    image_url: "http://i.imgur.com/nWDkgFb.png",
+    rewardList: [
+      {
+        id: "0001A00",
+        amountChange: -684,
+        category: "items",
+      },
+      {
+        id: "0002A01",
+        amountChange: 1,
+        category: "equipments",
+      },
+      {
+        id: "0027A23",
+        amountChange: -1,
+        category: "relationships"
+      }
+    ],
+    choices: [
+      {
+        title: "Promise Caution and Back to Conversation",
+        note: "God forbids you sail into some alert zone with this devise, but with its purpose well-simplified, you assume it's fail-safe.",
+        buttonText: "Decide on This",
+        nextNode: "1001A01",
+      },
     ]
   },
 
