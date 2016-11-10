@@ -276,3 +276,23 @@ td{
 .chapter-paragraph{
   text-indent: 2rem;
 }
+
+/*Chart related*/
+.analysis-chart{
+  text-align: center;
+}
+
+.node {
+  display: inline;
+  border: solid 1px white;
+  font: 10px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
+
+text{
+  font-weight: bold;
+  z-index: 500;
+}

@@ -23254,10 +23254,13 @@
 	    "0002A00": $.extend({}, _full_wiki2.default["0002A00"], { amount: 1 })
 	  }, // items that carry functionalities (means)
 	  items: { // items that don't carry functionalities (resources)
-	    "0001A00": $.extend({}, _full_wiki2.default["0001A00"], { amount: 100 })
+	    "0001A00": $.extend({}, _full_wiki2.default["0001A00"], { amount: 100 }),
+	    "0002B94": $.extend({}, _full_wiki2.default["0002B94"], { amount: 10 })
 	  },
 	  information: {}, // intangible information resources
-	  relationships: {} // intangible interpersonal resources
+	  relationships: {
+	    "0027A27": $.extend({}, _full_wiki2.default["0027A27"], { amount: 1 })
+	  } // intangible interpersonal resources
 	};
 	
 	// In the following format:
@@ -23375,6 +23378,7 @@
 	    id: "0001A24",
 	    class: "quality",
 	    name: "Dominance",
+	    tokenValue: 10,
 	    description: "An attribute responsible for installing your standings in many social groups.",
 	    note: "A high dominance may reduce the cost of certain options, particularly the ones related to favors.",
 	    image_url: "http://i.imgur.com/jmjDapu.png"
@@ -23383,6 +23387,7 @@
 	    id: "0001A25",
 	    class: "quality",
 	    name: "Diplomacy",
+	    tokenValue: 10,
 	    description: "An attribute responsible for proper communication in structured social environment such as meetings and conferences.",
 	    note: "A high diplomacy opens up choices otherwise unavailable in social settings.",
 	    image_url: "http://i.imgur.com/FFZrsof.png"
@@ -23391,6 +23396,7 @@
 	    id: "0001A26",
 	    class: "quality",
 	    name: "Fluency",
+	    tokenValue: 10,
 	    description: "An attribute responsible for getting out of incidental or unpredictable situations.",
 	    note: "A high fluency helps you fend off incidental conflicts.",
 	    image_url: "http://i.imgur.com/y3v3Iwu.png"
@@ -23399,6 +23405,7 @@
 	    id: "0001A27",
 	    class: "quality",
 	    name: "Perception",
+	    tokenValue: 10,
 	    description: "An attribute responsible for your information acquisition abilities.",
 	    note: "A high perception helps you detect options that are otherwise unavailable.",
 	    image_url: "http://i.imgur.com/5rpfPHK.png"
@@ -23407,6 +23414,7 @@
 	    id: "0001A28",
 	    class: "quality",
 	    name: "Knowledge",
+	    tokenValue: 10,
 	    description: "An attribute responsible for decipharing the information you acquire.",
 	    note: "A high knowledge helps you understand the meaning of the pieces you collect.",
 	    image_url: "http://i.imgur.com/rS1tvUK.png"
@@ -23415,8 +23423,9 @@
 	  // Items starts here
 	  "0001A00": {
 	    id: "0001A00",
-	    class: "item",
+	    class: "cash",
 	    name: "Cash",
+	    tokenValue: 1,
 	    description: "People disagrees on whether it's the key to happiness.",
 	    note: "Can be used to acquire assets.",
 	    image_url: "http://i.imgur.com/oaxWsNW.png",
@@ -23428,6 +23437,7 @@
 	    id: "0002B94",
 	    class: "item",
 	    name: "Stock Chart",
+	    tokenValue: 8,
 	    description: "Line drawings decipharable to certain trained eyes.",
 	    note: "Can be used for trading or favors.",
 	    image_url: "http://i.imgur.com/Pwqz5wg.png"
@@ -23437,6 +23447,7 @@
 	    id: "0002A00",
 	    class: "equipment",
 	    name: "Wall Street Journal Beeper",
+	    tokenValue: 48,
 	    description: "For those who can only afford the worst but strive to play the best.",
 	    note: "This ultimate poor man's stock portal will randomly select a stock chart from the billions on the market. (+1 Stock Chart)",
 	    image_url: "http://i.imgur.com/8fBs1H6.png",
@@ -23484,6 +23495,7 @@
 	    id: "0027A23",
 	    class: "relationship",
 	    name: "Zane's Friendship",
+	    tokenValue: 78,
 	    description: "The tech-driven fella find you a great company.",
 	    note: "Maintaining a good relationship with Zane will open up his advanced hardware arsenal to you.",
 	    image_url: "http://i.imgur.com/xgmIj2o.png"
@@ -23493,6 +23505,7 @@
 	    id: "0027A27",
 	    class: "relationship",
 	    name: "Erez's Friendship",
+	    tokenValue: 65,
 	    description: "Culturally driven, his friendship is a reflection of your sophistication.",
 	    note: "Maintaining a good relationship with Erez will bring you opportunities to socialize with other creatives.",
 	    image_url: "http://i.imgur.com/JinWLf4.png"
@@ -23643,7 +23656,7 @@
 	    description: "By nature, he remembers the very best that capture his fancy. Some of the projects he know are expensive to support but in any case, a great investment comes with a price.",
 	    image_url: "http://i.imgur.com/JinWLf4.png",
 	    choices: [{
-	      title: "Support Zane with His Reference Cabin",
+	      title: "Support Zane with His Tech Workshop",
 	      note: "Erez's tech friend Zane is developing a market access portal and need to acquire some expensive reference books. Helping him can potentially lead to advanced hardware.",
 	      buttonText: "Invest in This Project",
 	      hasDisplayCondition: true,
@@ -24140,6 +24153,10 @@
 	
 	var _Journal2 = _interopRequireDefault(_Journal);
 	
+	var _Analysis = __webpack_require__(218);
+	
+	var _Analysis2 = _interopRequireDefault(_Analysis);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var AppContent = function AppContent(props) {
@@ -24159,6 +24176,9 @@
 	      break;
 	    case "Journal":
 	      contentInterface = _react2.default.createElement(_Journal2.default, { chapters: props.chapters, switchNode: props.switchNode, modifyInventoryWithSpecs: props.modifyInventoryWithSpecs });
+	      break;
+	    case "Analysis":
+	      contentInterface = _react2.default.createElement(_Analysis2.default, { store: props });
 	    default:
 	  }
 	
@@ -24226,7 +24246,9 @@
 	      ),
 	      _react2.default.createElement(
 	        "button",
-	        { className: "btn btn-analysis" },
+	        { className: "btn btn-analysis", onClick: function onClick() {
+	            props.switchMode("Analysis");
+	          } },
 	        "Analysis"
 	      ),
 	      _react2.default.createElement(
@@ -25481,6 +25503,157 @@
 	};
 	
 	exports.default = Journal;
+
+/***/ },
+/* 218 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Analysis = _react2.default.createClass({
+	  displayName: "Analysis",
+	
+	  getInitialState: function getInitialState() {
+	    return this.props;
+	  },
+	
+	  getRoot: function getRoot(store) {
+	    debugger;
+	    var assets = {
+	      name: "Assets",
+	      children: [{ name: "Cash", size: 0 }, { name: "Items", size: 0 }, { name: "Equipments", size: 0 }]
+	    };
+	
+	    for (var key in store.items) {
+	      var item = store.items[key];
+	
+	      if (item.class == "cash") {
+	        assets["children"][0].size += item.tokenValue * item.amount;
+	      } else {
+	        assets["children"][1].size += item.tokenValue * item.amount;
+	      }
+	    }
+	
+	    for (var key in store.equipments) {
+	      var equipment = store.equipments[key];
+	      assets["children"][2].size += equipment.tokenValue * equipment.amount;
+	    }
+	
+	    var relationship = {
+	      name: "Relationships",
+	      size: function () {
+	        var count = 0;
+	        for (var key in store.relationships) {
+	          count += store.relationships[key].amount * store.relationships[key].tokenValue;
+	        }
+	        return count;
+	      }()
+	    };
+	
+	    var temperament = {
+	      name: "Duffpack",
+	      children: [{
+	        name: "Dominance",
+	        size: store.qualities["0001A24"].amount * 10
+	      }, {
+	        name: "Diplomacy",
+	        size: store.qualities["0001A25"].amount * 10
+	      }, {
+	        name: "Fluency",
+	        size: store.qualities["0001A26"].amount * 10
+	      }, {
+	        name: "Perception",
+	        size: store.qualities["0001A27"].amount * 10
+	      }, {
+	        name: "Knowledge",
+	        size: store.qualities["0001A28"].amount * 10
+	      }]
+	    };
+	
+	    return {
+	      name: "Resources",
+	      children: [assets, relationship, temperament]
+	    };
+	  },
+	
+	  componentDidMount: function componentDidMount() {
+	    var root = this.getRoot(this.props.store);
+	
+	    var width = 800,
+	        height = 800,
+	        radius = 2 * Math.min(width, height) / 5;
+	
+	    var x = d3.scale.linear().range([0, Math.PI]);
+	
+	    var y = d3.scale.linear().range([0, radius]);
+	
+	    var color = d3.scale.category20c();
+	
+	    var svg = d3.select(".analysis-chart").append("svg").attr("width", width).attr("height", height).append("g").attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
+	
+	    var partition = d3.layout.partition().sort(null).value(function (d) {
+	      return d.size;
+	    });
+	
+	    var arc = d3.svg.arc().startAngle(function (d) {
+	      return Math.max(0, Math.min(2 * Math.PI, x(d.x)));
+	    }).endAngle(function (d) {
+	      return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx)));
+	    }).innerRadius(function (d) {
+	      return Math.max(0, y(d.y));
+	    }).outerRadius(function (d) {
+	      return Math.max(0, y(d.y + d.dy));
+	    });
+	
+	    var g = svg.selectAll("g").data(partition.nodes(root)).enter().append("g");
+	
+	    var path = g.append("path").attr("d", arc).style("fill", function (d) {
+	      return color(d.name);
+	    }).on("click", click);
+	
+	    var text = g.append("text").attr("transform", function (d) {
+	      var rotation = computeTextRotation(d);
+	      return "rotate(" + rotation + ")";
+	    }).attr("x", function (d) {
+	      return y(d.y);
+	    }).attr("dx", "6") // margin
+	    .attr("dy", ".35em") // vertical-align
+	    .text(function (d) {
+	      return d.name;
+	    });
+	
+	    function click(d) {}
+	
+	    d3.select(self.frameElement).style("height", height + "px");
+	
+	    function computeTextRotation(d) {
+	      return (x(d.x + d.dx / 2) - Math.PI / 2) / Math.PI * 180;
+	    }
+	  },
+	
+	  generateInfoContent: function generateInfoContent() {},
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      null,
+	      _react2.default.createElement("div", { className: "analysis-info" }),
+	      _react2.default.createElement("div", { className: "analysis-chart" })
+	    );
+	  }
+	});
+	
+	exports.default = Analysis;
 
 /***/ }
 /******/ ]);

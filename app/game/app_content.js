@@ -5,6 +5,7 @@ import ScenarioNode from './components/ScenarioNode';
 import Inventory from './components/Inventory';
 import Notifications from './components/Notifications';
 import Journal from './components/Journal';
+import Analysis from './components/Analysis';
 
 const AppContent = (props) => {
   var items = [];
@@ -23,6 +24,9 @@ const AppContent = (props) => {
       break;
     case "Journal":
       contentInterface = <Journal chapters={props.chapters} switchNode={props.switchNode} modifyInventoryWithSpecs={props.modifyInventoryWithSpecs} />
+      break;
+    case "Analysis":
+      contentInterface = <Analysis store={props} />
     default:
   }
 

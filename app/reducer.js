@@ -24,9 +24,12 @@ const _initState = {
   }, // items that carry functionalities (means)
   items: {  // items that don't carry functionalities (resources)
     "0001A00": $.extend({}, Wiki["0001A00"], {amount: 100}),
+    "0002B94": $.extend({}, Wiki["0002B94"], {amount: 10}),
   },
   information: {}, // intangible information resources
-  relationships: {} // intangible interpersonal resources
+  relationships: {
+    "0027A27": $.extend({}, Wiki["0027A27"], {amount: 1}),
+  } // intangible interpersonal resources
 }
 
 // In the following format:
