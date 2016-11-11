@@ -23616,7 +23616,7 @@
 	        return true;
 	      },
 	      satisfyDisplayCondition: function satisfyDisplayCondition(store) {
-	        return store.relationships["0027A23"].amount > 3 && !!!store.items["0002A01"];
+	        return store.relationships["0027A23"].amount > 3 && !!!store.equipments["0002A01"];
 	      },
 	      hasCondition: function hasCondition() {
 	        return true;

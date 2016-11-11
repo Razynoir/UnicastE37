@@ -269,7 +269,7 @@ const WIKI = {
         },
         satisfyDisplayCondition: function(store){
           return store.relationships["0027A23"].amount > 3 &&
-                 !(!!store.items["0002A01"]);
+                 !(!!store.equipments["0002A01"]);
         },
         hasCondition: function(){
           return true;
