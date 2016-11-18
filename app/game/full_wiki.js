@@ -65,7 +65,7 @@ const WIKI = {
     id: "0002B94",
     class: "item",
     name: "Stock Chart",
-    tokenValue: 8,
+    tokenValue: 4,
     description: "Line drawings decipharable to certain trained eyes.",
     note: "Can be used for trading or favors.",
     image_url: "http://i.imgur.com/Pwqz5wg.png",

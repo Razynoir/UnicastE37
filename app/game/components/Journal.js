@@ -8,6 +8,13 @@ const Journal = (props) => {
         <button className="btn btn-print-book" onClick={() => {window.print();}}>Print Book</button>
       </div>
 
+      <div className="col-xs-12 front-cover-field">
+        <div className="front-cover-buffer"></div>
+        <h1 className="chapter-title">Unicast37</h1>
+        <h3 className="chapter-subtitle">by Raymond Gao and Username</h3>
+        <div className="front-cover-buffer"></div>
+      </div>
+
       <div className="col-xs-12 journal-field">
         {
           props.chapters.sequence.map((label) => {

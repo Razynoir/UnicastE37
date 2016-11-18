@@ -1,3 +1,6 @@
 .btn-print-book{
   display: block;
 }
+.front-cover-field{
+  display: none;
+}

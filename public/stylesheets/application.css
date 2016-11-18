@@ -259,6 +259,9 @@ td{
 }
 
 /*Chapter related*/
+.front-cover-buffer{
+  height: 20rem;
+}
 .chapter-title{
   font-weight: bold;
   margin-top: 10rem;

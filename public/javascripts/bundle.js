@@ -23437,7 +23437,7 @@
 	    id: "0002B94",
 	    class: "item",
 	    name: "Stock Chart",
-	    tokenValue: 8,
+	    tokenValue: 4,
 	    description: "Line drawings decipharable to certain trained eyes.",
 	    note: "Can be used for trading or favors.",
 	    image_url: "http://i.imgur.com/Pwqz5wg.png"
@@ -25582,6 +25582,22 @@
 	          } },
 	        "Print Book"
 	      )
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "col-xs-12 front-cover-field" },
+	      _react2.default.createElement("div", { className: "front-cover-buffer" }),
+	      _react2.default.createElement(
+	        "h1",
+	        { className: "chapter-title" },
+	        "Unicast37"
+	      ),
+	      _react2.default.createElement(
+	        "h3",
+	        { className: "chapter-subtitle" },
+	        "by Raymond Gao and Username"
+	      ),
+	      _react2.default.createElement("div", { className: "front-cover-buffer" })
 	    ),
 	    _react2.default.createElement(
 	      "div",
