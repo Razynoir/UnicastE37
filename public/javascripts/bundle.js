@@ -25663,11 +25663,10 @@
 	  displayName: "Analysis",
 	
 	  getInitialState: function getInitialState() {
-	    return this.props;
+	    return $.extend({}, this.props, { analysisText: [] });
 	  },
 	
 	  getRoot: function getRoot(store) {
-	    debugger;
 	    var assets = {
 	      name: "Assets",
 	      children: [{ name: "Cash", size: 0 }, { name: "Items", size: 0 }, { name: "Equipments", size: 0 }]
@@ -25758,7 +25757,7 @@
 	
 	    var path = g.append("path").attr("d", arc).style("fill", function (d) {
 	      return color(d.name);
-	    }).on("click", click);
+	    });
 	
 	    var text = g.append("text").attr("transform", function (d) {
 	      var rotation = computeTextRotation(d);
@@ -25771,22 +25770,65 @@
 	      return d.name;
 	    });
 	
-	    function click(d) {}
-	
 	    d3.select(self.frameElement).style("height", height + "px");
 	
 	    function computeTextRotation(d) {
 	      return (x(d.x + d.dx / 2) - Math.PI / 2) / Math.PI * 180;
 	    }
+	
+	    this.setState({ analysisText: this.generateAnalysisText(root) });
 	  },
 	
-	  generateInfoContent: function generateInfoContent() {},
+	  generateAnalysisText: function generateAnalysisText(root) {
+	    var cashValue = root.children[0].children[0].size;
+	    var assetValue = root.children[0].value;
+	    var relationshipValue = root.children[1].value;
+	    var duffPackValue = root.children[2].value;
+	    var totalValue = assetValue + relationshipValue + duffPackValue;
+	
+	    var analysisMessages = [];
+	
+	    var cashToAssetRatio = cashValue / assetValue;
+	    if (cashToAssetRatio < 0.1) {
+	      analysisMessages.push("Cash makes up less than 10% of your assets. You might consider increasing your cash reserve for future consumption.");
+	    } else if (cashToAssetRatio >= 0.1 && cashToAssetRatio <= 0.5) {
+	      analysisMessages.push("Your cash reserve is lean but sufficient.");
+	    } else if (cashToAssetRatio > 0.5) {
+	      analysisMessages.push("Cash makes up more than 50% of your assets. You might consider converting them to more useful equipments.");
+	    }
+	
+	    var relationshipToTotal = relationshipValue / totalValue;
+	    if (relationshipToTotal < 0.1) {
+	      analysisMessages.push("You have meager relationships with other people. Try to develop your network and open up opportunities.");
+	    } else if (relationshipToTotal >= 0.1 && relationshipToTotal <= 0.5) {
+	      analysisMessages.push("You're well-acquited with people.");
+	    } else if (relationshipToTotal) {
+	      analysisMessages.push("Connections may be valuable, but it's also important to invest in assets and your temperament.");
+	    }
+	
+	    return analysisMessages;
+	  },
 	
 	  render: function render() {
 	    return _react2.default.createElement(
 	      "div",
 	      null,
-	      _react2.default.createElement("div", { className: "analysis-info" }),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "analysis-info col-xs-6" },
+	        _react2.default.createElement(
+	          "h2",
+	          null,
+	          "Analysis"
+	        ),
+	        this.state.analysisText.map(function (text, idx) {
+	          return _react2.default.createElement(
+	            "li",
+	            { key: idx },
+	            text
+	          );
+	        })
+	      ),
 	      _react2.default.createElement("div", { className: "analysis-chart" })
 	    );
 	  }

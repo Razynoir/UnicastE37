@@ -292,6 +292,13 @@ td{
 }
 
 /*Chart related*/
+.analysis-info{
+  position: absolute;
+  width: 30%;
+  text-align: left;
+  padding-top: 20vh;
+  padding-left: 10%;
+}
 .analysis-chart{
   text-align: center;
 }
