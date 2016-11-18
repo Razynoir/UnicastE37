@@ -211,15 +211,26 @@ p.inline-requirement{
 }
 .qualities-table, .attributes-table{
   color: white;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   text-align: center;
-  border: 1px solid grey;
+  border: none;
+}
+.qualities-table-header{
+  background-color: #d62d20;
+}
+.attributes-table-header{
+  background-color: #008744;
+}
+.qualities-table-body, .attributes-table-body{
+  background-color: white;
+  color: black;
 }
 td{
   vertical-align: middle !important;
   border: none !important;
 }
+
 
 /*date time*/
 .panel-clock{

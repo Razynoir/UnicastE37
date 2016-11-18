@@ -23438,7 +23438,7 @@
 	    class: "item",
 	    name: "Stock Chart",
 	    tokenValue: 4,
-	    description: "Line drawings decipharable to certain trained eyes.",
+	    description: "Line drawings decipherable to certain trained eyes.",
 	    note: "Can be used for trading or favors.",
 	    image_url: "http://i.imgur.com/Pwqz5wg.png"
 	  },
@@ -23867,7 +23867,7 @@
 	    class: "node",
 	    type: "split-two",
 	    name: "One of Zane's Favorite Machine. Yours.",
-	    description: "He likes keeping this old prototype as his company, but he trust you'll put it for better use.",
+	    description: "He likes keeping this old prototype as his company, but he trusts you'll put it for better use.",
 	    image_url: "http://i.imgur.com/nWDkgFb.png",
 	    rewardList: [{
 	      id: "0001A00",
@@ -24449,7 +24449,7 @@
 	        { className: 'table qualities-table' },
 	        _react2.default.createElement(
 	          'thead',
-	          null,
+	          { className: 'qualities-table-header' },
 	          _react2.default.createElement(
 	            'tr',
 	            null,
@@ -24467,7 +24467,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'tbody',
-	          null,
+	          { className: 'qualities-table-body' },
 	          _react2.default.createElement(
 	            'tr',
 	            null,
@@ -24493,7 +24493,7 @@
 	        { className: 'table attributes-table' },
 	        _react2.default.createElement(
 	          'thead',
-	          null,
+	          { className: 'attributes-table-header' },
 	          _react2.default.createElement(
 	            'tr',
 	            null,
@@ -24511,7 +24511,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'tbody',
-	          null,
+	          { className: 'attributes-table-body' },
 	          _react2.default.createElement(
 	            'tr',
 	            null,

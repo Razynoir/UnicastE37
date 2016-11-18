@@ -11,13 +11,13 @@ const DashBoard = (props) => {
       </div>
       <div className="col-sm-12 col-md-3 dashboard-middle">
         <table className="table qualities-table">
-          <thead>
+          <thead className="qualities-table-header">
             <tr>
               <td>Quality</td>
               <td>Amount</td>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="qualities-table-body">
             <tr>
               <td><Item key={1} item={Wiki["0001A23"]} store={props.store} isSuppressed={true} /></td>
               <td>{props.store.qualities["0001A23"].amount}</td>
@@ -27,13 +27,13 @@ const DashBoard = (props) => {
       </div>
       <div className="col-sm-12 col-md-3 dashboard-right">
         <table className="table attributes-table">
-          <thead>
+          <thead className="attributes-table-header">
             <tr>
               <td>Attribute</td>
               <td>Ratings</td>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="attributes-table-body">
             <tr>
               <td><Item key={1} item={Wiki["0001A24"]} store={props.store} isSuppressed={true} /></td>
               <td>{props.store.qualities["0001A24"].amount}</td>

@@ -66,7 +66,7 @@ const WIKI = {
     class: "item",
     name: "Stock Chart",
     tokenValue: 4,
-    description: "Line drawings decipharable to certain trained eyes.",
+    description: "Line drawings decipherable to certain trained eyes.",
     note: "Can be used for trading or favors.",
     image_url: "http://i.imgur.com/Pwqz5wg.png",
   },
@@ -577,7 +577,7 @@ const WIKI = {
     class: "node",
     type: "split-two",
     name: "One of Zane's Favorite Machine. Yours.",
-    description: "He likes keeping this old prototype as his company, but he trust you'll put it for better use.",
+    description: "He likes keeping this old prototype as his company, but he trusts you'll put it for better use.",
     image_url: "http://i.imgur.com/nWDkgFb.png",
     rewardList: [
       {
