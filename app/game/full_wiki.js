@@ -371,7 +371,7 @@ const WIKI = {
             amountChange: -2,
           }
         ],
-        nextNode: "1001A02",
+        nextNode: "1001A22",
       },
       {
         title: "Ask if You Can Help His Friends",
@@ -390,6 +390,32 @@ const WIKI = {
         hasDisplayCondition: false,
         hasCondition: false,
         nextNode: "1001A00",
+      }
+    ]
+  },
+
+  "1001A22": {
+    id: "1001A22",
+    class: "node",
+    type: "split-two",
+    name: "A Pleasant Conversation",
+    description: "Erez is a genius at dissecting even the toughest life problems. He offers great counciling.",
+    image_url: "http://i.imgur.com/JinWLf4.png",
+    rewardList: [
+      {
+        id: "0001A23",
+        category: "qualities",
+        amountChange: -2,
+      }
+    ],
+    choices: [
+      {
+        title: "Continue with other topics",
+        note: "See if there's something else you guys might talk about",
+        buttonText: "Go",
+        hasDisplayCondition: false,
+        hasCondition: false,
+        nextNode: "1001A02",
       }
     ]
   },

@@ -8,9 +8,6 @@ var Single = React.createClass({
 
   componentWillMount: function(){
     if(!this.props.node.shouldDisplay(this.props.store)){
-      if(this.props.node.shouldLog(this.props.store)){
-        this.props.addJournalEntry(this.props.node);
-      }
       this.props.switchNode(this.props.node.nextNode);
     }
   },

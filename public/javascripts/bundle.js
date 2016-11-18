@@ -23696,7 +23696,7 @@
 	        category: "qualities",
 	        amountChange: -2
 	      }],
-	      nextNode: "1001A02"
+	      nextNode: "1001A22"
 	    }, {
 	      title: "Ask if You Can Help His Friends",
 	      note: "He knows a number of friends who can use some additional support, either with cash or specific resources. You can develop friendship with his friends through these investments.",
@@ -23713,6 +23713,28 @@
 	      hasDisplayCondition: false,
 	      hasCondition: false,
 	      nextNode: "1001A00"
+	    }]
+	  },
+	
+	  "1001A22": {
+	    id: "1001A22",
+	    class: "node",
+	    type: "split-two",
+	    name: "A Pleasant Conversation",
+	    description: "Erez is a genius at dissecting even the toughest life problems. He offers great counciling.",
+	    image_url: "http://i.imgur.com/JinWLf4.png",
+	    rewardList: [{
+	      id: "0001A23",
+	      category: "qualities",
+	      amountChange: -2
+	    }],
+	    choices: [{
+	      title: "Continue with other topics",
+	      note: "See if there's something else you guys might talk about",
+	      buttonText: "Go",
+	      hasDisplayCondition: false,
+	      hasCondition: false,
+	      nextNode: "1001A02"
 	    }]
 	  },
 	
@@ -24241,7 +24263,7 @@
 	
 	var _DashBoard2 = _interopRequireDefault(_DashBoard);
 	
-	var _ScenarioNode = __webpack_require__(209);
+	var _ScenarioNode = __webpack_require__(210);
 	
 	var _ScenarioNode2 = _interopRequireDefault(_ScenarioNode);
 	
@@ -24400,7 +24422,7 @@
 	
 	var _DateTime2 = _interopRequireDefault(_DateTime);
 	
-	var _Item = __webpack_require__(212);
+	var _Item = __webpack_require__(209);
 	
 	var _Item2 = _interopRequireDefault(_Item);
 	
@@ -24712,7 +24734,154 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Single = __webpack_require__(210);
+	var _full_wiki = __webpack_require__(203);
+	
+	var _full_wiki2 = _interopRequireDefault(_full_wiki);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Item = _react2.default.createClass({
+	  displayName: 'Item',
+	
+	  getInitialState: function getInitialState() {
+	    return this.props;
+	  },
+	
+	  render: function render() {
+	    var modifyInventoryWithSpecs = this.props.modifyInventoryWithSpecs;
+	    var item = this.props.item;
+	
+	    var buttons = "";
+	    if (item.choices) {
+	      buttons = item.choices.map(function (choice, idx) {
+	        if (!choice.hasDisplayCondition && !choice.hasCondition) {
+	          return _react2.default.createElement(
+	            'button',
+	            { className: 'btn btn-default', key: idx, onClick: function onClick() {
+	                modifyInventoryWithSpecs(choice.storeImpact);
+	              } },
+	            choice.buttonText
+	          );
+	        } else if (!!choice.hasDisplayCondition && choice.satisfyDisplayCondition(props.store) && (!choice.hasCondition || !!choice.hasCondition && choice.satisfyCondition(props.store))) {
+	          return _react2.default.createElement(
+	            'button',
+	            { className: 'btn btn-default', key: idx, onClick: function onClick() {
+	                modifyInventoryWithSpecs(choice.storeImpact);
+	              } },
+	            choice.buttonText
+	          );
+	        } else {
+	          return _react2.default.createElement(
+	            'li',
+	            null,
+	            'You do not meet requirement to use this.'
+	          );
+	        }
+	      });
+	    }
+	
+	    if (this.props.isSuppressed) {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'item' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'item-display' },
+	          _react2.default.createElement('img', { className: 'item-image', src: item.image_url })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'item-info-over' },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'inline-bold' },
+	              item.name
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            item.description
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'item-note' },
+	            item.note
+	          )
+	        )
+	      );
+	    } else {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'item' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'item-display' },
+	          _react2.default.createElement('img', { className: 'item-image', src: item.image_url })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'item-info-over' },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'You have ',
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'inline-bold' },
+	              'x',
+	              this.props.item.amount || 0
+	            ),
+	            ' ',
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'inline-bold' },
+	              item.name
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            item.description
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'item-note' },
+	            item.note
+	          ),
+	          _react2.default.createElement('br', null),
+	          buttons
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'item-count-over' },
+	          item.amount
+	        )
+	      );
+	    }
+	  }
+	});
+	
+	exports.default = Item;
+
+/***/ },
+/* 210 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Single = __webpack_require__(211);
 	
 	var _Single2 = _interopRequireDefault(_Single);
 	
@@ -24752,7 +24921,7 @@
 	exports.default = ScenarioNode;
 
 /***/ },
-/* 210 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24765,7 +24934,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Choice = __webpack_require__(211);
+	var _Choice = __webpack_require__(212);
 	
 	var _Choice2 = _interopRequireDefault(_Choice);
 	
@@ -24780,9 +24949,6 @@
 	
 	  componentWillMount: function componentWillMount() {
 	    if (!this.props.node.shouldDisplay(this.props.store)) {
-	      if (this.props.node.shouldLog(this.props.store)) {
-	        this.props.addJournalEntry(this.props.node);
-	      }
 	      this.props.switchNode(this.props.node.nextNode);
 	    }
 	  },
@@ -24873,7 +25039,7 @@
 	exports.default = Single;
 
 /***/ },
-/* 211 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24886,7 +25052,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Item = __webpack_require__(212);
+	var _Item = __webpack_require__(209);
 	
 	var _Item2 = _interopRequireDefault(_Item);
 	
@@ -25052,153 +25218,6 @@
 	exports.default = Choice;
 
 /***/ },
-/* 212 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _full_wiki = __webpack_require__(203);
-	
-	var _full_wiki2 = _interopRequireDefault(_full_wiki);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Item = _react2.default.createClass({
-	  displayName: 'Item',
-	
-	  getInitialState: function getInitialState() {
-	    return this.props;
-	  },
-	
-	  render: function render() {
-	    var modifyInventoryWithSpecs = this.props.modifyInventoryWithSpecs;
-	    var item = this.props.item;
-	
-	    var buttons = "";
-	    if (item.choices) {
-	      buttons = item.choices.map(function (choice, idx) {
-	        if (!choice.hasDisplayCondition && !choice.hasCondition) {
-	          return _react2.default.createElement(
-	            'button',
-	            { className: 'btn btn-default', key: idx, onClick: function onClick() {
-	                modifyInventoryWithSpecs(choice.storeImpact);
-	              } },
-	            choice.buttonText
-	          );
-	        } else if (!!choice.hasDisplayCondition && choice.satisfyDisplayCondition(props.store) && (!choice.hasCondition || !!choice.hasCondition && choice.satisfyCondition(props.store))) {
-	          return _react2.default.createElement(
-	            'button',
-	            { className: 'btn btn-default', key: idx, onClick: function onClick() {
-	                modifyInventoryWithSpecs(choice.storeImpact);
-	              } },
-	            choice.buttonText
-	          );
-	        } else {
-	          return _react2.default.createElement(
-	            'li',
-	            null,
-	            'You do not meet requirement to use this.'
-	          );
-	        }
-	      });
-	    }
-	
-	    if (this.props.isSuppressed) {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'item' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'item-display' },
-	          _react2.default.createElement('img', { className: 'item-image', src: item.image_url })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'item-info-over' },
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'inline-bold' },
-	              item.name
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            item.description
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'item-note' },
-	            item.note
-	          )
-	        )
-	      );
-	    } else {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'item' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'item-display' },
-	          _react2.default.createElement('img', { className: 'item-image', src: item.image_url })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'item-info-over' },
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            'You have ',
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'inline-bold' },
-	              'x',
-	              this.props.item.amount || 0
-	            ),
-	            ' ',
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'inline-bold' },
-	              item.name
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            item.description
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'item-note' },
-	            item.note
-	          ),
-	          _react2.default.createElement('br', null),
-	          buttons
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'item-count-over' },
-	          item.amount
-	        )
-	      );
-	    }
-	  }
-	});
-	
-	exports.default = Item;
-
-/***/ },
 /* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -25212,11 +25231,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Choice = __webpack_require__(211);
+	var _Choice = __webpack_require__(212);
 	
 	var _Choice2 = _interopRequireDefault(_Choice);
 	
-	var _Item = __webpack_require__(212);
+	var _Item = __webpack_require__(209);
 	
 	var _Item2 = _interopRequireDefault(_Item);
 	
@@ -25313,7 +25332,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Choice = __webpack_require__(211);
+	var _Choice = __webpack_require__(212);
 	
 	var _Choice2 = _interopRequireDefault(_Choice);
 	
@@ -25367,7 +25386,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Item = __webpack_require__(212);
+	var _Item = __webpack_require__(209);
 	
 	var _Item2 = _interopRequireDefault(_Item);
 	
@@ -25445,7 +25464,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Item = __webpack_require__(212);
+	var _Item = __webpack_require__(209);
 	
 	var _Item2 = _interopRequireDefault(_Item);
 	
